@@ -21,14 +21,14 @@ public class StudentUI {
 			Student stud = studentListControl.getStudent(i);
 			if (stud.getUsername().equals(username)) {
 				System.out.println("");
-				System.out.println("--------------------------------------------------------");
+				System.out.println("-------------------------------------------------------------------");
 				System.out.println("Welcome " + stud.getName() + "!");
 				System.out.println("Matriculation No.: " + stud.getMatricID());
 				System.out.println("Course: " + stud.getSchool());
 			}
 		}
 		do {
-			System.out.println("--------------------------------------------------------");
+			System.out.println("-------------------------------------------------------------------");
 			System.out.println("- STUDENT CONSOLE -");
 			System.out.println("");
 			System.out.println("Enter your choice:");;

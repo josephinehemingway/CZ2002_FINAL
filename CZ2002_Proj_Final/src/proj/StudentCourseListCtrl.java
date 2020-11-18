@@ -86,8 +86,8 @@ public class StudentCourseListCtrl {
 			
 			if (stud.getUsername().equals(username)) {
 				System.out.println("\nRegistered courses for "+ username + ": \n");
-				System.out.println("   CourseID	CourseName	Index   ");
-				System.out.println("======================================");
+				System.out.println("   CourseID	Index	  CourseName			   ");
+				System.out.println("===================================================================");
 				
 				ArrayList<CourseIndex> registeredArr = stud.getCourseIndexArr();
 				
@@ -95,8 +95,8 @@ public class StudentCourseListCtrl {
 					for (int j = 0; j < registeredArr.size(); j++) {
 						CourseIndex course = registeredArr.get(j);
 						System.out.println("    " + registeredArr.get(j).getCourseID()
-								+ "	" + course.getCourseName() 
-								+ "		" + course.getIndexID());
+								+ "	" + course.getIndexID()
+								+ "	  " + course.getCourseName());
 					}
 					return true;
 				} else {
@@ -220,7 +220,7 @@ public class StudentCourseListCtrl {
 				sortLesson(friList);
 				
 				int index = 0;
-				System.out.println("--------------------------------------");
+				System.out.println("===================================================================");
 				System.out.println("\nTimetable for this Semester");
 				System.out.println("--------------------------------------------------------");
 				

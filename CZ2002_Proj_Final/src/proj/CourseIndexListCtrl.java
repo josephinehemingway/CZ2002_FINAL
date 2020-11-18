@@ -273,11 +273,18 @@ public class CourseIndexListCtrl {
 			return;
 		} else {
 			System.out.println("\nAll General Course Information ------------------");
-			System.out.println("\n   CourseID   CourseName  	 Index  Vacancy ");
-			System.out.println("===============================================");
+			System.out.println("\n   CourseID   CourseName  	 			      Index    Vacancy ");
+			System.out.println("===============================================================================");
+			//max coursename length = 45
+			int maxCourseLength = 45;
+			int courseNameLength = 0;
 			for (CourseIndex i : this.courseIndexList) {
-				System.out.println("   " + i.getCourseID() + "       " + i.getCourseName() + "		" + i.getIndexID()
-						+ "	" + i.getCurrentVacancyOverInitial());
+				System.out.print("   " + i.getCourseID() + "       " + i.getCourseName());
+			    for(int j=0;j <= maxCourseLength - i.getCourseName().length(); j++)
+			    {
+			    	   System.out.print(" ");
+			    }
+			    System.out.print(i.getIndexID()+ "	" + i.getCurrentVacancyOverInitial() +"\n");
 			}
 		}
 	}
