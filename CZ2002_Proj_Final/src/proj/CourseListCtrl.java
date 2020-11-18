@@ -148,7 +148,7 @@ public class CourseListCtrl {
 		else {
 			System.out.println("\nList of Courses ------------------");
 			System.out.println("\n   #	Course ID    Course Name ");
-			System.out.println("==================================");
+			System.out.println("===============================================================");
 			for (int i=0; i<courseList.size(); i++) {
 				printCourseDetails(i);
 			}

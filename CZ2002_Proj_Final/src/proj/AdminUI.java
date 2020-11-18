@@ -22,7 +22,7 @@ public class AdminUI {
 			CourseListCtrl courseListControl = new CourseListCtrl();
 			CourseIndexListCtrl courseIndexListControl = new CourseIndexListCtrl();
 
-			System.out.println("--------------------------------------------------------");
+			System.out.println("-------------------------------------------------------------------");
 			System.out.println("\n- ADMIN CONSOLE -");
 			System.out.println("Enter your choice: ");
 			System.out.println("1. Edit student access period by School ");
