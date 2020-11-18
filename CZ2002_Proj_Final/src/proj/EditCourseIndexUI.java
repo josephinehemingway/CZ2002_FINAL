@@ -1,5 +1,6 @@
 package proj;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -67,15 +68,16 @@ public class EditCourseIndexUI{
 
 			// Course index for 1 course
 			Random r = new Random();
-			Date date_arr[] = {};
-			Calendar cal = Calendar.getInstance();
+			DateFormat df2 = new SimpleDateFormat("HH:mm");
+			ArrayList<Date> DateTimeList = new ArrayList<Date>();
+			Calendar cal = (Calendar)Calendar.getInstance();
 			int hourarr[] = { 9, 11, 13, 15, 17 };
 			for (int i = 0; i < hourarr.length; i++) {
 				cal.set(Calendar.HOUR_OF_DAY, hourarr[i]);
 				cal.set(Calendar.MINUTE, 30);
 				cal.set(Calendar.SECOND, 0);
 				cal.set(Calendar.MILLISECOND, 0);
-				date_arr[i] = cal.getTime();
+				DateTimeList.add(cal.getTime());
 			}
 //			Date date1 = new Date(93600000L);
 //			Date date2 = new Date(100800000L);
@@ -91,10 +93,15 @@ public class EditCourseIndexUI{
 
 
 			// generating random schedules for course
-			Schedule schedule_1 = new Schedule(r.nextInt(maxDay - minDay) + minDay, r.nextInt(maxDay - minDay) + minDay,
-					r.nextInt(maxDay - minDay) + minDay, date_arr[r.nextInt(date_arr.length - 1)],
-					date_arr[r.nextInt(date_arr.length - 1)], date_arr[r.nextInt(date_arr.length - 1)], 2011 + 0);
-
+//			Schedule schedule_1 = new Schedule(r.nextInt(maxDay - minDay) + minDay, r.nextInt(maxDay - minDay) + minDay,
+//					r.nextInt(maxDay - minDay) + minDay, date_arr[r.nextInt(date_arr.length - 1)],
+//					date_arr[r.nextInt(date_arr.length - 1)], date_arr[r.nextInt(date_arr.length - 1)], 2011 + 0);
+			Schedule schedule_1 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+					r.nextInt(maxDay-minDay) + minDay,
+					r.nextInt(maxDay-minDay) + minDay,
+					DateTimeList.get(0), 
+					DateTimeList.get(1), 
+					DateTimeList.get(2),newCourseIndex);
 
 			count += courseIndexListControl.addNewCourseIndex(courseName, courseID, newCourseIndex, schedule_1,
 					newNumOfVacancies);
