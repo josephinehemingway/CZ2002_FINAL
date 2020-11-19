@@ -56,6 +56,7 @@ public class MainUI {
 							StudentUI.console(username);
 						} else
 							System.out.println("Unable to login as current date is not within Student Access period. \n");
+							UserValidation.studentCanAccess(username);
 						break;
 					} else {
 						System.out.println("Incorrect username or password! Please try again. \n");

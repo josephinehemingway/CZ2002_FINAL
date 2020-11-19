@@ -24,19 +24,21 @@ public class UserValidation {
 	}
 	
 	public static boolean studentCanAccess(String username) {
+		String schString = null;
 		for(int i = 0; i < studentList.getStudentList().size(); i++) {
 			Student student = studentList.getStudent(i);
 			
 			if(student.getUsername().equals(username)) {
 				for (int j=0; j<schList.getSchoolList().size(); j++) {
 					School sch = schList.getSchool(j);
-					
+					schString = sch.getSchoolID();
 					if (student.getSchool().equals(sch.getSchoolID())) {
 						return sch.canAccess();
 					}
 				}
 			}
 		}
+		//schList.getCurrentAccessPeriod(schString);
 		return false;
 			
 	}

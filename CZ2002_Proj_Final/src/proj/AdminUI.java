@@ -147,7 +147,7 @@ public class AdminUI {
 					} else {
 						break;
 					}
-					courseIndexListControl.printAllCourseGeneralInfo();
+					courseIndexListControl.printAllCourseInfo();
 					break;
 				case 2:
 					System.out.println("\nEditing Course ------------------");
@@ -306,10 +306,9 @@ public class AdminUI {
 			case 5:
 				System.out.println("Print student list ------------------");
 				System.out.println("1. Print student list by Course Index");
-				System.out.println("2. Print student list by Course");
-				System.out.println("3. Print student details by index");
-				System.out.println("4. Print student details by username");
-				System.out.println("5. Exit");
+				System.out.println("2. Print student list by Course");;
+				System.out.println("3. Print student details by username");
+				System.out.println("4. Exit");
 
 				int choice3;
 				while (true) {
@@ -357,16 +356,11 @@ public class AdminUI {
 					
 					break;
 				case 3:
-					System.out.println("Enter student index: ");
-					int index = sc.nextInt();
-					studentListControl.printStudentDetailsByIndex(index);
-					break;
-				case 4:
 					System.out.println("Enter student username: ");
 					String user = sc.next();
 					studentListControl.printStudentListByUsername(user);
 					break;
-				case 5:
+				case 4:
 				}
 
 				break;
