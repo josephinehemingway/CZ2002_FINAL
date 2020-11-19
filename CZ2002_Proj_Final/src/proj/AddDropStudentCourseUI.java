@@ -9,7 +9,8 @@ public class AddDropStudentCourseUI {
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl,
 			StudentListCtrl studentListControl) {
 		Scanner scan = new Scanner(System.in);
-
+		
+		//Print list of courses
 		courseListControl.printAllCourseDetails();
 
 		// enter course id
@@ -18,8 +19,10 @@ public class AddDropStudentCourseUI {
 
 		if (studentCourseListControl.checkIfRegistered(username, course) == false) {
 			// print index in course
-			System.out.println("\nCourse Indexes for Course " + course);
-			courseIndexListControl.printIndexesUnderCourse(course);
+			System.out.println("\nCourse Indexes for Course " + course + " ------------------");
+			System.out.println("Course Index/Vacancy/Waiting List ");
+			System.out.println("===============================================================");
+			courseIndexListControl.printIndexesInfoUnderCourse(course);
 
 			// enter course index
 			System.out.println("\nEnter Course Index:");

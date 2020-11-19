@@ -12,30 +12,6 @@ public class UserValidation {
 	private static AdminListCtrl adminList = new AdminListCtrl();
 	private static SchoolListCtrl schList = new SchoolListCtrl();
 
-	public static StudentListCtrl getStudentList() {
-		return studentList;
-	}
-
-	public static void setStudentList(StudentListCtrl studentList) {
-		UserValidation.studentList = studentList;
-	}
-
-	public static AdminListCtrl getAdminList() {
-		return adminList;
-	}
-
-	public static void setAdminList(AdminListCtrl adminList) {
-		UserValidation.adminList = adminList;
-	}
-
-	public static SchoolListCtrl getSchList() {
-		return schList;
-	}
-
-	public static void setSchList(SchoolListCtrl schList) {
-		UserValidation.schList = schList;
-	}
-
 	public static Boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
 
 		for (int i = 0; i < studentList.getStudentList().size(); i++) {

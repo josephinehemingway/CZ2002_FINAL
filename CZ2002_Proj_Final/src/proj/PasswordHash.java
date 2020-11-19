@@ -26,9 +26,7 @@ public class PasswordHash {
 		// line above empties the text file each time as each time the system is run, the salt changes and hence the corresponding passwords change
 		Writer output;
 		output = new BufferedWriter(new FileWriter("StudentHashedInfo.txt", true));
-//		StudentListCtrl studentList = new StudentListCtrl();
-//		byte[][] SaltArray = new byte[studentList.getStudentList().size()][];
-//		String[] HashedPasswords = new String[studentList.getStudentList().size()];
+
 		
 		for(int i = 0; i < studentList.getStudentList().size(); i++) {
 		byte[] currentsalt = Salt(studentList.getStudent(i).getUsername(),studentList.getStudent(i).getPassword());
