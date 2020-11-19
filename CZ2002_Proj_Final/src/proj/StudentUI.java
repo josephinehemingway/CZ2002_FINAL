@@ -2,10 +2,21 @@ package proj;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Student main console for non-admin users
+ * StudentUI contains one single method which allows user to perform student's STARS functions
+ * @author Joey
+ * @since 2020-11-19 
+ */
 public class StudentUI {
+	/**
+	 * Scanner to read student user input
+	 */
 	public static Scanner sc = new Scanner(System.in);
-	
+	/**
+	 * Calls the console method for the user to perform student Stars functions
+	 * @param username Username of student who logged into the console via mainConsole
+	 */
 	public static void console(String username) {
 		StudentListCtrl studentListControl = new StudentListCtrl();
 		CourseListCtrl courseListControl = new CourseListCtrl();
