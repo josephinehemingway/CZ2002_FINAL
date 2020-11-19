@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentUI {
-	private ArrayList<Student> studentList; // user list containing all the user acc created in this app
-	private String filename = "StudentList.txt"; // file storing all the user acc created
-	
 	public static Scanner sc = new Scanner(System.in);
 	
 	public static void console(String username) {
