@@ -65,14 +65,14 @@ public class SerializeDB
 				Student s1 = new Student("JOEY0070", "passcode123", "Joey", 'F', "Singaporean", "U1234567E", "JOEY0070@e.ntu.edu.sg", "SCSE");
 				Student s2 = new Student("SHAN0061", "passcode456", "Shannon Wong", 'F', "Singaporean", "U6789237F", "SHAN0061@e.ntu.edu.sg", "SCSE");
 				Student s3 = new Student("JOSE0011", "passcode678", "Josephine", 'F', "Singaporean", "U1254562E", "JOSE0011@e.ntu.edu.sg", "SCSE");
-				Student s4 = new Student("KENN2349", "passcode789", "Kenn", 'M', "Singaporean", "U7834564E", "KENN2349@e.ntu.edu.sg", "SCSE");
-				Student s5 = new Student("BENW3284", "passcode890", "Ben", 'M', "Singaporean", "U1435763E", "BENW3284@e.ntu.edu.sg", "MSE");
-				Student s6 = new Student("JAME0034", "passcode555", "Jame", 'M', "Singaporean", "U1246436D", "JAME0034@e.ntu.edu.sg", "MSE");
-				Student s7 = new Student("NICO5563", "passcode345", "Nicole", 'F', "Singaporean", "U1435762E", "NICO5563@e.ntu.edu.sg", "MSE");
+				Student s4 = new Student("KENN2349", "passcode789", "Kenn", 'M', "Singaporean", "U7834564E", "KENN2349@e.ntu.edu.sg", "NBS");
+				Student s5 = new Student("BENW3284", "passcode890", "Ben", 'M', "Singaporean", "U1435763E", "BENW3284@e.ntu.edu.sg", "NBS");
+				Student s6 = new Student("JAME0034", "passcode555", "Jame", 'M', "Singaporean", "U1246436D", "JAME0034@e.ntu.edu.sg", "NBS");
+				Student s7 = new Student("NICO5563", "passcode345", "Nicole", 'F', "Singaporean", "U1435762E", "NICO5563@e.ntu.edu.sg", "NBS");
 				Student s8 = new Student("PETE3423", "passcode468", "Peter", 'M', "Malaysian", "U4676914A", "PETE3423@e.ntu.edu.sg", "SPMS");
 				Student s9 = new Student("DERR2343", "passcode697", "Derryl", 'M', "Singaporean", "U3865836B", "DERR234@e.ntu.edu.sg", "SPMS");
 				Student s10 = new Student("SAMW2341", "passcode579", "Sam Wong", 'M', "Singaporean", "U7934562C", "SAMW2341@e.ntu.edu.sg", "SPMS");
-				Student s11 = new Student("KIML4352", "passcode679", "Kim Lim", 'F', "Singaporean", "U7946472A", "KIML4352@e.ntu.edu.sg", "MSE");
+				Student s11 = new Student("KIML4352", "passcode679", "Kim Lim", 'F', "Singaporean", "U7946472A", "KIML4352@e.ntu.edu.sg", "NBS");
 				Student s12 = new Student("CHLO2375", "passcode870", "Chloe", 'F', "Singaporean", "U8057456G", "CHLO2375@e.ntu.edu.sg", "SPMS");
 				Student s13 = new Student("MADE2341", "passcode386", "Madeline", 'F', "Singaporean", "U4572472Y", "MADE2341@e.ntu.edu.sg", "SPMS");
 				Student s14 = new Student("EILO0485", "passcode578", "Eilot", 'M', "Singaporean", "U1334461", "EILO0485@e.ntu.edu.sg", "SCSE");
@@ -162,9 +162,9 @@ public class SerializeDB
 				//Create 3 Schools
 				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-				School sch1 = new School("SCSE", "School of Computer Science and Engineering", arrayCourseList, df.parse("10/11/2020"), df.parse("22/11/2020"));
-				School sch2 = new School("SPMS", "School of Physical and Mathematical Sciences", arrayCourseList, df.parse("10/11/2020"), df.parse("22/11/2020"));
-				School sch3 = new School("MSE", "Material Science and Engineering", arrayCourseList, df.parse("10/11/2020"), df.parse("22/11/2020"));
+				School sch1 = new School("SCSE", "School of Computer Science and Engineering", arrayCourseList, df.parse("13/11/2020"), df.parse("21/11/2020"));
+				School sch2 = new School("SPMS", "School of Physical and Mathematical Sciences", arrayCourseList, df.parse("19/11/2020"), df.parse("24/11/2020"));
+				School sch3 = new School("NBS", "Nanyang Business School", arrayCourseList, df.parse("26/11/2020"), df.parse("28/11/2020"));
 
 				//Add course to respective schools
 				sch1.addCourse(c1);

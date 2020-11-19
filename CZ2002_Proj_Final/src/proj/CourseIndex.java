@@ -96,9 +96,9 @@ public class CourseIndex extends Course implements Serializable {
 		if (this.student == null) {
 			this.student = new ArrayList<Student>();
 		}
-		else if ( this.student.isEmpty()) {
-			System.out.println("There are no students registered under this index");
-		}
+//		else if ( this.student.isEmpty()) {
+//			System.out.println("There are no students registered under this index");
+//		}
 		return this.student;
 	}
 

@@ -105,7 +105,7 @@ public class EditStudentAdminUI {
 		
 		while (true) {
 			System.out.println("Enter student username to edit: ");
-			studentUsername = sc.nextLine();
+			studentUsername = sc.nextLine().toUpperCase();
 			
 			if (UserValidation.checkValidUsername(studentUsername, studList) == false)
 				System.out.println("Invalid username. Please re-enter valid username: ");

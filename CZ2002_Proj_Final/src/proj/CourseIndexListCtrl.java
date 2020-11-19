@@ -335,6 +335,22 @@ public class CourseIndexListCtrl {
 		}
 	}
 	
+	public void printIndexesInfoUnderCourse(String courseID) {
+		int count = 0;
+
+		for (int i = 0; i < courseIndexList.size(); i++) {
+			if (courseIndexList.get(i).getCourseID().equals(courseID)) {
+				CourseIndex s = courseIndexList.get(i);
+				System.out.println("    " + s.getIndexID() + "	" + s.getCurrentVacancy() + "	" + s.getWaitingList().size());
+			} else {
+				count++;
+			}
+		}
+		if (count == courseIndexList.size() - 1) {
+			System.out.println("There are no indexes in this course");
+		}
+	}
+	
 	public void printStudentsUnderIndex(int courseIndex) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getIndexID() == courseIndex) {
@@ -353,6 +369,7 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
+	
 
 	public void printAvailableVacancyforIndex(int indexID) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
