@@ -54,6 +54,7 @@ public class AddDropStudentCourseUI {
 				for (int i = 0; i < courseIndexListControl.getCourseIndexSize(); i++) {
 					if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == courseIndex) {
 						CourseIndex c = courseIndexListControl.getCourseIndexList().get(i);
+
 						if (studentCourseListControl.checkNewCourseClash(c, username) == false) {
 							if (c.getCurrentVacancy() == 0) {
 								System.out.println("\nCourse is currently fully registered----");
@@ -92,7 +93,7 @@ public class AddDropStudentCourseUI {
 											System.out.println("You have successfully registered course " + course
 													+ " under index " + courseIndex);
 											System.out.println(
-													"Your current AU for this semester is : " + s1.getAcadunits());
+													"Your current AU for this semester is: " + s1.getAcadunits());
 										}
 									}
 
@@ -149,8 +150,7 @@ public class AddDropStudentCourseUI {
 		if (choice_confirm == 1) {
 			System.out.println("\nDropping course " + course + " ------------------");
 			for (int k = 0; k < studentCourseListControl.getStudentListCtrl().getStudentListSize(); k++) {
-				if (studentCourseListControl.getStudentListCtrl().getStudentList().get(k).getUsername()
-						.equals(username)) {
+				if (studentCourseListControl.getStudentListCtrl().getStudentList().get(k).getUsername().equals(username)) {
 					Student s2 = studentCourseListControl.getStudentListCtrl().getStudent(k);
 					studentCourseListControl.dropStudentCourse(username, course);
 					s2.dropAcadunits();
@@ -197,8 +197,6 @@ public class AddDropStudentCourseUI {
 
 						}
 					}
-
-					// send email to next person in line for waitlist & auto add course
 				}
 			}
 		} else {
@@ -228,23 +226,23 @@ public class AddDropStudentCourseUI {
 
 		if (courseIndex != initialIndex) {
 
-			// print course index details (schedule)
-			courseIndexListControl.printCourseIndexInfo(course, courseIndex);
-
 			boolean courseClash = false;
 			CourseIndex newIndex = null, initial = null;
 
 			for (int i = 0; i < courseIndexListControl.getCourseIndexSize(); i++) {
 				if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == courseIndex) {
 					newIndex = courseIndexListControl.getCourseIndexList().get(i);
-					System.out.println(newIndex);
+					// print course index details (schedule)
+					courseIndexListControl.printCourseIndexInfo(course, courseIndex);
 				}
 
 				if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == initialIndex) {
 					initial = courseIndexListControl.getCourseIndexList().get(i);
-					System.out.println(initial);
+					System.out.println("\nInitial Schedule:");
+					courseIndexListControl.printCourseIndexInfo(course, initialIndex);
 				}
 			}
+
 			courseClash = studentCourseListControl.checkChangedCourseClash(initial, newIndex, username);
 
 			System.out.println("\nConfirm to change Index No.? Enter your choice: ");
@@ -272,15 +270,13 @@ public class AddDropStudentCourseUI {
 				if (choice_confirm == 1) {
 					System.out.println("\nChanging course Index No. of " + course + " ------------------");
 					studentCourseListControl.changeStudentCourseIndex(username, course, courseIndex);
-					System.out
-							.println("Successfully changed Index No from " + initialIndex + " to " + courseIndex + ".");
+					System.out.println("Successfully changed Index No from " + initialIndex + " to " + courseIndex + ".");
 				} else {
 					System.out.println("\nCancelling changing of course index ------------------");
 					return;
 				}
-			}
-			else {
-				System.out.println("\nCannot change course as there is a clash.");
+			} else {
+				System.out.println("\nCannot change index as there is a clash.");
 			}
 		} else {
 			System.out.println("\nYou are already registered under this index.");
@@ -312,7 +308,7 @@ public class AddDropStudentCourseUI {
 
 		while (true) { // student login
 			System.out.println("\nEnter your Peer's Username: ");
-			peerUsername = scan.next();
+			peerUsername = scan.next().toUpperCase();
 			System.out.println("Enter your Peer's Password:  ");
 			peerPassword = scan.next();
 
@@ -323,12 +319,20 @@ public class AddDropStudentCourseUI {
 				System.out.println("Student account is verified. ");
 
 				peerName = studentListControl.getName(peerUsername);
-				initialIndex_peer = studentCourseListControl.getIndexOfCourse(peerUsername, course);
-				System.out.println("Your Peer's Index No. for Course " + course + ": " + initialIndex_peer);
+				
+				if (studentCourseListControl.checkIfRegistered(peerUsername, course) == true) {
+					initialIndex_peer = studentCourseListControl.getIndexOfCourse(peerUsername, course);
+					System.out.println("Your Peer's Index No. for Course " + course + ": " + initialIndex_peer);
+				}
+				else {
+					System.out.println("Peer is not registered under this course.");
+					return;
+				}
+				
 				break;
 			}
 		}
-		
+
 		if (initialIndex_peer != initialIndex) {
 			// print course index details (schedule)
 			System.out.println("\nLesson schedule for current index " + initialIndex);
@@ -336,7 +340,7 @@ public class AddDropStudentCourseUI {
 			System.out.println("\nLesson schedule for Peer's index " + initialIndex_peer);
 			courseIndexListControl.printCourseIndexInfo(course, initialIndex_peer);
 
-			boolean courseClash = false;
+			boolean courseClash = false, courseClash_peer = false;
 			CourseIndex initial_peer = null, initial = null;
 
 			for (int i = 0; i < courseIndexListControl.getCourseIndexSize(); i++) {
@@ -346,11 +350,11 @@ public class AddDropStudentCourseUI {
 
 				if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == initialIndex) {
 					initial = courseIndexListControl.getCourseIndexList().get(i);
-					System.out.println(initial);
 				}
 			}
 			courseClash = studentCourseListControl.checkChangedCourseClash(initial, initial_peer, username);
-			
+			courseClash_peer = studentCourseListControl.checkChangedCourseClash(initial_peer, initial, peerUsername);
+
 			System.out.println("\nConfirm to swap Index No.? Enter your choice: ");
 			System.out.println("1. Yes");
 			System.out.println("2. No");
@@ -372,54 +376,53 @@ public class AddDropStudentCourseUI {
 					scan = new Scanner(System.in);
 				}
 			}
-			
-			if(courseClash == false) {
+
+			if (courseClash == false && courseClash_peer == false) {
 				if (choice_confirm == 1) {
 					System.out.println("\nSwapping course Index No. of " + course + " ------------------");
 					studentCourseListControl.changeStudentCourseIndex(username, course, initialIndex_peer);
 					studentCourseListControl.changeStudentCourseIndex(peerUsername, course, initialIndex);
-					System.out.println("Successfully changed Index No from " + initialIndex + " to " + initialIndex_peer
-							+ " with " + peerName);
-	
+					System.out.println("Successfully changed Index No from " + initialIndex + " to " + initialIndex_peer + " with " + peerName);
+
 					for (int k = 0; k < studentListControl.getStudentListSize(); k++) {
 						if (studentListControl.getStudent(k).getUsername().equals(username)) {
 							Student curStud = studentListControl.getStudent(k);
 							SendMailSSL.SendSwapNoti(course, initialIndex, initialIndex_peer, peerName, curStud.getEmail());
+
 							// add student to peer's Index
 							for (CourseIndex c2 : courseIndexListControl.getCourseIndexList()) {
 								if (c2.getIndexID() == initialIndex_peer) {
 									c2.getStudent().add(curStud);
-									System.out.println(initialIndex_peer + ": " + c2.getStudent());
+//									System.out.println(initialIndex_peer + ": " + c2.getStudent());
 									courseIndexListControl.save();
 								}
 							}
 						}
 					}
-	
+
 					// remove student from initialIndex
 					for (CourseIndex c : courseIndexListControl.getCourseIndexList()) {
 						if (c.getIndexID() == initialIndex) {
 							for (int i = 0; i < c.getStudent().size(); i++) {
 								if (c.getStudent().get(i).getUsername().equals(username)) {
-									System.out.println("im here");
 									c.getStudent().remove(i);
 									courseIndexListControl.save();
 								}
 							}
 						}
 					}
-	
+
 					// remove peer from peer's initialIndex
 					for (CourseIndex c1 : courseIndexListControl.getCourseIndexList()) {
 						if (c1.getIndexID() == initialIndex_peer) {
 							for (int k1 = 0; k1 < c1.getStudent().size(); k1++) {
 								if (c1.getStudent().get(k1).getUsername().equals(peerUsername)) {
 									c1.getStudent().remove(k1);
-									System.out.println("After:" + c1.getStudent());
+//									System.out.println("After:" + c1.getStudent());
 									courseIndexListControl.save();
 								}
 							}
-	
+
 						}
 					}
 					// add peer to student's initialIndex
@@ -431,13 +434,20 @@ public class AddDropStudentCourseUI {
 									c3.getStudent().add(peerStud);
 									courseIndexListControl.save();
 								}
-	
+
 							}
 						}
 					}
-	
-				}else {
-					System.out.println("\nCannot change course as there is a clash.");
+
+				} else {
+					if (courseClash == true) {
+						System.out.println("\nCannot change course as there is a clash with user's existing timetable.");
+					}
+					
+					if (courseClash_peer == true) {
+						System.out.println("\nCannot change course as there is a clash with peer's existing timetable.");
+					}
+					
 					return;
 				}
 			}
@@ -447,12 +457,10 @@ public class AddDropStudentCourseUI {
 				return;
 
 			}
-		}
-		else {
+		} else {
 			System.out.println("You are registered under the same Index as your peer.");
 			return;
 		}
-		
 
 	}
 

@@ -64,7 +64,7 @@ public class SerializeDB
 				// Create 15 students
 				Student s1 = new Student("JOEY0070", "passcode123", "Joey", 'F', "Singaporean", "U1234567E", "JOEY0070@e.ntu.edu.sg", "SCSE");
 				Student s2 = new Student("SHAN0061", "passcode456", "Shannon Wong", 'F', "Singaporean", "U6789237F", "SHAN0061@e.ntu.edu.sg", "SCSE");
-				Student s3 = new Student("JOSE0055", "passcode678", "Josephine", 'F', "Singaporean", "U1254562E", "JOSE0055@e.ntu.edu.sg", "SCSE");
+				Student s3 = new Student("JOSE0011", "passcode678", "Josephine", 'F', "Singaporean", "U1254562E", "JOSE0011@e.ntu.edu.sg", "SCSE");
 				Student s4 = new Student("KENN2349", "passcode789", "Kenn", 'M', "Singaporean", "U7834564E", "KENN2349@e.ntu.edu.sg", "SCSE");
 				Student s5 = new Student("BENW3284", "passcode890", "Ben", 'M', "Singaporean", "U1435763E", "BENW3284@e.ntu.edu.sg", "MSE");
 				Student s6 = new Student("JAME0034", "passcode555", "Jame", 'M', "Singaporean", "U1246436D", "JAME0034@e.ntu.edu.sg", "MSE");

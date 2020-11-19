@@ -63,7 +63,7 @@ public class StudentCourseListCtrl {
 			
 			if (stud.getUsername().equals(username)) {
 				for (int j=0; j< stud.getCourseIndexArr().size(); j++) {
-					System.out.println(stud.getCourseIndexArr());
+//					System.out.println(stud.getCourseIndexArr());
 					if (stud.getCourseIndexArr().get(j).getCourseID().equals(courseId)) {
 						stud.getCourseIndexArr().remove(j);
 						
