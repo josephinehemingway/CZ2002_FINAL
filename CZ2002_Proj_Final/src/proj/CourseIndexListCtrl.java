@@ -277,7 +277,6 @@ public class CourseIndexListCtrl {
 			System.out.println("===============================================================================");
 			//max coursename length = 45
 			int maxCourseLength = 45;
-			int courseNameLength = 0;
 			for (CourseIndex i : this.courseIndexList) {
 				System.out.print("   " + i.getCourseID() + "       " + i.getCourseName());
 			    for(int j=0;j <= maxCourseLength - i.getCourseName().length(); j++)
