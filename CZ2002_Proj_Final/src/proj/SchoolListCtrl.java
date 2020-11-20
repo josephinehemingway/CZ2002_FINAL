@@ -153,6 +153,7 @@ public class SchoolListCtrl {
 				System.out.println("\nNew Access Period for: " + sch.getName());
 				System.out.println("Start Date: " + sch.getStartDate());
 				System.out.println("End Date: " + sch.getEndDate());
+				save();
 				return;
 			}
 		}
