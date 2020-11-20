@@ -2,7 +2,7 @@ package proj;
 
 import java.util.ArrayList;
 /**
- * Represents the vertification class for STARS admin and student users
+ * Represents the verification class for STARS admin and student users
  * @author DSAI/1 Group 5
  * @version 1.0
  * @since 2020-11-19
@@ -19,12 +19,12 @@ public class UserValidation {
 	private static AdminListCtrl adminList = new AdminListCtrl();
 	private static SchoolListCtrl schList = new SchoolListCtrl();
 	/**
-	 * Static method that is called whenver student logins. The user's inputted login credentials will be matched with the studentList's student login credentials
+	 * Static method that is called whenever student logins. The user's inputted login credentials will be matched with the studentList's student login credentials
 	 * @param username The username that the user has input.
 	 * @param password	The password that the user has input.
 	 * @param SaltArray Returns the byte array that stores salt string of the Student's password 	
 	 * @param HashedPasswords Returns the hashed password of the Student 
-	 * @return true if login credientials matched with studentList, else value of false will be returned.
+	 * @return true if login credentials matched with studentList, else value of false will be returned.
 	 * 
 	 */
 	public static Boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
