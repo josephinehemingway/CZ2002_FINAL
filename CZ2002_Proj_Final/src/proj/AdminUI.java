@@ -357,7 +357,7 @@ public class AdminUI {
 					break;
 				case 3:
 					System.out.println("Enter student username: ");
-					String user = sc.next();
+					String user = sc.next().toUpperCase();
 					studentListControl.printStudentListByUsername(user);
 					break;
 				case 4:

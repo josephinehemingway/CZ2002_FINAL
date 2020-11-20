@@ -351,9 +351,14 @@ public class CourseIndexListCtrl {
 	}
 	
 	public void printStudentsUnderIndex(int courseIndex) {
+
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getIndexID() == courseIndex) {
 				CourseIndex curIndex = courseIndexList.get(i);
+				if (curIndex.getStudent().size() == 0) {
+					System.out.println("There are no students in this course index!");
+					break;
+				}
 				System.out.println(curIndex.getStudent());
 			}
 		}
@@ -364,7 +369,7 @@ public class CourseIndexListCtrl {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getCourseID().equals(courseID)) {
 				CourseIndex curIndex = courseIndexList.get(i);
-				System.out.println(curIndex.getStudent());
+				System.out.println("Index " + curIndex.getIndexID() + " :\n" +curIndex.getStudent());
 			}
 		}
 	}
