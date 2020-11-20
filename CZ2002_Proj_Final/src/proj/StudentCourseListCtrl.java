@@ -6,21 +6,47 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Represents the control for studentList and courseList combined which holds an ArrayList of Students where each student holds an ArrayList of CourseIndexes.
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-20
+ */
 public class StudentCourseListCtrl {
-	
+	/**
+	 * ArrayList that stores list of Students
+	 */
 	private StudentListCtrl studentListControl;
+	/**
+	 * ArrayLst that stores list of courseIndexes
+	 */
 	private CourseIndexListCtrl courseIndexListControl;
-	
+	/**
+	 * Reads in the list of students from studentListControl and courseIndexes from courseIndexListControl
+	 * @param studentListControl studentList control object that holds the student list and their details
+	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
+	 */
 	@SuppressWarnings("unchecked")
 	public StudentCourseListCtrl(StudentListCtrl studentListControl, CourseIndexListCtrl courseIndexListControl) {
 		this.studentListControl = studentListControl;
 		this.courseIndexListControl = courseIndexListControl;
 	}
-	
+	/**
+	 * Gets the studentList control object that holds the list of students and their details
+	 * 
+	 * @return StudentList control object holding list of students
+	 */
 	public StudentListCtrl getStudentListCtrl() {
 		return this.studentListControl;
 	}
+	/**
+	 * Method that adds courseindex object into CourseIndex Arraylist of a student when they register
+	 * 
+	 * @param username The username of the student whose CourseIndex ArrayList we are adding the courseIndex object to
+	 * @param courseId The courseID of the courseIndex object
+	 * @param courseIndex The courseIndex of of the courseIndex Object
+	 * @param courseIndexList control object that holds list of CourseIndexes and their details
+	 */
 	public void addStudentCourse(String username, String courseId, int courseIndex, 
 			CourseIndexListCtrl courseIndexListControl) {
 		
@@ -39,8 +65,12 @@ public class StudentCourseListCtrl {
 			}
 		}
 	}
-	
-	//drop registered courses
+	/**
+	 * Method that drops a courseIndex from the CourseIndex ArrayList of a student that he/she has registered for, identifying the student by his username, and courseIndex by its courseId
+	 * 
+	 * @param username The username of student that is dropping a course
+	 * @param courseId The courseID of the course that the student wants to drop
+	 */
 	public void dropStudentCourse(String username, String courseId) {
 		for (int i=0; i<studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
@@ -56,7 +86,12 @@ public class StudentCourseListCtrl {
 			}
 		}
 	}
-	
+	/**
+	 * Method that allows student user to change his currently registed CourseIndex to another courseIndex of the same course
+	 * @param username The username of student who is changing his/her courseIndex
+	 * @param courseId The courseID of the courseIndex that the student wants to change
+	 * @param newCourseIndex The IndexID of the courseIndex that the student wishes to change to
+	 */
 	public void changeStudentCourseIndex(String username, String courseId, int newCourseIndex) {
 		for (int i=0; i<studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
@@ -78,8 +113,11 @@ public class StudentCourseListCtrl {
 			}
 		}
 	}
-	
-	//print registered courses
+	/**
+	 * Prints a list of details of all the courseIndexes registered by the student
+	 * @param username The username of the student of which we want to print his/her registed Courses
+	 * @return true if the student has courses registed, false if the student's CourseIndex ArrayList is empty, meaning he has not registered for any courses.
+	 */
 	public boolean printRegisteredCourses(String username) {
 		for (int i=0; i<studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
@@ -106,9 +144,11 @@ public class StudentCourseListCtrl {
 			}
 		}return false;
 	}
-	
-	
-	
+	/**
+	 * Prints the timetable of the student whose username is inputted and the Student's accumulated AU of the semester
+	 * 
+	 * @param username The username of the Student whose timetable would be printed
+	 */
 	public void printTimetable(String username) {
 		DateFormat df= new SimpleDateFormat("HH:mm");
 		Student stud = null;
@@ -350,7 +390,11 @@ public class StudentCourseListCtrl {
 		}return;
 		
 	}
-	
+	/**
+	 * Sorts Lesson object according to their startTime
+	 * 
+	 * @param LessonList The list of lessons stored in the Lessonlist ArrayList
+	 */
 	public void sortLesson(ArrayList<Lesson> LessonList) {
 		
 		Lesson temp;
@@ -369,7 +413,13 @@ public class StudentCourseListCtrl {
 	
 	
 
-	
+	/**
+	 * Gets the lesson type of the lesson object inputted
+	 * 
+	 * @param les The Lesson object whose type is being checked
+	 * 
+	 * @return Lessontype of the lesson object (tutorial, lecture or lab)
+	 */
 	public String getLessonType(Lesson les) {
 		String prefix_lab = "LAB";
 		String prefix_tut = "TR";
@@ -389,6 +439,12 @@ public class StudentCourseListCtrl {
 		return lessonType;
 	}
 	
+	/**
+	 * Allows the student to choose a valid course to register
+	 * 
+	 * @param username The username of the student that is registering for the courses
+	 * @return A valid courseID of the chosen course the student has inputted
+	 */
 	public String chooseCourse(String username) {
 		Scanner sc = new Scanner(System.in);
 		String courseChoice = null;
@@ -424,7 +480,14 @@ public class StudentCourseListCtrl {
 		}
 		return courseChoice;
 	}
-	
+	/**
+	 * Checks if the courseIndex the student wants to register for does not clash with the other registered courseIndexs timeslots 
+	 * The registered CourseIndexes of the student is stored in the CourseIndex ArrayList of the student
+	 * 
+	 * @param courseIndex The CourseIndex object which the student wants to register for
+	 * @param username The username of the student registering
+	 * @return true if the timeslots clashs, else false if the timeslots does not clash
+	 */
 	public boolean checkNewCourseClash(CourseIndex courseIndex, String username) {
 		for (int i=0; i<studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
@@ -445,7 +508,14 @@ public class StudentCourseListCtrl {
 		} return false;
 				
 	}
-	
+	/**
+	 * Checks if the courseIndex the student wants to change to does not clash with the other registered Courses timeslot
+	 * The registered CourseIndexs of the courses registed is stored in te CourseIndex ArrayList of the student
+	 * @param initialIndex The CourseIndex object the student is currently registered for but wants to change
+	 * @param newIndex The new CourseIndex object which the student wants to change to
+	 * @param username The username of the student who is logged in
+	 * @return true if the index the student wants to change to clashes with his current timetable, false if it does not.
+	 */
 	public boolean checkChangedCourseClash(CourseIndex initialIndex, CourseIndex newIndex, String username) {
 		for (int i = 0; i < studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
@@ -475,7 +545,12 @@ public class StudentCourseListCtrl {
 		return false;
 
 	}
-	
+	/**
+	 * Checks if the student is already registed for that particular course by checking against the student's ArrayList of CourseIndexes which are the courseIndexes that the student has registered for
+	 * @param username The username of the student that is logged in.
+ 	 * @param courseId The courseID that the student wants to register for
+	 * @return true if the student has already registered for that particular course, false if the student has yet to be registered.
+	 */
 	public boolean checkIfRegistered(String username, String courseId) {
 		for (int i=0; i<studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
@@ -492,6 +567,13 @@ public class StudentCourseListCtrl {
 		}
 		return false;
 	}
+	/**
+	 * Gets indexID of the courseIndex that the student has registered for, which is stored in the CourseIndex ArrayList of the student
+	 * 
+	 * @param username The username of the student that is logged in
+	 * @param courseId The courseID of the course we are getting the indexID from 
+	 * @return the indexID of the courseIndex if it exists in the student's CourseIndex ArrayList, and 0 if the course doesnt exist.
+	 */
 	public int getIndexOfCourse(String username, String courseId) {
 		for (int i=0; i<studentListControl.getStudentList().size(); i++) {
 			Student stud = studentListControl.getStudent(i);
