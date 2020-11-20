@@ -218,7 +218,7 @@ public class CourseIndexListCtrl {
 			if (c.getCourseID().equals(courseID)) {
 				if (c.getIndexID() == courseIndexID) {
 					c.minusVacancy();
-					System.out.println("Course vacancy is now: " + c.getCurrentVacancy());
+					//System.out.println("Course vacancy is now: " + c.getCurrentVacancy());
 					return;
 				}
 			}
@@ -235,7 +235,7 @@ public class CourseIndexListCtrl {
 			if (c.getCourseID().equals(courseID)) {
 				if (c.getIndexID() == courseIndexID) {
 					c.addToVacancy();
-					System.out.println("Course vacancy is now: " + c.getCurrentVacancy());
+					//System.out.println("Course vacancy is now: " + c.getCurrentVacancy());
 					return;
 				}
 			}
