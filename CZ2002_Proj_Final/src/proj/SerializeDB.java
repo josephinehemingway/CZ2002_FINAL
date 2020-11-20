@@ -234,10 +234,8 @@ public class SerializeDB
 				int maxDay = 6;
 				// To obtain variables for random number of vacancies
 
-				int minVac = 3; 
+				int minVac = 1; 
 				int maxVac = 30;
-
-
 
 				for (int j = 0; j < 15; j++) {
 					String courseID = arrayCourseList.get(j).getCourseID();

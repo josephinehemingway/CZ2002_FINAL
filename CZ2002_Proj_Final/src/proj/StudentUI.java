@@ -120,6 +120,10 @@ public class StudentUI {
 				System.out.println("Your Username: " + username);
 				System.out.println("Your Matriculation No.: " + studentListControl.getMatricNo(username));
 				studentCourseListControl.printRegisteredCourses(username);
+				if(studentCourseListControl.printRegisteredCourses(username) == false) {
+					System.out.println("No courses available to swap!");
+					break;
+				}
 				AddDropStudentCourseUI.swapCourseIndex(username, courseListControl, courseIndexListControl, studentCourseListControl, studentListControl);
 				studentCourseListControl.printRegisteredCourses(username);
 				studentListControl.save();

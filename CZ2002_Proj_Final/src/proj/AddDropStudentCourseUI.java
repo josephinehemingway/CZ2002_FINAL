@@ -168,7 +168,7 @@ public class AddDropStudentCourseUI {
 							for (int t = 0; t < c.getStudent().size(); t++) {
 								if (c.getStudent().get(t).getUsername().equals(username)) {
 									Student removeStud = c.getStudent().get(t);
-									c.getStudent().remove(removeStud); // not working
+									c.getStudent().remove(removeStud); 
 								}
 
 							}
@@ -181,9 +181,7 @@ public class AddDropStudentCourseUI {
 										.getStudentListSize(); m++) {
 									if (studentCourseListControl.getStudentListCtrl().getStudentList().get(m)
 											.getUsername().equals(nextStud.getUsername())) {
-										Student s3 = studentCourseListControl.getStudentListCtrl().getStudentList()
-												.get(k);
-
+										Student s3 = studentCourseListControl.getStudentListCtrl().getStudent(m);
 										System.out.println(s3.getAcadunits());
 										s3.addAcadunits();
 										SendMailSSL.SendRegisteredNoti(c.getCourseName(), c.getCourseID(), courseIndex,
@@ -304,11 +302,13 @@ public class AddDropStudentCourseUI {
 		System.out.println("Your Course Index No. for Course " + course + ": " + initialIndex);
 
 		System.out.println("\nEntering details for Student #2  ------------------");
-		String peerUsername, peerPassword, peerName;
-		int initialIndex_peer;
+		String peerUsername, peerPassword, peerName = null;
+		int initialIndex_peer = 0;
 		byte[][] SaltArray = PasswordHash.ReturnByteArray();
 		String[] HashedPasswords = PasswordHash.ReturnHashedPasswordsArray();
-
+		
+		boolean exit = true;
+		int count = 0;
 		while (true) { // student login
 			System.out.println("\nEnter your Peer's Username: ");
 			peerUsername = scan.next().toUpperCase();
@@ -316,8 +316,14 @@ public class AddDropStudentCourseUI {
 			peerPassword = scan.next();
 
 			// validation
-			if (UserValidation.loginStudent(peerUsername, peerPassword, SaltArray, HashedPasswords) == false)
+			if (UserValidation.loginStudent(peerUsername, peerPassword, SaltArray, HashedPasswords) == false) {
 				System.out.println("Incorrect username or password! Please try again. ");
+				count++;
+				if (count == 3) {
+					exit = false;
+					break;
+				}
+			}
 			else {
 				System.out.println("Student account is verified. ");
 
@@ -334,135 +340,143 @@ public class AddDropStudentCourseUI {
 				
 				break;
 			}
+			
 		}
+		if (exit) {
 
-		if (initialIndex_peer != initialIndex) {
-			// print course index details (schedule)
-			System.out.println("\nLesson schedule for current index " + initialIndex);
-			courseIndexListControl.printCourseIndexInfo(course, initialIndex);
-			System.out.println("\nLesson schedule for Peer's index " + initialIndex_peer);
-			courseIndexListControl.printCourseIndexInfo(course, initialIndex_peer);
+			if (initialIndex_peer != initialIndex) {
+				// print course index details (schedule)
+				System.out.println("\nLesson schedule for current index " + initialIndex);
+				courseIndexListControl.printCourseIndexInfo(course, initialIndex);
+				System.out.println("\nLesson schedule for Peer's index " + initialIndex_peer);
+				courseIndexListControl.printCourseIndexInfo(course, initialIndex_peer);
 
-			boolean courseClash = false, courseClash_peer = false;
-			CourseIndex initial_peer = null, initial = null;
+				boolean courseClash = false, courseClash_peer = false;
+				CourseIndex initial_peer = null, initial = null;
 
-			for (int i = 0; i < courseIndexListControl.getCourseIndexSize(); i++) {
-				if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == initialIndex_peer) {
-					initial_peer = courseIndexListControl.getCourseIndexList().get(i);
-				}
-
-				if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == initialIndex) {
-					initial = courseIndexListControl.getCourseIndexList().get(i);
-				}
-			}
-			courseClash = studentCourseListControl.checkChangedCourseClash(initial, initial_peer, username);
-			courseClash_peer = studentCourseListControl.checkChangedCourseClash(initial_peer, initial, peerUsername);
-
-			System.out.println("\nConfirm to swap Index No.? Enter your choice: ");
-			System.out.println("1. Yes");
-			System.out.println("2. No");
-			int choice_confirm;
-
-			while (true) {
-				try {
-					while (true) {
-						choice_confirm = scan.nextInt();
-						if (choice_confirm >= 1 && choice_confirm <= 2) {
-							break;
-						} else {
-							System.out.println("Invalid choice, please enter integer 1 or 2. ");
-						}
+				for (int i = 0; i < courseIndexListControl.getCourseIndexSize(); i++) {
+					if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == initialIndex_peer) {
+						initial_peer = courseIndexListControl.getCourseIndexList().get(i);
 					}
-					break;
-				} catch (Exception e) {
-					System.out.println("Invalid choice, please enter integer 1 or 2. ");
-					scan = new Scanner(System.in);
+
+					if (courseIndexListControl.getCourseIndexList().get(i).getIndexID() == initialIndex) {
+						initial = courseIndexListControl.getCourseIndexList().get(i);
+					}
 				}
-			}
+				courseClash = studentCourseListControl.checkChangedCourseClash(initial, initial_peer, username);
+				courseClash_peer = studentCourseListControl.checkChangedCourseClash(initial_peer, initial,
+						peerUsername);
 
-			if (courseClash == false && courseClash_peer == false) {
-				if (choice_confirm == 1) {
-					System.out.println("\nSwapping course Index No. of " + course + " ------------------");
-					studentCourseListControl.changeStudentCourseIndex(username, course, initialIndex_peer);
-					studentCourseListControl.changeStudentCourseIndex(peerUsername, course, initialIndex);
-					System.out.println("Successfully changed Index No from " + initialIndex + " to " + initialIndex_peer + " with " + peerName);
+				System.out.println("\nConfirm to swap Index No.? Enter your choice: ");
+				System.out.println("1. Yes");
+				System.out.println("2. No");
+				int choice_confirm;
 
-					for (int k = 0; k < studentListControl.getStudentListSize(); k++) {
-						if (studentListControl.getStudent(k).getUsername().equals(username)) {
-							Student curStud = studentListControl.getStudent(k);
-							SendMailSSL.SendSwapNoti(course, initialIndex, initialIndex_peer, peerName, curStud.getEmail());
+				while (true) {
+					try {
+						while (true) {
+							choice_confirm = scan.nextInt();
+							if (choice_confirm >= 1 && choice_confirm <= 2) {
+								break;
+							} else {
+								System.out.println("Invalid choice, please enter integer 1 or 2. ");
+							}
+						}
+						break;
+					} catch (Exception e) {
+						System.out.println("Invalid choice, please enter integer 1 or 2. ");
+						scan = new Scanner(System.in);
+					}
+				}
 
-							// add student to peer's Index
-							for (CourseIndex c2 : courseIndexListControl.getCourseIndexList()) {
-								if (c2.getIndexID() == initialIndex_peer) {
-									c2.getStudent().add(curStud);
+				if (courseClash == false && courseClash_peer == false) {
+					if (choice_confirm == 1) {
+						System.out.println("\nSwapping course Index No. of " + course + " ------------------");
+						studentCourseListControl.changeStudentCourseIndex(username, course, initialIndex_peer);
+						studentCourseListControl.changeStudentCourseIndex(peerUsername, course, initialIndex);
+						System.out.println("Successfully changed Index No from " + initialIndex + " to "
+								+ initialIndex_peer + " with " + peerName);
+
+						for (int k = 0; k < studentListControl.getStudentListSize(); k++) {
+							if (studentListControl.getStudent(k).getUsername().equals(username)) {
+								Student curStud = studentListControl.getStudent(k);
+								SendMailSSL.SendSwapNoti(course, initialIndex, initialIndex_peer, peerName,
+										curStud.getEmail());
+
+								// add student to peer's Index
+								for (CourseIndex c2 : courseIndexListControl.getCourseIndexList()) {
+									if (c2.getIndexID() == initialIndex_peer) {
+										c2.getStudent().add(curStud);
 //									System.out.println(initialIndex_peer + ": " + c2.getStudent());
-									courseIndexListControl.save();
+										courseIndexListControl.save();
+									}
 								}
 							}
 						}
-					}
 
-					// remove student from initialIndex
-					for (CourseIndex c : courseIndexListControl.getCourseIndexList()) {
-						if (c.getIndexID() == initialIndex) {
-							for (int i = 0; i < c.getStudent().size(); i++) {
-								if (c.getStudent().get(i).getUsername().equals(username)) {
-									c.getStudent().remove(i);
-									courseIndexListControl.save();
+						// remove student from initialIndex
+						for (CourseIndex c : courseIndexListControl.getCourseIndexList()) {
+							if (c.getIndexID() == initialIndex) {
+								for (int i = 0; i < c.getStudent().size(); i++) {
+									if (c.getStudent().get(i).getUsername().equals(username)) {
+										c.getStudent().remove(i);
+										courseIndexListControl.save();
+									}
 								}
 							}
 						}
-					}
 
-					// remove peer from peer's initialIndex
-					for (CourseIndex c1 : courseIndexListControl.getCourseIndexList()) {
-						if (c1.getIndexID() == initialIndex_peer) {
-							for (int k1 = 0; k1 < c1.getStudent().size(); k1++) {
-								if (c1.getStudent().get(k1).getUsername().equals(peerUsername)) {
-									c1.getStudent().remove(k1);
+						// remove peer from peer's initialIndex
+						for (CourseIndex c1 : courseIndexListControl.getCourseIndexList()) {
+							if (c1.getIndexID() == initialIndex_peer) {
+								for (int k1 = 0; k1 < c1.getStudent().size(); k1++) {
+									if (c1.getStudent().get(k1).getUsername().equals(peerUsername)) {
+										c1.getStudent().remove(k1);
 //									System.out.println("After:" + c1.getStudent());
-									courseIndexListControl.save();
-								}
-							}
-
-						}
-					}
-					// add peer to student's initialIndex
-					for (int k2 = 0; k2 < studentListControl.getStudentListSize(); k2++) {
-						if (studentListControl.getStudent(k2).getUsername().equals(peerUsername)) {
-							Student peerStud = studentListControl.getStudent(k2);
-							for (CourseIndex c3 : courseIndexListControl.getCourseIndexList()) {
-								if (c3.getIndexID() == initialIndex) {
-									c3.getStudent().add(peerStud);
-									courseIndexListControl.save();
+										courseIndexListControl.save();
+									}
 								}
 
 							}
 						}
-					}
+						// add peer to student's initialIndex
+						for (int k2 = 0; k2 < studentListControl.getStudentListSize(); k2++) {
+							if (studentListControl.getStudent(k2).getUsername().equals(peerUsername)) {
+								Student peerStud = studentListControl.getStudent(k2);
+								for (CourseIndex c3 : courseIndexListControl.getCourseIndexList()) {
+									if (c3.getIndexID() == initialIndex) {
+										c3.getStudent().add(peerStud);
+										courseIndexListControl.save();
+									}
 
-				} else {
-					if (courseClash == true) {
-						System.out.println("\nCannot change course as there is a clash with user's existing timetable.");
+								}
+							}
+						}
+
+					} else {
+						if (courseClash == true) {
+							System.out.println(
+									"\nCannot change course as there is a clash with user's existing timetable.");
+						}
+
+						if (courseClash_peer == true) {
+							System.out.println(
+									"\nCannot change course as there is a clash with peer's existing timetable.");
+						}
+
+						return;
 					}
-					
-					if (courseClash_peer == true) {
-						System.out.println("\nCannot change course as there is a clash with peer's existing timetable.");
-					}
-					
-					return;
 				}
-			}
 
-			else {
-				System.out.println("\nCancelling changing of course index ------------------");
+				else {
+					System.out.println("\nCancelling changing of course index ------------------");
+					return;
+
+				}
+			} else {
+				System.out.println("You are registered under the same Index as your peer.");
 				return;
-
 			}
-		} else {
-			System.out.println("You are registered under the same Index as your peer.");
-			return;
 		}
 
 	}
