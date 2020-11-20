@@ -5,12 +5,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Represents the control class for studentList which holds an array list of Students
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-19
+ */
 public class StudentListCtrl {
+	/**
+	 * ArrayList that stores list of Students
+	 */
 	private ArrayList<Student> studentList; // user list containing all the user acc created in this app
-	
+	/**
+	 * Filename of student list to be read from SerializeDB
+	 */
 	private String filename = "StudentList.txt"; // file storing all the user acc created
-	
+	/**
+	 * Reads in the list of students from SerializeDB
+	 */
 	@SuppressWarnings("unchecked")
 	public StudentListCtrl() {
 		try {
@@ -20,21 +32,43 @@ public class StudentListCtrl {
 			System.out.println("Exception >> " + e.getMessage());
 		}
 	}
-	
+	/**
+	 * Gets the student list stored in this studentListControl class
+	 * 
+	 * @return ArrayList of students
+	 */
 	public ArrayList<Student> getStudentList() {
 		if (studentList==null) {
 			studentList= new ArrayList<Student>();
 		}
 		return studentList;
 	}
-
+	/**
+	 * Gets a student from this control class's studentList indexed by the parameter i
+	 * @param i index of the movie in the studentList
+	 * @return	a Student object
+	 */
 	public Student getStudent(int i) {
 		return (Student) studentList.get(i);
 	}
-	
+	/**
+	 * Gets the number of students from this control class's studentList
+	 * @return number of Students in the studentList
+	 */
 	public int getStudentListSize() {
 		return studentList.size();
 	}
+	/**
+	 * Adds a new Student to this control class's studentList
+	 * @param name	Name of the student to be added.
+	 * @param username	Username of the student to be added.
+	 * @param pw	Password of the student to be added.
+	 * @param gender	Gender of the student to be added.
+	 * @param nationality	Nationality of the student to be added.
+	 * @param matricID	Matriculation ID of the student to be added.
+	 * @param email	Email of the student to be added.
+	 * @param schoolID	School of the Student to be added.
+	 */
 	public void addStudent(String name, String username, String pw, char gender, String nationality, String matricID, String email, String schoolID) {
 		for(int i = 0; i < studentList.size(); i++) {
 			if(studentList.get(i).getUsername().equals(username)) {
@@ -45,16 +79,12 @@ public class StudentListCtrl {
 		Student s1 = new Student(username, pw, name, gender, nationality, matricID, email, schoolID);
 		studentList.add(s1);
 	}
-	
-	public Student chooseStudent(String username) {
-		for (int j = 0; j < studentList.size(); j++) {
-			if (studentList.get(j).getUsername() == username) {
-				Student curStudent = studentList.get(j);
-				return curStudent;}
-		}
-		return null;
-	}
-	
+
+	/**
+	 * 
+	 * @param s
+	 * @param choice
+	 */
 	public void editStudent(String s, int choice) {
 		final Scanner sc = new Scanner(System.in);
 		for(int i = 0; i < studentList.size(); i++) {
