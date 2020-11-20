@@ -87,7 +87,7 @@ public class AddDropStudentCourseUI {
 													"Your current AU for this semester is : " + s1.getAcadunits());
 										} else {
 											c.getStudent().add(s1);
-											SendMailSSL.SendRegisteredNoti(c.getCourseName(), c.getCourseID(),
+											SendMailSSLCtrl.SendRegisteredNoti(c.getCourseName(), c.getCourseID(),
 													courseIndex, s1.getEmail());
 											s1.addAcadunits();
 											studentCourseListControl.addStudentCourse(username, course, courseIndex,
@@ -184,7 +184,7 @@ public class AddDropStudentCourseUI {
 										Student s3 = studentCourseListControl.getStudentListCtrl().getStudent(m);
 										System.out.println(s3.getAcadunits());
 										s3.addAcadunits();
-										SendMailSSL.SendRegisteredNoti(c.getCourseName(), c.getCourseID(), courseIndex,
+										SendMailSSLCtrl.SendRegisteredNoti(c.getCourseName(), c.getCourseID(), courseIndex,
 												s3.getEmail());
 										System.out.println(s3.getAcadunits());
 										studentCourseListControl.getStudentListCtrl().save();
@@ -400,7 +400,7 @@ public class AddDropStudentCourseUI {
 						for (int k = 0; k < studentListControl.getStudentListSize(); k++) {
 							if (studentListControl.getStudent(k).getUsername().equals(username)) {
 								Student curStud = studentListControl.getStudent(k);
-								SendMailSSL.SendSwapNoti(course, initialIndex, initialIndex_peer, peerName,
+								SendMailSSLCtrl.SendSwapNoti(course, initialIndex, initialIndex_peer, peerName,
 										curStud.getEmail());
 
 								// add student to peer's Index
