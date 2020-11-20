@@ -81,9 +81,10 @@ public class StudentListCtrl {
 	}
 
 	/**
-	 * 
-	 * @param s
-	 * @param choice
+	 * Allows admin user to edit Student stored in the studentList ArrayList
+	 * @param s Name of the Student to be edited
+	 * @param choice integer to be passed in to determine which option of the student details to edit
+	 *  1 for student name, 2 for username, 3 for password, 4 for matric ID, 5 for email, 6 for gender, 7 for nationality, 8 for school, 9 to exit
 	 */
 	public void editStudent(String s, int choice) {
 		final Scanner sc = new Scanner(System.in);
@@ -254,7 +255,11 @@ public class StudentListCtrl {
 			}
 		}
 	}
-	
+	/**
+	 * Allows admin user to remove a Student from the studentList ArrayList
+	 * 
+	 * @param s The username of the student to be deleted
+	 */
 	public void deleteStudent(String s) {
 		System.out.println("Initial size of Student List:  " + studentList.size());
 		for(int i = 0; i < studentList.size(); i++) {
@@ -267,7 +272,11 @@ public class StudentListCtrl {
 		}
 		System.out.println("Student does not exist.");
 	}
-	
+	/**
+	 * Prints student detail of a student in the studentList ArrayList, along with username, name, ID, Email, Nationality and School
+	 * 
+	 * @param username The username of the student whose details would be printed
+	 */
 	public void printStudentListByUsername(String username) {
 		System.out.println(
 				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -290,7 +299,11 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		
 	}
-	
+	/**
+	 * Prints details of a indexed Student in the studentList
+	 * 
+	 * @param index Index of the Student to be printed in studentList
+	 */
 	public void printStudentDetailsByIndex(int index) { //not sorted
 		System.out.println(
 				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -306,14 +319,22 @@ public class StudentListCtrl {
 		}
 		
 	}
-	
+	/**
+	 * Prints details of all students in the studentList
+	 */
 	public void printAllStudentDetails() {
 		System.out.println("List of all students ------------------ ");
 		for(int i=0; i< studentList.size(); i++) {
 			printStudentDetailsByIndex(i);
 		}
 	}
-
+/**
+ *  Gets student object from studentList Array using the student's username
+ * 
+ * @param username The username of the student object to be retrieved
+ * 
+ * @return the Student object that has the username inputted
+ */
 	public Student getStudentFromUsername(String username) {
 		for (int i=0; i< studentList.size();i++) {
 			if( studentList.get(i).getUsername().equals(username)) {
@@ -323,7 +344,13 @@ public class StudentListCtrl {
 		}
 		return null;
 	}
-	
+	/**
+	 * Gets the student's MatricID from Student in the studentList ArrayList with the username that is inputted
+	 * 
+	 * @param username The username of the student that we are getting MatricID from
+	 * 
+	 * @return MatriID of student from the studentList ArrayList of the same username inputted
+	 */
 	public String getMatricNo(String username) {
 		for(int i = 0; i < studentList.size(); i++) {
 			Student stud = studentList.get(i);
@@ -335,6 +362,13 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		return null;
 	}
+	/**
+	 * Gets the name of the student from the studentList ArrayList with username that is inputted
+	 * 
+	 * @param username The username of the student that we want to get the name from
+	 * 
+	 * @return Name of the student of the associated username from studentList ArrayList
+	 */
 	public String getName(String username) {
 		for(int i = 0; i < studentList.size(); i++) {
 			Student stud = studentList.get(i);
@@ -346,7 +380,9 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		return null;
 	}
-	
+	/**
+	 * When called, save the current edited studentList object to SerializeDB
+	 */
 	public void save() { // save the user list back into the file storing student data
 		try {
 			SerializeDB.writeSerializedObject(filename, studentList);
