@@ -13,11 +13,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+/**
+ * Control class which performs the reading and writing of data from external files in to ArrayLists
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-20
+ */
 
-// Note : When structure of the Object type (the class file) in the list changed
-// the Serialized file may fail.
-public class SerializeDB
-{
+public class SerializeDB{
+	/**
+	 * Reads the data from external file and returns it as an ArrayList
+	 * 
+	 * @param filename The file name for the retrieval of required data
+	 * @return The retrieved data initialized as ArrayList
+	 */
 	public static List readSerializedObject(String filename) {
 		List pDetails = null;
 		FileInputStream fis = null;
@@ -37,7 +46,12 @@ public class SerializeDB
 		//System.out.println();
 		return pDetails;
 	}
-
+	/**
+	 * Writes the data from an ArrayList back into the external file
+	 * 
+	 * @param filename The file name for the writing of required data
+	 * @param list	The updated adata stored as an ArrayList
+	 */
 	public static void writeSerializedObject(String filename, List list) {
 		FileOutputStream fos = null;
 		ObjectOutputStream out = null;
