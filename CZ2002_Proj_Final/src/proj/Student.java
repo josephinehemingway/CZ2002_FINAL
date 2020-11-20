@@ -259,7 +259,7 @@ public class Student implements Serializable{
 		return "Student Username: " + username + "\nStudent Name: " + name 
 				+ "\nMatriculation ID: " + matricID + "\nEmail: " + email 
 				+ "\nGender: " + gender + "\nNationality: " + nationality
-				+ "\nSchool: " + schoolID;
+				+ "\nSchool: " + schoolID +"\n";
 	}
 
 }

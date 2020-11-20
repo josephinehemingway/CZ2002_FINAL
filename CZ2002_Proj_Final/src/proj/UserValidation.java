@@ -53,12 +53,16 @@ public class UserValidation {
 					School sch = schList.getSchool(j);
 					schString = sch.getSchoolID();
 					if (student.getSchool().equals(sch.getSchoolID())) {
+						if(sch.canAccess() == false) {
+							System.out.println("\nUnable to login as current date is not within Student Access period.");
+							schList.getCurrentAccessPeriod(schString);
+							System.out.println("\n");
+						}
 						return sch.canAccess();
 					}
 				}
 			}
 		}
-		//schList.getCurrentAccessPeriod(schString);
 		return false;
 			
 	}
