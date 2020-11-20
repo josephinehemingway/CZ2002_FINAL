@@ -298,9 +298,6 @@ public class StudentListCtrl {
 		System.out.println("Student Username: "+ stud.getUsername());
 		System.out.println("Student Name: "+ stud.getName());
 		System.out.println("Matriculation ID: "+ stud.getMatricID());
-		System.out.println("Email: "+ stud.getEmail());
-		System.out.println("Gender: " + stud.getGender());
-		System.out.println("Nationality: "+ stud.getNationality());
 		System.out.println("School: " + stud.getSchool());
 
 		if (index == studentList.size()-1) {
@@ -311,6 +308,7 @@ public class StudentListCtrl {
 	}
 	
 	public void printAllStudentDetails() {
+		System.out.println("List of all students ------------------ ");
 		for(int i=0; i< studentList.size(); i++) {
 			printStudentDetailsByIndex(i);
 		}

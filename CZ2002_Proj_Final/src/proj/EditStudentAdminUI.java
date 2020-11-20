@@ -97,7 +97,7 @@ public class EditStudentAdminUI {
 		// Add Student into StudentList
 		
 		studentListControl.addStudent(newStudent, username, password, gender, nationality, matricID, email, schoolID);
-		studentListControl.printStudentListByUsername(username);
+		studentListControl.printAllStudentDetails();
 		
 	}
 	public static void editStudent(StudentListCtrl studentListControl) {
