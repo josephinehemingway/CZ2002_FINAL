@@ -49,7 +49,7 @@ public class Student implements Serializable{
 	 */
 	private ArrayList<CourseIndex> courseIndexArr;
 	/**
-	 * Total Academic Units Student has accumulated in this semster
+	 * Total Academic Units Student has accumulated in this semester
 	 */
 	private int AcadUnits;
 	
@@ -96,7 +96,7 @@ public class Student implements Serializable{
 		this.AcadUnits +=3;
 	}
 	/**
-	 * Subtract 3 AU from the student's accmulated when he drops a course
+	 * Subtract 3 AU from the student's accumulated when he drops a course
 	 */
 	public void dropAcadunits() {
 		this.AcadUnits -=3;

@@ -5,9 +5,21 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+/**
+ * 
+ * @author DSAI/1 GROUP 5
+ * @version 1.0
+ * @since 2020-11-19
+ *
+ */
 public class School implements Serializable {
+	/**
+	 * ArrayList of Courses in a school
+	 */
 	private ArrayList<Course> course;
+	/**
+	 * 
+	 */
 	private ArrayList<Student> student;
 	private String schoolID;
 	private String name;
