@@ -35,8 +35,7 @@ public class AddDropStudentCourseUI {
 		if (studentCourseListControl.checkIfRegistered(username, course) == false) {
 			// print index in course
 			System.out.println("\nCourse Indexes for Course " + course + " ------------------");
-			System.out.println("Course Index/Vacancy/Waiting List ");
-			System.out.println("===============================================================");
+			System.out.println("");
 			courseIndexListControl.printIndexesInfoUnderCourse(course);
 
 			// enter course index
@@ -255,7 +254,7 @@ public class AddDropStudentCourseUI {
 
 		System.out.println("\nYour current Course Index: " + initialIndex);
 		System.out.println("Course Indexes for Course " + course + ": ");
-		courseIndexListControl.printIndexesUnderCourse(course);
+		courseIndexListControl.printIndexesInfoUnderCourse(course);
 
 		System.out.println("Enter new Index No. of course: ");
 		int courseIndex = courseIndexListControl.chooseCourseIndex(course);
@@ -363,10 +362,11 @@ public class AddDropStudentCourseUI {
 
 			// validation
 			if (UserValidation.loginStudent(peerUsername, peerPassword, SaltArray, HashedPasswords) == false) {
-				System.out.println("Incorrect username or password! Please try again. ");
+				System.out.println("Incorrect username or password! ");
 				count++;
 				if (count == 3) {
 					exit = false;
+					System.out.println("You have input incorrect username of password 3 times. Exiting...");
 					break;
 				}
 			}

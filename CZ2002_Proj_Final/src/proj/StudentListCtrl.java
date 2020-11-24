@@ -286,11 +286,11 @@ public class StudentListCtrl {
 			if (stud.getUsername().equals(username)){
 				System.out.println("Username: " + username);
 				System.out.println("Student Name: "+ stud.getName());
-				System.out.println("Matriculation ID: "+ stud.getMatricID());
-				System.out.println("Email: "+ stud.getEmail());
+//				System.out.println("Matriculation ID: "+ stud.getMatricID());
+//				System.out.println("Email: "+ stud.getEmail());
 				System.out.println("Gender: " + stud.getGender());
 				System.out.println("Nationality: "+ stud.getNationality());
-				System.out.println("School: "+ stud.getSchool());
+//				System.out.println("School: "+ stud.getSchool());
 
 				return;
 				
@@ -304,30 +304,51 @@ public class StudentListCtrl {
 	 * 
 	 * @param index Index of the Student to be printed in studentList
 	 */
-	public void printStudentDetailsByIndex(int index) { //not sorted
-		System.out.println(
-				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-		Student stud = studentList.get(index);
-		System.out.println("Student Username: "+ stud.getUsername());
-		System.out.println("Student Name: "+ stud.getName());
-		System.out.println("Matriculation ID: "+ stud.getMatricID());
-		System.out.println("School: " + stud.getSchool());
-
-		if (index == studentList.size()-1) {
-			System.out.println(
-					"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-		}
+	public void printStudentDetailsByIndex(int index) { //not sorted		
+		Student s = studentList.get(index);
+		int maxNameLength = 20;
 		
-	}
+		System.out.print(" " + s.getName());
+	    for(int j=0;j <= maxNameLength - s.getName().length(); j++)
+	    {
+	    	   System.out.print(" ");
+	    }
+	    System.out.print(s.getGender()+ "		" + s.getNationality() +"\n");
+	    
+		}
+//		System.out.println(
+//				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+//		Student stud = studentList.get(index);
+//		System.out.println("Student Username: "+ stud.getUsername());
+//		System.out.println("Student Name: "+ stud.getName());
+//		System.out.println("Matriculation ID: "+ stud.getMatricID());
+//		System.out.println("School: " + stud.getSchool());
+//
+//		if (index == studentList.size()-1) {
+//			System.out.println(
+//					"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+//		}
+	
 	/**
 	 * Prints details of all students in the studentList
 	 */
 	public void printAllStudentDetails() {
 		System.out.println("List of all students ------------------ ");
+		System.out.println("\n===============================================");
+		System.out.println(" Student Name       Gender	Nationality");
+		System.out.println("===============================================");
+		
 		for(int i=0; i< studentList.size(); i++) {
-			printStudentDetailsByIndex(i);
+			if (studentList.size() != 0) {
+				printStudentDetailsByIndex(i);
+			}
+			else {
+				System.out.println("No students found!");
+			}
+			
 		}
 	}
+	
 /**
  *  Gets student object from studentList Array using the student's username
  * 

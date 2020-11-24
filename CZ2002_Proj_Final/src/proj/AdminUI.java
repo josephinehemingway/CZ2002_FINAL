@@ -235,30 +235,31 @@ public class AdminUI {
 
 							EditCourseIndexUI.addCourseIndex(courseIndexListControl);
 							courseIndexListControl.save();
-							courseIndexListControl.printIndexesUnderCourse(chosenCourseID);
+							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							break;
 						case 2:
 							System.out.println("\nEditing Course Index ------------------");
-							courseIndexListControl.printAllCourseGeneralInfo();
-							courseIndexListControl.printIndexesUnderCourse(chosenCourseID);
+//							courseIndexListControl.printAllCourseInfo();
+							
+							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							
 							System.out.println("Enter Index Number to edit: ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
 							EditCourseIndexUI.editCourseIndex(courseIndexListControl, indexChoice);
 							courseIndexListControl.save();
-							courseIndexListControl.printIndexesUnderCourse(chosenCourseID);
+							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							break;
 
 						case 3:
 							int indexChoice1 = 0;
 							System.out.println("\nDeleting Course Index ------------------");
-							courseIndexListControl.printIndexesUnderCourse(chosenCourseID);
+							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							System.out.println("Enter Index Number to delete: ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
 							indexChoice1 = indexChoice;
 							EditCourseIndexUI.deleteCourseIndex(courseIndexListControl, indexChoice1);
 							courseIndexListControl.save();
-							courseIndexListControl.printIndexesUnderCourse(chosenCourseID);
+							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							break;
 
 						default:
@@ -296,7 +297,7 @@ public class AdminUI {
 			case 4:
 
 				System.out.println("\nChecking Available slot for Course Index---------");
-				courseIndexListControl.printAllCourseGeneralInfo();
+				courseIndexListControl.printAllCourseInfo();
 				System.out.println("\nEnter Index Number: ");
 				int chosenIndex = courseIndexListControl.checkCourseIndex();
 				courseIndexListControl.printAvailableVacancyforIndex(chosenIndex);
@@ -304,7 +305,7 @@ public class AdminUI {
 
 				break;
 			case 5:
-				System.out.println("Print student list ------------------");
+				System.out.println("\nPrint student list ------------------");
 				System.out.println("1. Print student list by Course Index");
 				System.out.println("2. Print student list by Course");;
 				System.out.println("3. Print student details by username");
@@ -330,13 +331,13 @@ public class AdminUI {
 				switch (choice3) {
 				case 1:
 					courseIndexListControl.printAllCourseInfo();
-					System.out.println("Enter Index Number: ");
+					System.out.println("\nEnter Index Number: ");
 					int indexChoice3=courseIndexListControl.checkCourseIndex();
 					courseIndexListControl.printStudentsUnderIndex(indexChoice3);
 					break;
 				case 2:
 					courseListControl.printAllCourseDetails();
-					System.out.println("Enter the Course # :");
+					System.out.println("\nEnter the Course # :");
 					int courseChoice=0;
 					while (true) {
 						try {
@@ -356,7 +357,7 @@ public class AdminUI {
 					
 					break;
 				case 3:
-					System.out.println("Enter student username: ");
+					System.out.println("\nEnter student username: ");
 					String user = sc.next().toUpperCase();
 					studentListControl.printStudentListByUsername(user);
 					break;
