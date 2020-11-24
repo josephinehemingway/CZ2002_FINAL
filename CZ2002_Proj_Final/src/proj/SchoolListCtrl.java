@@ -153,6 +153,7 @@ public class SchoolListCtrl {
 				System.out.println("\nNew Access Period for: " + sch.getName());
 				System.out.println("Start Date: " + sch.getStartDate());
 				System.out.println("End Date: " + sch.getEndDate());
+				save();
 				return;
 			}
 		}
@@ -185,7 +186,7 @@ public class SchoolListCtrl {
 	 * Allows admin to remove the selected Course from its school.
 	 * 
 	 * @param schoolID The schoolID of the school
-	 * @param selectedCourse The 
+	 * @param selectedCourse The course object that we wish to remove from school.
 	 */
 	public void removeCourseFromSchool(String schoolID, Course selectedCourse) {
 		for (int j = 0; j < schoolList.size(); j++) {
@@ -201,6 +202,11 @@ public class SchoolListCtrl {
 		}
 
 	}
+	/**
+	 * Gets the school that the course belongs to.
+	 * @param courseID The courseID of the course.
+	 * @return The schoolID the course belongs to.
+	 */
 	public String getSchoolFromCourse(String courseID) {
 		for (int i=0; i<schoolList.size();i++) {
 			if ( schoolList.get(i).checkCourseUnderSch(courseID)==1) {
@@ -209,16 +215,18 @@ public class SchoolListCtrl {
 		}
 		return null;
 	}
-	
+	/**
+	 * Prints the list of schools under schoolList ArrayList.
+	 */
 	public void printSchoolList() {
 		System.out.println("List of Schools:");
 		for (int i = 0; i < schoolList.size(); i++) {
 			System.out.println(schoolList.get(i).getSchoolID());
 		}
 	}
-	
-	
-
+	/**
+	 * When called, save the current edited schoolList object to SerializeDB.
+	 */
 	public void save() { // save the user list back into the file storing student data
 		try {
 			SerializeDB.writeSerializedObject(filename, schoolList);

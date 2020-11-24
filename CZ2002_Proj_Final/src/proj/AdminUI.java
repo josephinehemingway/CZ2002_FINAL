@@ -368,6 +368,7 @@ public class AdminUI {
 				System.out.println("Logging out of admin console.");
 				System.out.println("");
 				studentListControl.save();
+				schoolListControl.save();
 				break;
 			default:
 				System.out.println("Invalid input!");

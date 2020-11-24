@@ -54,8 +54,7 @@ public class MainUI {
 						if (UserValidation.studentCanAccess(username) == true) {
 							System.out.println("Login successfully!");
 							StudentUI.console(username);
-						} else
-							UserValidation.studentCanAccess(username);
+						}
 						break;
 					} else {
 						System.out.println("Incorrect username or password! Please try again. \n");

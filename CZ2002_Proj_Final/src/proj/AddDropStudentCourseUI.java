@@ -1,10 +1,25 @@
 package proj;
 
 import java.util.Scanner;
-
+/**
+ * Represents the interface for students to add, drop courses and change or swap courseIndexes with a peer.
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-19
+ */
 public class AddDropStudentCourseUI {
-//	public static final Scanner scan = new Scanner(System.in);
 
+	/**
+	 * Method in the StudentUI for student to choose and register for courses
+	 * Student will input their course choice and index choices here
+	 * 
+	 * @param username Username of student who logged into the console via mainConsole
+	 * @param courseListControl courseList control object that holds the course list and their details
+	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
+	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
+	 * and the list of students in each course 
+	 * @param studentListControl studentList control object that holds the student list and their details
+	 */
 	public static void addCourse(String username, CourseListCtrl courseListControl,
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl,
 			StudentListCtrl studentListControl) {
@@ -117,6 +132,16 @@ public class AddDropStudentCourseUI {
 
 	}
 
+	/**
+	 * Method in the StudentUI for student to drop registered courses
+	 * Student will input their course choice to drop here
+	 * 
+	 * @param username Username of student who logged into the console via mainConsole
+	 * @param courseListControl courseList control object that holds the course list and their details
+	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
+	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
+	 * and the list of students in each course 
+	 */
 	public static void dropCourse(String username, CourseListCtrl courseListControl,
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl) {
 
@@ -207,6 +232,16 @@ public class AddDropStudentCourseUI {
 
 	}
 
+	/**
+	 * Method for students to change courseIndex with another index
+	 * Student will input choice of course and choice of new index here
+	 * 
+	 * @param username Username of student who logged into the console via mainConsole
+	 * @param courseListControl courseList control object that holds the course list and their details
+	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
+	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details
+	 * and the list of students in each course  
+	 */
 	public static void changeCourseIndex(String username, CourseListCtrl courseListControl,
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl) {
 
@@ -286,6 +321,17 @@ public class AddDropStudentCourseUI {
 
 	}
 
+	/**	 
+	 * Method in the StudentUI for student to swap their courseIndex with a peer's courseIndex
+	 * Student will input their course choice and peer details here
+	 * 
+	 * @param username Username of student who logged into the console via mainConsole
+	 * @param courseListControl  courseList control object that holds the course list and their details
+	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
+	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
+	 * and the list of students in each course 
+	 * @param studentListControl studentList control object that holds the student list and their details
+	 */
 	public static void swapCourseIndex(String username, CourseListCtrl courseListControl,
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl,
 			StudentListCtrl studentListControl) {
@@ -345,9 +391,11 @@ public class AddDropStudentCourseUI {
 		if (exit) {
 
 			if (initialIndex_peer != initialIndex) {
+				
 				// print course index details (schedule)
 				System.out.println("\nLesson schedule for current index " + initialIndex);
 				courseIndexListControl.printCourseIndexInfo(course, initialIndex);
+				
 				System.out.println("\nLesson schedule for Peer's index " + initialIndex_peer);
 				courseIndexListControl.printCourseIndexInfo(course, initialIndex_peer);
 
@@ -407,7 +455,6 @@ public class AddDropStudentCourseUI {
 								for (CourseIndex c2 : courseIndexListControl.getCourseIndexList()) {
 									if (c2.getIndexID() == initialIndex_peer) {
 										c2.getStudent().add(curStud);
-//									System.out.println(initialIndex_peer + ": " + c2.getStudent());
 										courseIndexListControl.save();
 									}
 								}
@@ -432,7 +479,6 @@ public class AddDropStudentCourseUI {
 								for (int k1 = 0; k1 < c1.getStudent().size(); k1++) {
 									if (c1.getStudent().get(k1).getUsername().equals(peerUsername)) {
 										c1.getStudent().remove(k1);
-//									System.out.println("After:" + c1.getStudent());
 										courseIndexListControl.save();
 									}
 								}

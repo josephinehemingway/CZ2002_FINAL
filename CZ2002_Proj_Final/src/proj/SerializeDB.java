@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 /**
- * Control class which performs the reading and writing of data from external files in to ArrayLists
+ * Control class which performs the reading and writing of data from external files in to ArrayLists.
  * @author DSAI/1 Group 5
  * @version 1.0
  * @since 2020-11-20
@@ -22,10 +22,10 @@ import java.util.Date;
 
 public class SerializeDB{
 	/**
-	 * Reads the data from external file and returns it as an ArrayList
+	 * Reads the data from external file and returns it as an ArrayList.
 	 * 
-	 * @param filename The file name for the retrieval of required data
-	 * @return The retrieved data initialized as ArrayList
+	 * @param filename The file name for the retrieval of required data.
+	 * @return The retrieved data initialized as ArrayList.
 	 */
 	public static List readSerializedObject(String filename) {
 		List pDetails = null;
@@ -41,16 +41,13 @@ public class SerializeDB{
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
-		// print out the size
-		//System.out.println(" Details Size: " + pDetails.size());
-		//System.out.println();
 		return pDetails;
 	}
 	/**
-	 * Writes the data from an ArrayList back into the external file
+	 * Writes the data from an ArrayList back into the external file.
 	 * 
-	 * @param filename The file name for the writing of required data
-	 * @param list	The updated adata stored as an ArrayList
+	 * @param filename The file name for the writing of required data.
+	 * @param list	The updated data stored as an ArrayList.
 	 */
 	public static void writeSerializedObject(String filename, List list) {
 		FileOutputStream fos = null;
@@ -60,7 +57,6 @@ public class SerializeDB{
 			out = new ObjectOutputStream(fos);
 			out.writeObject(list);
 			out.close();
-		//	System.out.println("Object Persisted");
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
@@ -158,21 +154,6 @@ public class SerializeDB{
 				
 				SerializeDB.writeSerializedObject("CourseList.txt", arrayCourseList);
 		
-					
-//				list = (ArrayList)SerializeDB.readSerializedObject("CourseList.txt");
-//					for (int i = 0 ; i < list.size() ; i++) {
-//						Course c = (Course)list.get(i);
-//						System.out.println("name is " + c.getCourseName() );
-//						System.out.println("username is " + c.getCourseID() );
-//				}
-//					
-//				//read serialised file
-//				list = (ArrayList)SerializeDB.readSerializedObject("StudentList.txt");
-//				for (int i = 0 ; i < list.size() ; i++) {
-//					Student s = (Student)list.get(i);
-//					System.out.println("name is " + s.getName() );
-//					System.out.println("username is " + s.getUsername() );
-//				}
 				
 				//Create 3 Schools
 				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -205,12 +186,7 @@ public class SerializeDB{
 
 				SerializeDB.writeSerializedObject("SchoolList.txt", arraySchoolList);
 				
-//				list = (ArrayList)SerializeDB.readSerializedObject("SchoolList.txt");
-//				for (int i = 0 ; i < list.size() ; i++) {
-//					School sch = (School)list.get(i);
-//					System.out.println("SchoolID is " + sch.getSchoolID());
-//					System.out.println(sch.toString());
-//			}
+
 				//Create 5 Course Index for each course
 				List<CourseIndex>arrayCourseIndexList= new ArrayList<CourseIndex>();
 
@@ -229,18 +205,6 @@ public class SerializeDB{
 					System.out.println(DateTimeList.get(i));
 				}
 				
-//				cal.set(Calendar.HOUR_OF_DAY,9);
-//				cal.set(Calendar.MINUTE, 30);
-//				cal.set(Calendar.SECOND, 0);
-//				cal.set(Calendar.MILLISECOND, 0);
-//				Date date1 = cal.getTime();
-//				cal.set(Calendar.HOUR_OF_DAY,11);
-//				Date date2 = cal.getTime();
-//				Date date3 = cal.getTime();
-//				Date date4 = cal.getTime();
-//				Date date5 = cal.getTime();
-//				
-
 	
 
 				//day id spans from 1-5
@@ -257,12 +221,6 @@ public class SerializeDB{
 					String courseName = arrayCourseList.get(j).getCourseName();
 					int k = 2000 + (j * 20);
 					for (int i = 0; i < 5; i++) {
-//						List<Date> DateTimeList = new ArrayList<Date>();
-//						DateTimeList.add(date1);
-//						DateTimeList.add(date2);
-//						DateTimeList.add(date3);
-//						DateTimeList.add(date4);
-//						DateTimeList.add(date5);
 						Collections.shuffle(DateTimeList);
 						Schedule schedule_1 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
 									r.nextInt(maxDay-minDay) + minDay,
@@ -278,14 +236,6 @@ public class SerializeDB{
 				
 				SerializeDB.writeSerializedObject("CourseIndexList.txt", arrayCourseIndexList);
 				
-//				list = (ArrayList)SerializeDB.readSerializedObject("CourseIndexList.txt");
-//				for (int i = 0 ; i < list.size() ; i++) {
-//					CourseIndex c = (CourseIndex)list.get(i);
-//					System.out.println("-----------------------------"); 
-//					System.out.println("Schedule for " + c.toString() );
-//				}
-				
-
 		}  catch ( Exception e ) {
 					System.out.println( "Exception >> " + e.getMessage() );
 					e.printStackTrace();
