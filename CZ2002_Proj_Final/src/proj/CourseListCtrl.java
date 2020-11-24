@@ -111,19 +111,8 @@ public class CourseListCtrl {
 	}
 
 	public static void printCourseDetails(int i) {
-//		Course c = courseList.get(index);
-//		System.out.println(
-//				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-//		System.out.println("Course #" + (index + 1));
-//		System.out.println("Course Name: " + c.getCourseName());
-//		System.out.println("ID: " + c.getCourseID());
-//		if (index == courseList.size() - 1) {
-//			System.out.println(
-//					"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-//		}
 		if (courseList == null) {
 			courseList = new ArrayList<Course>();
-			
 		} else if (courseList.isEmpty() == true) {
 			System.out.println("There are no courses available." );
 			return;
@@ -133,8 +122,6 @@ public class CourseListCtrl {
 				System.out.println("   " + (i + 1)+ "	" + c.getCourseID()
 				+ "       " + c.getCourseName());
 			}
-		
-
 	}
 	
 	public void printAllCourseDetails() {

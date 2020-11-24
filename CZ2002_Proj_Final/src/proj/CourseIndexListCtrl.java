@@ -318,29 +318,16 @@ public class CourseIndexListCtrl {
 		}
 
 	}
-
-	public void printIndexesUnderCourse(String courseID) {
-		int count = 0;
-
-		for (int i = 0; i < courseIndexList.size(); i++) {
-			if (courseIndexList.get(i).getCourseID().equals(courseID)) {
-				System.out.println(courseIndexList.get(i).getIndexID());
-			} else {
-				count++;
-			}
-		}
-		if (count == courseIndexList.size() - 1) {
-			System.out.println("There are no indexes in this course");
-		}
-	}
 	
 	public void printIndexesInfoUnderCourse(String courseID) {
 		int count = 0;
-
+		System.out.println("  Index No   Vacancy	Waiting List Size");
+		System.out.println("========================================");
+		
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getCourseID().equals(courseID)) {
 				CourseIndex s = courseIndexList.get(i);
-				System.out.println("    " + s.getIndexID() + "	" + s.getCurrentVacancy() + "	" + s.getWaitingList().size());
+				System.out.println("    " + s.getIndexID() + "	" + s.getCurrentVacancy() + "		" + s.getWaitingList().size());
 			} else {
 				count++;
 			}
@@ -351,25 +338,59 @@ public class CourseIndexListCtrl {
 	}
 	
 	public void printStudentsUnderIndex(int courseIndex) {
-
+		System.out.println("\nStudents registered in Course Index: " + courseIndex + " ------------");
+		System.out.println("\n===============================================");
+		System.out.println(" Student Name       Gender	Nationality");
+		System.out.println("===============================================");
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getIndexID() == courseIndex) {
 				CourseIndex curIndex = courseIndexList.get(i);
-				if (curIndex.getStudent().size() == 0) {
-					System.out.println("There are no students in this course index!");
-					break;
+				ArrayList<Student> studArr = curIndex.getStudent();
+				
+				int count = 0;
+				int maxNameLength = 20;
+				for (Student s : studArr) {
+					System.out.print(" " + s.getName());
+				    for(int j=0;j <= maxNameLength - s.getName().length(); j++)
+				    {
+				    	   System.out.print(" ");
+				    }
+				    System.out.print(s.getGender()+ "		" + s.getNationality() +"\n");
+				    count++;
 				}
-				System.out.println(curIndex.getStudent());
+				
+				if (count == curIndex.getStudent().size() - 1) {
+					System.out.println("There are no students under in this course index!");
+				}
 			}
 		}
 	}
 
 	public void printStudentsUnderCourse(String courseID) {
-		System.out.println("\n Students registered in Course " + courseID + "------------");
+		System.out.println("\nStudents registered in Course: " + courseID + " ------------");
+		System.out.println("\n=============================================================");
+		System.out.println(" CourseIndex	  Student Name       Gender	Nationality");
+		System.out.println("=============================================================");
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getCourseID().equals(courseID)) {
 				CourseIndex curIndex = courseIndexList.get(i);
-				System.out.println("Index " + curIndex.getIndexID() + " :\n" +curIndex.getStudent());
+				ArrayList<Student> studArr = curIndex.getStudent();
+				
+				int count = 0;
+				int maxNameLength = 20;
+				for (Student s : studArr) {
+					System.out.print("     " + curIndex.getIndexID() + "	  " + s.getName());
+				    for(int j=0;j <= maxNameLength - s.getName().length(); j++)
+				    {
+				    	   System.out.print(" ");
+				    }
+				    System.out.print(s.getGender()+ "	" + s.getNationality() +"\n");
+				    count++;
+				}
+				
+				if (count == curIndex.getStudent().size() - 1) {
+					System.out.println("There are no students under in this course index!");
+				}
 			}
 		}
 	}
