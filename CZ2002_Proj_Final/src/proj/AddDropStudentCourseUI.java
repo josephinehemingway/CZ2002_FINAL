@@ -366,7 +366,7 @@ public class AddDropStudentCourseUI {
 				count++;
 				if (count == 3) {
 					exit = false;
-					System.out.println("You have input incorrect username of password 3 times. Exiting...");
+					System.out.println("You have entered incorrect username or password 3 times. Exiting...");
 					break;
 				}
 			}

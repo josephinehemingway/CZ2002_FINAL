@@ -102,13 +102,19 @@ public class EditStudentAdminUI {
 	}
 	public static void editStudent(StudentListCtrl studentListControl) {
 		ArrayList<Student> studList = studentListControl.getStudentList();
-		
+		int count = 0;
 		while (true) {
 			System.out.println("Enter student username to edit: ");
 			studentUsername = sc.nextLine().toUpperCase();
 			
-			if (UserValidation.checkValidUsername(studentUsername, studList) == false)
+			if (UserValidation.checkValidUsername(studentUsername, studList) == false) {
 				System.out.println("Invalid username. Please re-enter valid username: ");
+				count += 1;
+				if (count == 3) {
+					System.out.println("You have entered incorrect username 3 times. Exiting...");
+					return;
+				}
+			}
 			else {
 				System.out.println("Current particulars: ");
 				studentListControl.printStudentListByUsername(studentUsername);

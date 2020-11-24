@@ -18,7 +18,7 @@ public class MainUI {
 		String[] HashedPasswords = PasswordHash.ReturnHashedPasswordsArray();
 
 		do {
-			System.out.println("\nWelcome to STARS! Enter your choice: ");
+			System.out.println("Welcome to STARS! Enter your choice: ");
 			System.out.println("(1) Log in as Student");
 			System.out.println("(2) Log in as Admin");
 			System.out.println("(3) Quit");
@@ -57,10 +57,10 @@ public class MainUI {
 						}
 						break;
 					} else {
-						System.out.println("Incorrect username or password!");
+						System.out.println("Incorrect username or password!\n");
 						count += 1;
 						if (count == 3) {
-							System.out.println("You have input incorrect username of password 3 times. Exiting...\n");
+							System.out.println("You have entered incorrect username or password 3 times. Exiting...\n");
 							break;
 						}
 					}
@@ -80,10 +80,10 @@ public class MainUI {
 						AdminUI.console();
 						break;
 					} else {
-						System.out.println("Incorrect username or password!");
+						System.out.println("Incorrect username or password!\n");
 						count2 += 1;
 						if (count2 == 3)
-							System.out.println("You have input incorrect username of password 3 times. Exiting...");
+							System.out.println("You have entered incorrect username or password 3 times. Exiting...\n");
 							break;
 					}
 				}
