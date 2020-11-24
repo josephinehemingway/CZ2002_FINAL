@@ -158,7 +158,7 @@ public class SerializeDB{
 				//Create 3 Schools
 				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-				School sch1 = new School("SCSE", "School of Computer Science and Engineering", arrayCourseList, df.parse("13/11/2020"), df.parse("21/11/2020"));
+				School sch1 = new School("SCSE", "School of Computer Science and Engineering", arrayCourseList, df.parse("13/11/2020"), df.parse("20/11/2020"));
 				School sch2 = new School("SPMS", "School of Physical and Mathematical Sciences", arrayCourseList, df.parse("19/11/2020"), df.parse("24/11/2020"));
 				School sch3 = new School("NBS", "Nanyang Business School", arrayCourseList, df.parse("26/11/2020"), df.parse("28/11/2020"));
 

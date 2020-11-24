@@ -21,6 +21,7 @@ public class StudentUI {
 		StudentListCtrl studentListControl = new StudentListCtrl();
 		CourseListCtrl courseListControl = new CourseListCtrl();
 		CourseIndexListCtrl courseIndexListControl = new CourseIndexListCtrl();
+		SchoolListCtrl schoolListControl= new SchoolListCtrl();
 		StudentCourseListCtrl studentCourseListControl = new StudentCourseListCtrl(studentListControl, courseIndexListControl);
 
 		
