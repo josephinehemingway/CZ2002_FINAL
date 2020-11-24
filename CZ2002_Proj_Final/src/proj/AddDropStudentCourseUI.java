@@ -334,7 +334,7 @@ public class AddDropStudentCourseUI {
 	 */
 	public static void swapCourseIndex(String username, CourseListCtrl courseListControl,
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl,
-			StudentListCtrl studentListControl) {
+			StudentListCtrl studentListControl, UserValidation userValidation) {
 
 		Scanner scan = new Scanner(System.in);
 
@@ -362,7 +362,7 @@ public class AddDropStudentCourseUI {
 			peerPassword = scan.next();
 
 			// validation
-			if (UserValidation.loginStudent(peerUsername, peerPassword, SaltArray, HashedPasswords) == false) {
+			if (userValidation.loginStudent(peerUsername, peerPassword, SaltArray, HashedPasswords) == false) {
 				System.out.println("Incorrect username or password! Please try again. ");
 				count++;
 				if (count == 3) {

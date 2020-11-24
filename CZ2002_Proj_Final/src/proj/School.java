@@ -77,7 +77,7 @@ public class School implements Serializable {
 	}
 
 	public String getSchoolID() {
-		return schoolID;
+		return this.schoolID;
 	}
 
 	public void setSchoolID(String schoolID) {
@@ -85,7 +85,7 @@ public class School implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -93,7 +93,7 @@ public class School implements Serializable {
 	}
 
 	public Date getStartDate() {
-		return startDate;
+		return this.startDate;
 	}
 
 	public void setStartDate(Date startDate) {
@@ -101,7 +101,7 @@ public class School implements Serializable {
 	}
 
 	public Date getEndDate() {
-		return endDate;
+		return this.endDate;
 	}
 
 	public void setEndDate(Date endDate) {

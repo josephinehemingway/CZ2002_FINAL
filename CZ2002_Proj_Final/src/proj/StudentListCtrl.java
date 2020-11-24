@@ -117,7 +117,7 @@ public class StudentListCtrl {
 					String editedUsername;
 					while (true) {
 						try {
-							editedUsername = sc.nextLine();
+							editedUsername = sc.nextLine().toUpperCase();
 							break;
 						} catch (InputMismatchException e) {
 							System.out.print("Please re-enter a valid value: ");

@@ -24,6 +24,7 @@ public class SchoolListCtrl {
 	 * Filename of the school list to be read from SerializeDB
 	 */
 	private String filename = "SchoolList.txt"; 
+
 	/**
 	 * Reads in the list of schools from serializeDB.
 	 */
@@ -153,7 +154,6 @@ public class SchoolListCtrl {
 				System.out.println("\nNew Access Period for: " + sch.getName());
 				System.out.println("Start Date: " + sch.getStartDate());
 				System.out.println("End Date: " + sch.getEndDate());
-				save();
 				return;
 			}
 		}

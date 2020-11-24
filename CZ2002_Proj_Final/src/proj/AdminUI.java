@@ -21,6 +21,7 @@ public class AdminUI {
 			SchoolListCtrl schoolListControl = new SchoolListCtrl();
 			CourseListCtrl courseListControl = new CourseListCtrl();
 			CourseIndexListCtrl courseIndexListControl = new CourseIndexListCtrl();
+			UserValidation userValidation = new UserValidation();
 
 			System.out.println("-------------------------------------------------------------------");
 			System.out.println("\n- ADMIN CONSOLE -");
@@ -90,7 +91,7 @@ public class AdminUI {
 
 				case 2:
 					System.out.println("\nEditing existing student ------------------");
-					EditStudentAdminUI.editStudent(studentListControl);
+					EditStudentAdminUI.editStudent(studentListControl, userValidation);
 					studentListControl.save();
 					break;
 
