@@ -321,13 +321,14 @@ public class CourseIndexListCtrl {
 	
 	public void printIndexesInfoUnderCourse(String courseID) {
 		int count = 0;
-		System.out.println("  Index No   Vacancy	Waiting List Size");
-		System.out.println("========================================");
+		System.out.println("\n============================================");
+		System.out.println("  Index No     Vacancy	  Waiting List Size");
+		System.out.println("============================================");
 		
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getCourseID().equals(courseID)) {
 				CourseIndex s = courseIndexList.get(i);
-				System.out.println("    " + s.getIndexID() + "	" + s.getCurrentVacancy() + "		" + s.getWaitingList().size());
+				System.out.println("    " + s.getIndexID() + "	" + s.getCurrentVacancyOverInitial() + "		" + s.getWaitingList().size());
 			} else {
 				count++;
 			}

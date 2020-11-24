@@ -100,7 +100,9 @@ public class StudentUI {
 				courseIndexListControl.printAllCourseInfo();
 				System.out.println("\nEnter Course ID: ");
 				String courseID = courseListControl.chooseCourse();
-				System.out.println("Enter Course Index: ");
+				courseIndexListControl.printIndexesInfoUnderCourse(courseID);
+				
+				System.out.println("\nEnter Course Index: ");
 				int courseIndexID = courseIndexListControl.chooseCourseIndex(courseID);
 				courseIndexListControl.printVacanciesForCourseIndex(courseID, courseIndexID);
 				studentListControl.save();

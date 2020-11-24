@@ -19,7 +19,9 @@ public class UserValidation {
 	private SchoolListCtrl schoollist;
 	private AdminListCtrl adminlist;
 	
-	
+	/**
+	 * constructor to initilise studentlist, schoollist and adminlist.
+	 */
 	public UserValidation() {
 		StudentListCtrl studentList = new StudentListCtrl();
 		 AdminListCtrl adminList = new AdminListCtrl();
@@ -31,7 +33,7 @@ public class UserValidation {
 	}
 
 	/**
-	 * Static method that is called whenever student logins. The user's input login credentials will be matched with the studentList's student login credentials
+	 * method that is called whenever student logins. The user's input login credentials will be matched with the studentList's student login credentials
 	 * @param username The username that the user has input.
 	 * @param password	The password that the user has input.
 	 * @param SaltArray Returns the byte array that stores salt string of the Student's password 	
@@ -39,11 +41,6 @@ public class UserValidation {
 	 * @return true if login credentials matched with studentList, else value of false will be returned.
 	 * 
 	 */
-	public StudentListCtrl getStudentListCtrl() {
-		return this.studentlist;
-	}
-	
-	
 	public Boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
 		for (int i = 0; i < this.studentlist.getStudentListSize(); i++) {
 			if (this.studentlist.getStudent(i).getUsername().equals(username)
@@ -54,7 +51,7 @@ public class UserValidation {
 		return false;
 	}
 	/**
-	 * Static method that is used to check if the student who logged in is within the access period or not. If he/she is, 
+	 * method that is used to check if the student who logged in is within the access period or not. If he/she is, 
 	 * then the student will be able to access Stars, else acess will be denied, a denied access message will be shown in the console.
 	 * @param username The username of the student who logged in.
 	 * @return true if the accessperiod of the student, determined by the school is within the current time period, else value of false will be returned.
@@ -84,7 +81,7 @@ public class UserValidation {
 	}
 	
 	/**
-	 * Static method that is used to check if the user who logged in is an admin or not. If he/she is, then the admin console will be launched. Else, 
+	 * method that is used to check if the user who logged in is an admin or not. If he/she is, then the admin console will be launched. Else, 
 	 * the movie-goer console will be launched.
 	 * @param username Username of admin who logged in.
 	 * @return true if user is indeed an admin, else returns false.
@@ -98,7 +95,7 @@ public class UserValidation {
 		return false;
 	}
 	/**
-	 * Static method that is used to check if username input is valid
+	 * method that is used to check if username input is valid
 	 * @param username Username of student input
 	 * @param studArray ArrayList of Students
 	 * @return true if username of this student is found in the ArrayList, else returns false.
