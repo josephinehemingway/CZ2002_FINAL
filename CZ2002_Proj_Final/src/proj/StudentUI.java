@@ -120,7 +120,6 @@ public class StudentUI {
 				System.out.println("Student #1: ");
 				System.out.println("Your Username: " + username);
 				System.out.println("Your Matriculation No.: " + studentListControl.getMatricNo(username));
-				studentCourseListControl.printRegisteredCourses(username);
 				if(studentCourseListControl.printRegisteredCourses(username) == false) {
 					System.out.println("No courses available to swap!");
 					break;

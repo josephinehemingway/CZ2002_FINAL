@@ -19,7 +19,7 @@ public class UserValidation {
 	private static AdminListCtrl adminList = new AdminListCtrl();
 	private static SchoolListCtrl schList = new SchoolListCtrl();
 	/**
-	 * Static method that is called whenever student logins. The user's inputted login credentials will be matched with the studentList's student login credentials
+	 * Static method that is called whenever student logins. The user's input login credentials will be matched with the studentList's student login credentials
 	 * @param username The username that the user has input.
 	 * @param password	The password that the user has input.
 	 * @param SaltArray Returns the byte array that stores salt string of the Student's password 	
@@ -55,8 +55,8 @@ public class UserValidation {
 					if (student.getSchool().equals(sch.getSchoolID())) {
 						if(sch.canAccess() == false) {
 							System.out.println("\nUnable to login as current date is not within Student Access period.");
-							schList.getCurrentAccessPeriod(schString);
-							System.out.println("\n");
+//							schList.getCurrentAccessPeriod(schString);
+//							System.out.println("\n");
 						}
 						return sch.canAccess();
 					}
@@ -82,8 +82,8 @@ public class UserValidation {
 		return false;
 	}
 	/**
-	 * Static method that is used to check if username inputted is valid
-	 * @param username Username of student inputted
+	 * Static method that is used to check if username input is valid
+	 * @param username Username of student input
 	 * @param studArray ArrayList of Students
 	 * @return true if username of this student is found in the ArrayList, else returns false.
 	 */

@@ -63,6 +63,7 @@ public class EditAccessPeriodUI {
 		}
 		
 		schoolListControl.editAccessPeriod(schoolID, sd, ed);
+		schoolListControl.save();
 		return;
 	
 	}
