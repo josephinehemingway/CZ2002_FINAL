@@ -175,7 +175,7 @@ public class SchoolListCtrl {
 					break;
 				} else {
 					schoolList.get(j).addCourse(selectedCourse);
-					System.out.println("Course is now in " + schoolList.get(j));
+					System.out.println("Course is now in " + schoolList.get(j).getName());
 				}
 			}
 

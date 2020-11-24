@@ -71,7 +71,7 @@ public class EditStudentAdminUI {
 		
 		//Add Student Nationality
 		System.out.println("Enter Student Nationality");
-		String nationality = sc.nextLine();
+		String nationality = sc.nextLine().toUpperCase();
 		
 		// Add Student School
 		String schoolID = null;
@@ -148,8 +148,9 @@ public class EditStudentAdminUI {
 	//s
 	public static void deleteStudent(StudentListCtrl studentListControl) {
 		System.out.println("Enter username of student to be deleted: ");
-		String student = sc.nextLine();
+		String student = sc.nextLine().toUpperCase();
 		
 		studentListControl.deleteStudent(student);
+		studentListControl.printAllStudentDetails();
 	}
 }

@@ -137,10 +137,9 @@ public class AdminUI {
 					if (counter == 0) {
 						EditCourseIndexUI.addCourseIndex(courseIndexListControl);
 						schoolListControl.printSchoolList();
-						System.out.println("Enter what school the course is under: ");
+						System.out.println("\nEnter what school the course is under: ");
 						String chosenSchoolID = schoolListControl.chooseSchool();
-						EditSchoolUI.addCourseToSchool(schoolListControl, chosenSchoolID, courseListControl,
-								EditCourseIndexUI.courseID);
+						EditSchoolUI.addCourseToSchool(schoolListControl, chosenSchoolID, courseListControl,EditCourseIndexUI.courseID);
 						schoolListControl.save();
 						courseListControl.save();
 						courseIndexListControl.save();

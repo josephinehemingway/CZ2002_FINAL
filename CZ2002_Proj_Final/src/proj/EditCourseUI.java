@@ -27,6 +27,8 @@ public class EditCourseUI extends EditCourseIndexUI{
 
 	public static void editCourse(CourseIndexListCtrl courseIndexListControl, CourseListCtrl courseListControl, int currentCourse) {
 		Scanner scan = new Scanner(System.in);
+		System.out.println("  #	Course ID  Course Name");
+		System.out.println("===============================================");
 		CourseListCtrl.printCourseDetails(currentCourse-1);
 		// Choose course component to edit
 		System.out.println("\nEnter your choice: ");
@@ -123,6 +125,7 @@ public static void deleteCourse(CourseListCtrl courseListControl) {
 			sc = new Scanner(System.in);
 		}
 	}
+	System.out.println("Course deleted successfully!");
 	courseListControl.deleteCourse(choice-1);
 	
 }
