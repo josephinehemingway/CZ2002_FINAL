@@ -4,16 +4,37 @@ package proj;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Admin sub console that contains methods to edit course which inherits EditCourseIndexUI.
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-20
+ */
 public class EditCourseUI extends EditCourseIndexUI{
+	/**
+	 * Contains the course ID
+	 */
 	public static String courseID;
+	/**
+	 * Choice of admin 
+	 */
 	private static int choice;
+	/**
+	 * Scanner to read admin user input
+	 */
 	public static final Scanner sc= new Scanner(System.in);
-	
+	/**
+	 * Subclass constructor that inherits EditCourseIndexUI
+	 */
 	public EditCourseUI() {
 		super();	
 	}
-	
+	/**
+	 * Method that allows the admin to add a new course
+	 * 
+	 * @param courseListControl CourseList control object that holds the course list and their details.
+	 * @return -1 if course already exist, 0 if course was added successfully 
+	 */
 	public static int addCourse(CourseListCtrl courseListControl) {
 		System.out.println("Enter Course Name: ");
 		String newCourseName= sc.nextLine().toUpperCase();
@@ -24,7 +45,13 @@ public class EditCourseUI extends EditCourseIndexUI{
 		return courseListControl.addNewCourse(newCourseName, newCourseID);
 		
 	}
-
+	/**
+	 * Method that allows the admin to edit an existing course
+	 * 
+	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
+	 * @param courseListControl CourseList control object that holds the course list and their details.
+	 * @param currentCourse The course choice that the admin wishes to edit 
+	 */
 	public static void editCourse(CourseIndexListCtrl courseIndexListControl, CourseListCtrl courseListControl, int currentCourse) {
 		Scanner scan = new Scanner(System.in);
 		CourseListCtrl.printCourseDetails(currentCourse-1);
@@ -101,8 +128,11 @@ public class EditCourseUI extends EditCourseIndexUI{
 			System.out.println("Invalid Choice!");
 		}
 	}
-	
-
+/**
+ * Method that allows the admin to delete an existing course
+ * 
+ * @param courseListControl CourseList control object that holds the course list and their details.
+ */
 public static void deleteCourse(CourseListCtrl courseListControl) {
 	System.out.println("Enter the course # you wish to delete: ");
 	Scanner sc = new Scanner(System.in);

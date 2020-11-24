@@ -3,13 +3,34 @@ package proj;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Admin sub console that contains methods to edit student  
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-19
+ */
 public class EditStudentAdminUI {
+	/**
+	 * Contains the student name
+	 */
 	private static String studentName;
+	/**
+	 * Contains the student username
+	 */
 	private static String studentUsername;
+	/**
+	 * Choice of admin
+	 */
 	private static int choice;
+	/**
+	 * Scanner to read admin user input
+	 */
 	public static final Scanner sc = new Scanner(System.in);
-	
+	/**
+	 * Method that allows the admin to add a new student
+	 * 
+	 * @param StudentListControl studentList control object that holds the student list and their details.
+	 */
 	public static void addStudent(StudentListCtrl studentListControl) {
 		//Add Student Name
 		System.out.println("Enter Student Name:");
@@ -93,13 +114,17 @@ public class EditStudentAdminUI {
 				break;
 			}
 		}
-
-		// Add Student into StudentList
 		
 		studentListControl.addStudent(newStudent, username, password, gender, nationality, matricID, email, schoolID);
 		studentListControl.printAllStudentDetails();
 		
 	}
+	/**
+	 * Method that allows admin to edit an existing student
+	 *  
+	 * @param studentListControl StudentList control object that holds the student list and their details.
+	 * @param userValidation Checks the validation of student 
+	 */
 	public static void editStudent(StudentListCtrl studentListControl, UserValidation userValidation) {
 		ArrayList<Student> studList = studentListControl.getStudentList();
 		int count = 0;
@@ -147,7 +172,11 @@ public class EditStudentAdminUI {
 		studentListControl.editStudent(studentUsername, choice);
 
 	}
-	//s
+	/**
+	 * Method that allows the admin to delete an existing student
+	 * 
+	 * @param studentListControl StudentList control object that holds the student list and their details.
+	 */
 	public static void deleteStudent(StudentListCtrl studentListControl) {
 		System.out.println("Enter username of student to be deleted: ");
 		String student = sc.nextLine();
