@@ -23,6 +23,7 @@ public class StudentUI {
 		CourseIndexListCtrl courseIndexListControl = new CourseIndexListCtrl();
 		SchoolListCtrl schoolListControl= new SchoolListCtrl();
 		StudentCourseListCtrl studentCourseListControl = new StudentCourseListCtrl(studentListControl, courseIndexListControl);
+		UserValidation userValidation = new UserValidation();
 
 		
 		int choice = 0;
@@ -126,7 +127,7 @@ public class StudentUI {
 					System.out.println("No courses available to swap!");
 					break;
 				}
-				AddDropStudentCourseUI.swapCourseIndex(username, courseListControl, courseIndexListControl, studentCourseListControl, studentListControl);
+				AddDropStudentCourseUI.swapCourseIndex(username, courseListControl, courseIndexListControl, studentCourseListControl, studentListControl, userValidation);
 				studentCourseListControl.printRegisteredCourses(username);
 				studentListControl.save();
 				break;

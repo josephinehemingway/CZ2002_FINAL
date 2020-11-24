@@ -5,19 +5,20 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class MainUI {
-
 	// LOGIN
 	public static void main(String[] args) throws Exception {
 		int choice = 0;
 		String username;
 		String password;
 		Scanner sc = new Scanner(System.in);
-
+		
+		
 		PasswordHash.PasswordHashed();
 		byte[][] SaltArray = PasswordHash.ReturnByteArray();
 		String[] HashedPasswords = PasswordHash.ReturnHashedPasswordsArray();
 
 		do {
+			UserValidation userValidation= new UserValidation();
 			System.out.println("Welcome to STARS! Enter your choice: ");
 			System.out.println("(1) Log in as Student");
 			System.out.println("(2) Log in as Admin");
@@ -50,8 +51,8 @@ public class MainUI {
 					username = sc.next().toUpperCase();
 					System.out.println("Password: ");
 					password = sc.next();
-					if (UserValidation.loginStudent(username, password, SaltArray, HashedPasswords) == true) {
-						if (UserValidation.studentCanAccess(username) == true) {
+					if (userValidation.loginStudent(username, password, SaltArray, HashedPasswords) == true) {
+						if (userValidation.studentCanAccess(username) == true) {
 							System.out.println("Login successfully!");
 							StudentUI.console(username);
 						}
@@ -75,7 +76,7 @@ public class MainUI {
 					username = sc.next().toUpperCase();
 					System.out.println("Password: ");
 					password = sc.next();
-					if (UserValidation.loginAdmin(username, password) == true) {
+					if (userValidation.loginAdmin(username, password) == true) {
 						System.out.println("Login successfully!");
 						AdminUI.console();
 						break;

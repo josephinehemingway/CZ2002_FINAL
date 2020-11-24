@@ -15,9 +15,21 @@ public class UserValidation {
 	 * schoolList is a school list control object that holds the specific school's access period for students
 	 *  
 	 */
-	private static StudentListCtrl studentList = new StudentListCtrl();
-	private static AdminListCtrl adminList = new AdminListCtrl();
-	private static SchoolListCtrl schList = new SchoolListCtrl();
+	private StudentListCtrl studentlist;
+	private SchoolListCtrl schoollist;
+	private AdminListCtrl adminlist;
+	
+	
+	public UserValidation() {
+		StudentListCtrl studentList = new StudentListCtrl();
+		 AdminListCtrl adminList = new AdminListCtrl();
+		 SchoolListCtrl schList = new SchoolListCtrl();
+		 this.studentlist = studentList;
+		 this.adminlist= adminList;
+		 this.schoollist= schList;
+		
+	}
+
 	/**
 	 * Static method that is called whenever student logins. The user's input login credentials will be matched with the studentList's student login credentials
 	 * @param username The username that the user has input.
@@ -27,10 +39,14 @@ public class UserValidation {
 	 * @return true if login credentials matched with studentList, else value of false will be returned.
 	 * 
 	 */
-	public static Boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
-
-		for (int i = 0; i < studentList.getStudentList().size(); i++) {
-			if (studentList.getStudent(i).getUsername().equals(username)
+	public StudentListCtrl getStudentListCtrl() {
+		return this.studentlist;
+	}
+	
+	
+	public Boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
+		for (int i = 0; i < this.studentlist.getStudentListSize(); i++) {
+			if (this.studentlist.getStudent(i).getUsername().equals(username)
 					&& HashedPasswords[i].equals(PasswordHash.ReturnHashedPassword(password, SaltArray[i]))) {
 				return true;
 			}
@@ -43,14 +59,14 @@ public class UserValidation {
 	 * @param username The username of the student who logged in.
 	 * @return true if the accessperiod of the student, determined by the school is within the current time period, else value of false will be returned.
 	 */
-	public static boolean studentCanAccess(String username) {
+	public boolean studentCanAccess(String username) {
 		String schString = null;
-		for(int i = 0; i < studentList.getStudentList().size(); i++) {
-			Student student = studentList.getStudent(i);
+		for(int i = 0; i < this.studentlist.getStudentList().size(); i++) {
+			Student student = this.studentlist.getStudent(i);
 			
 			if(student.getUsername().equals(username)) {
-				for (int j=0; j<schList.getSchoolList().size(); j++) {
-					School sch = schList.getSchool(j);
+				for (int j=0; j<this.schoollist.getSchoolList().size(); j++) {
+					School sch = this.schoollist.getSchool(j);
 					schString = sch.getSchoolID();
 					if (student.getSchool().equals(sch.getSchoolID())) {
 						if(sch.canAccess() == false) {
@@ -73,9 +89,9 @@ public class UserValidation {
 	 * @param username Username of admin who logged in.
 	 * @return true if user is indeed an admin, else returns false.
 	 */
-	public static boolean loginAdmin(String username, String password) {
-		for(int i = 0; i < adminList.getAdminList().size(); i++) {
-			if(adminList.getAdmin(i).getAdminID().equals(username) && adminList.getAdmin(i).getAdminPW().equals(password)) {
+	public boolean loginAdmin(String username, String password) {
+		for(int i = 0; i < this.adminlist.getAdminList().size(); i++) {
+			if(this.adminlist.getAdmin(i).getAdminID().equals(username) && this.adminlist.getAdmin(i).getAdminPW().equals(password)) {
 				return true;
 			}
 		}
@@ -87,7 +103,7 @@ public class UserValidation {
 	 * @param studArray ArrayList of Students
 	 * @return true if username of this student is found in the ArrayList, else returns false.
 	 */
-	public static boolean checkValidUsername(String username, ArrayList<Student> studArray) {
+	public boolean checkValidUsername(String username, ArrayList<Student> studArray) {
 		
 		for(int i = 0; i < studArray.size(); i++) {
 			if(studArray.get(i).getUsername().equals(username)) {
