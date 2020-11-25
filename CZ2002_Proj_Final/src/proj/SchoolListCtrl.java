@@ -169,6 +169,7 @@ public class SchoolListCtrl {
 				sch.setEndDate(endDate);
 
 				System.out.println("\nAccess Period edited. ");
+				System.out.println("\nEmail notification has been sent to students. ");
 				System.out.println("\nNew Access Period for: " + sch.getName());
 				System.out.println("Start Date: " + sch.getStartDate());
 				System.out.println("End Date: " + sch.getEndDate());

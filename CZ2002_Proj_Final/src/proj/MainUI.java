@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  */
 
-public class MainUI {
+public class MainUI { 
 	/**
 	 * Main entry for student and admin users to log into STARS application
 	 * 

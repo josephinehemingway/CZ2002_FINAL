@@ -20,7 +20,7 @@ import java.util.Date;
  * @since 2020-11-20
  */
 
-public class SerializeDB{
+public class SerializeDB{ 
 	/**
 	 * Reads the data from external file and returns it as an ArrayList.
 	 * 
@@ -79,7 +79,7 @@ public class SerializeDB{
 		
 				// Create 15 students
 				Student s1 = new Student("JOEY0070", "passcode123", "Joey", 'F', "Singaporean", "U1234567E", "JOEY0070@e.ntu.edu.sg", "SCSE");
-				Student s2 = new Student("SHAN0061", "passcode456", "Shannon Wong", 'F', "Singaporean", "U6789237F", "SHAN0061@e.ntu.edu.sg", "SCSE");
+				Student s2 = new Student("SHAN0061", "passcode456", "Shannon Wong", 'F', "Singaporean", "U6789237F", "JHEMINGW001@e.ntu.edu.sg", "SCSE");
 				Student s3 = new Student("JOSE0011", "passcode678", "Josephine", 'F', "Singaporean", "U1254562E", "JOSE0011@e.ntu.edu.sg", "SCSE");
 				Student s4 = new Student("KENN2349", "passcode789", "Kenn", 'M', "Singaporean", "U7834564E", "KENN2349@e.ntu.edu.sg", "NBS");
 				Student s5 = new Student("BENW3284", "passcode890", "Ben", 'M', "Singaporean", "U1435763E", "BENW3284@e.ntu.edu.sg", "NBS");
@@ -138,24 +138,36 @@ public class SerializeDB{
 				Course c12 = new Course("STATISTICS & ANALYSIS","AB1202");
 				Course c13 = new Course("BUSINESS LAW","AB1301");
 				Course c14 = new Course("MARKETING","AB1501");
-				Course c15= new Course("ORGANISATIONAL BEHAVIOUR & DESIGN","AB1601");
+				Course c15 = new Course("ORGANISATIONAL BEHAVIOUR & DESIGN","AB1601");
+				
+				//standalone courses for testing
+				Course cA = new Course("INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING", "CZ1103");
+				Course cB = new Course("CALCULUS II", "MH1101");
+				Course cC = new Course("LEGAL & ETHICAL ISSUES IN SUSTAINABILITY", "AB0301");
 				
 				//Add courses into arrayCourseList
+//				arrayCourseList.add(cA);
+//				arrayCourseList.add(cB);
+//				arrayCourseList.add(cC);
+//				
 				arrayCourseList.add(c1);
 				arrayCourseList.add(c2);
 				arrayCourseList.add(c3);
 				arrayCourseList.add(c4);
 				arrayCourseList.add(c5);
+				
 				arrayCourseList.add(c6);
 				arrayCourseList.add(c7);
 				arrayCourseList.add(c8);
 				arrayCourseList.add(c9);
 				arrayCourseList.add(c10);
+				
 				arrayCourseList.add(c11);
 				arrayCourseList.add(c12);
 				arrayCourseList.add(c13);
 				arrayCourseList.add(c14);
 				arrayCourseList.add(c15);
+				
 				
 				SerializeDB.writeSerializedObject("CourseList.txt", arrayCourseList);
 		
@@ -168,16 +180,21 @@ public class SerializeDB{
 				School sch3 = new School("NBS", "Nanyang Business School", arrayCourseList, df.parse("26/11/2020"), df.parse("28/11/2020"));
 
 				//Add course to respective schools
+//				sch1.addCourse(cA);
 				sch1.addCourse(c1);
 				sch1.addCourse(c2);
 				sch1.addCourse(c3);
 				sch1.addCourse(c4);
 				sch1.addCourse(c5);
+				
+//				sch2.addCourse(cB);
 				sch2.addCourse(c6);
 				sch2.addCourse(c7);
 				sch2.addCourse(c8);
 				sch2.addCourse(c9);
 				sch2.addCourse(c10);
+				
+//				sch3.addCourse(cC);
 				sch3.addCourse(c11);
 				sch3.addCourse(c12);
 				sch3.addCourse(c13);
@@ -240,6 +257,7 @@ public class SerializeDB{
 				for (int j = 5; j < 10; j++) {
 					courseID = arrayCourseList.get(j).getCourseID();
 					courseName = arrayCourseList.get(j).getCourseName();
+					int vacancy[] = {12,1,20,18,25}; 
 					int k = 2000 + (j * 20);
 					for (int i = 0; i < 5; i++) {
 						Collections.shuffle(DateTimeList);
@@ -247,7 +265,7 @@ public class SerializeDB{
 								r.nextInt(maxDay-minDay) + minDay,
 								DateTimeList.get(0), 
 								DateTimeList.get(1), 2011 + k + i);
-						CourseIndex courseid = new CourseIndex (courseName, courseID, 2011 + k + i, schedule_lectut, r.nextInt(maxVac-minVac) + minVac);
+						CourseIndex courseid = new CourseIndex (courseName, courseID, 2011 + k + i, schedule_lectut, vacancy[i]);
 						arrayCourseIndexList.add(courseid);
 					}
 				}
