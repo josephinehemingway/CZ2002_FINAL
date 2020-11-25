@@ -112,6 +112,9 @@ public class CourseIndexListCtrl {
 					if (arrayIndexUnderCourse(courseID).get(i) == indexChoice) {
 						k = false;
 						break;
+					} else if (indexChoice == 0) {
+						System.out.println("Operation cancelled. ");
+						return -1;
 					} else if ((count) == arrayIndexUnderCourse(courseID).size()) {
 						System.out.println("Please re-enter valid index choice:");
 

@@ -124,6 +124,9 @@ public class CourseListCtrl {
 					if (courseList.get(i).getCourseID().equals(courseChoice)) {
 						k = false;
 						break;
+					} else if (courseChoice.equals("0")) {
+						System.out.println("Operation cancelled. ");
+						return "exit";
 					} else if ((count) == courseList.size()) {
 						System.out.println("Please re-enter valid course choice");
 					} else {

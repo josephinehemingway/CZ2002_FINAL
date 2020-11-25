@@ -13,12 +13,16 @@ public class EditAccessPeriodUI {
 	public static DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public static void editAccessPeriod(SchoolListCtrl schoolListControl) throws ParseException {
-		System.out.println("Please Enter School ID: ");
+		System.out.println("Please Enter School ID (enter '0' to exit): ");
 		String schoolID = scan.nextLine().toUpperCase();
 		
 		// checks if school exists, if not it will exit
 		if (schoolListControl.checkSchool(schoolID) == false) {
-			System.out.println("School not found");
+			if (schoolID.equals("0")) {
+				System.out.println("Operation cancelled.\nExiting back to home..");
+				return;
+			}
+			System.out.println("School does not exist.");
 			return;
 		}
 		

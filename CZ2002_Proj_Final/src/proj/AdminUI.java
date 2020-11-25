@@ -242,8 +242,12 @@ public class AdminUI {
 //							courseIndexListControl.printAllCourseInfo();
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							
-							System.out.println("\nEnter Index Number to edit: ");
+							System.out.println("\nEnter Index Number to edit (enter '0' to exit): ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
+							if (indexChoice == -1) {
+								System.out.println("Exiting back to home..\n");
+								break;
+							}
 							EditCourseIndexUI.editCourseIndex(courseIndexListControl, indexChoice);
 							courseIndexListControl.save();
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
@@ -253,8 +257,12 @@ public class AdminUI {
 							int indexChoice1 = 0;
 							System.out.println("\nDeleting Course Index ------------------");
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
-							System.out.println("\nEnter Index Number to delete: ");
+							System.out.println("\nEnter Index Number to delete (enter '0' to exit): ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
+							if (indexChoice == -1) {
+								System.out.println("Exiting back to home..\n");
+								break;
+							}
 							indexChoice1 = indexChoice;
 							EditCourseIndexUI.deleteCourseIndex(courseIndexListControl, indexChoice1);
 							courseIndexListControl.save();

@@ -55,7 +55,7 @@ public class EditCourseUI extends EditCourseIndexUI{
 	public static void editCourse(CourseIndexListCtrl courseIndexListControl, CourseListCtrl courseListControl, int currentCourse) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("===============================================");
-		System.out.println("  #	Course ID    AU	   Course Name");
+		System.out.println("   #	Course ID    AU	   Course Name");
 		System.out.println("===============================================");
 		CourseListCtrl.printCourseDetails(currentCourse-1);
 
