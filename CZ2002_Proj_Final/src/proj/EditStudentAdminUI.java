@@ -34,7 +34,17 @@ public class EditStudentAdminUI {
 	public static void addStudent(StudentListCtrl studentListControl) {
 		//Add Student Name
 		System.out.println("Enter Student Name:");
-		String newStudent = sc.nextLine();
+		String newStudent;
+		while (true) {
+			try {
+				newStudent = sc.nextLine();
+				break;
+			} catch (InputMismatchException e) {
+				System.out.print("Please re-enter a valid name: ");
+				sc.nextLine();
+			}
+		}
+		
 		// Add Student Username
 		String username;
 		while (true) {
@@ -55,10 +65,16 @@ public class EditStudentAdminUI {
 
 		// Add Student Password	
 		System.out.println("Enter Student Password:");
-		String password = sc.nextLine();
-		
-		// Add Student Email
-		String email = username + "@e.ntu.edu.sg";
+		String password;
+		while (true) {
+			try {
+				password = sc.nextLine();
+				break;
+			} catch (InputMismatchException e) {
+				System.out.print("Please re-enter a valid password: ");
+				sc.nextLine();
+			}
+		}
 
 		// Add Student MatricID
 		String matricID;
@@ -77,6 +93,9 @@ public class EditStudentAdminUI {
 				break;
 			}
 		}
+		
+		// Add Student Email
+				String email = username + "@e.ntu.edu.sg";
 
 		// Add Student Gender
 		char gender;
@@ -92,7 +111,7 @@ public class EditStudentAdminUI {
 		
 		//Add Student Nationality
 		System.out.println("Enter Student Nationality");
-		String nationality = sc.nextLine().toUpperCase();
+		String nationality = sc.nextLine();
 		
 		// Add Student School
 		String schoolID = null;
@@ -157,9 +176,8 @@ public class EditStudentAdminUI {
 		System.out.println("5. Edit Email");
 		System.out.println("6. Edit Gender");
 		System.out.println("7. Edit Nationality");
-		System.out.println("8. Edit School");
 		
-		System.out.println("9. Exit");
+		System.out.println("8. Exit");
 
 		while (true) {
 			try {

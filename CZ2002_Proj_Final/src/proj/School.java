@@ -18,10 +18,6 @@ public class School implements Serializable {
 	 */
 	private ArrayList<Course> course;
 	/**
-	 * ArrayList of Students in school
-	 */
-	private ArrayList<Student> student;
-	/**
 	 * School ID of school
 	 */
 	private String schoolID;
@@ -56,7 +52,6 @@ public class School implements Serializable {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.course = new ArrayList<Course>();
-		this.student = new ArrayList<Student>();
 	}
 	/**
 	 * Add course to this school
@@ -95,17 +90,6 @@ public class School implements Serializable {
 			course = new ArrayList<Course>();
 		}
 		return course;
-	}
-	/**
-	 * Gets the ArrayList of Students in this school
-	 * 
-	 * @return This school's ArrayList of Students
-	 */
-	public ArrayList<Student> getStudentList() {
-		if (student == null) {
-			student = new ArrayList<Student>();
-		}
-		return student;
 	}
 	/**
 	 * Sets this school's ArrayList of Courses
