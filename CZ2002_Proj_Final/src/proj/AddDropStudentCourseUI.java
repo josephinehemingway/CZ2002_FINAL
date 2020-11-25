@@ -13,7 +13,7 @@ public class AddDropStudentCourseUI {
 	 * Method in the StudentUI for student to choose and register for courses
 	 * Student will input their course choice and index choices here
 	 * 
-	 * @param username Username of student who logged into the console via mainConsole
+	 * @param username Username of student who logged into the console via MainConsole
 	 * @param courseListControl courseList control object that holds the course list and their details
 	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
 	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
@@ -33,7 +33,7 @@ public class AddDropStudentCourseUI {
 		String course = courseListControl.chooseCourse();
 		
 		if (course.equals("exit")) {
-			System.out.println("Exiting back to home..");
+			System.out.println("Exiting back to Main..");
 			return;
 		}
 
@@ -46,7 +46,7 @@ public class AddDropStudentCourseUI {
 			System.out.println("\nEnter Course Index (enter 0 to exit):");
 			int courseIndex = courseIndexListControl.chooseCourseIndex(course);
 			if (courseIndex == -1) {
-				System.out.println("Exiting back to home..");
+				System.out.println("Exiting back to Main..");
 				return;
 			}
 
@@ -143,7 +143,7 @@ public class AddDropStudentCourseUI {
 	 * Method in the StudentUI for student to drop registered courses
 	 * Student will input their course choice to drop here
 	 * 
-	 * @param username Username of student who logged into the console via mainConsole
+	 * @param username Username of student who logged into the console via MainConsole
 	 * @param courseListControl courseList control object that holds the course list and their details
 	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
 	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
@@ -159,7 +159,7 @@ public class AddDropStudentCourseUI {
 		System.out.println("Enter Course ID to drop (enter '0' to exit): ");
 		String course = studentCourseListControl.chooseCourse(username);
 		if (course.equals("exit")) {
-			System.out.println("Exiting back to home..");
+			System.out.println("Exiting back to Main..");
 			return;
 		}
 		
@@ -247,7 +247,7 @@ public class AddDropStudentCourseUI {
 	 * Method for students to change courseIndex with another index
 	 * Student will input choice of course and choice of new index here
 	 * 
-	 * @param username Username of student who logged into the console via mainConsole
+	 * @param username Username of student who logged into the console via MainConsole
 	 * @param courseListControl courseList control object that holds the course list and their details
 	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
 	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details
@@ -263,7 +263,7 @@ public class AddDropStudentCourseUI {
 		System.out.println("Enter choice of course (enter '0' to exit): ");
 		String course = studentCourseListControl.chooseCourse(username);
 		if (course.equals("exit")) {
-			System.out.println("Exiting back to home..");
+			System.out.println("Exiting back to Main..");
 			return;
 		}
 		int initialIndex = studentCourseListControl.getIndexOfCourse(username, course);
@@ -275,7 +275,7 @@ public class AddDropStudentCourseUI {
 		System.out.println("Enter new Index No. of course (enter '0' to exit): ");
 		int courseIndex = courseIndexListControl.chooseCourseIndex(course);
 		if (courseIndex == -1) {
-			System.out.println("Exiting back to home..");
+			System.out.println("Exiting back to Main..");
 			return;
 		}
 
@@ -344,7 +344,7 @@ public class AddDropStudentCourseUI {
 	 * Method in the StudentUI for student to swap their courseIndex with a peer's courseIndex
 	 * Student will input their course choice and peer details here
 	 * 
-	 * @param username Username of student who logged into the console via mainConsole
+	 * @param username Username of student who logged into the console via MainConsole
 	 * @param courseListControl  courseList control object that holds the course list and their details
 	 * @param courseIndexListControl courseIndexList control object that holds the courseIndex list and their details
 	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
@@ -364,7 +364,7 @@ public class AddDropStudentCourseUI {
 		
 		String course = studentCourseListControl.chooseCourse(username);
 		if (course.equals("exit")) {
-			System.out.println("Exiting back to home..");
+			System.out.println("Exiting back to Main..");
 			return;
 		}
 		

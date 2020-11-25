@@ -36,7 +36,7 @@ public class EditAccessPeriodUI {
 		// checks if school exists, if not it will exit
 		if (schoolListControl.checkSchool(schoolID) == false) {
 			if (schoolID.equals("0")) {
-				System.out.println("Operation cancelled.\nExiting back to home..");
+				System.out.println("Operation cancelled.\nExiting back to Main..");
 				return;
 			}
 			System.out.println("School does not exist.");
@@ -54,7 +54,7 @@ public class EditAccessPeriodUI {
 				System.out.println("\nPlease Enter Start Date in the format dd/MM/yyyy (enter '0' to exit): ");
 				String stringsd = scan.nextLine();
 				if (stringsd.equals("0")) {
-					System.out.println("Operation cancelled.\nExiting back to home..");
+					System.out.println("Operation cancelled.\nExiting back to Main..");
 					return;
 				}
 				sd = df.parse(stringsd);
@@ -71,7 +71,7 @@ public class EditAccessPeriodUI {
 					System.out.println("Please Enter End Date in the format dd/MM/yyyy: ");
 					String stringed = scan.nextLine();
 					if (stringed.equals("0")) {
-						System.out.println("Operation cancelled.\nExiting back to home..");
+						System.out.println("Operation cancelled.\nExiting back to Main..");
 						return;
 					}
 					ed = df.parse(stringed);

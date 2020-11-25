@@ -319,8 +319,9 @@ public class CourseIndexListCtrl {
 			return;
 		} else {
 			System.out.println("\nAll General Course Information ------------------");
-			System.out.println("\n   CourseID   CourseName  	 			      Index    Vacancy	AU");
-			System.out.println("===============================================================================");
+			System.out.println("====================================================================================");
+			System.out.println("  CourseID      CourseName  	 			      Index    Vacancy	AU");
+			System.out.println("====================================================================================");
 			//max coursename length = 45
 			int maxCourseLength = 45;
 			for (CourseIndex i : this.courseIndexList) {

@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
- * Admin main console for non-student users
+ * Admin Main console for non-student users
  * AdminUI contains one single method which allows admin to edit STARS functions
  * @author DSAI/1 Group 5
  * @since 2020-11-19 
@@ -252,7 +252,7 @@ public class AdminUI {
 							System.out.println("\nEnter Index Number to edit (enter '0' to exit): ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
 							if (indexChoice == -1) {
-								System.out.println("Exiting back to home..\n");
+								System.out.println("Exiting back to Main..\n");
 								break;
 							}
 							EditCourseIndexUI.editCourseIndex(courseIndexListControl, indexChoice);
@@ -267,7 +267,7 @@ public class AdminUI {
 							System.out.println("\nEnter Index Number to delete (enter '0' to exit): ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
 							if (indexChoice == -1) {
-								System.out.println("Exiting back to home..\n");
+								System.out.println("Exiting back to Main..\n");
 								break;
 							}
 							indexChoice1 = indexChoice;

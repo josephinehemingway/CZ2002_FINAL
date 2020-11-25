@@ -3,18 +3,19 @@ package proj;
 import java.io.Serializable;
 import java.util.Date;
 /**
+ * Lesson Entity Class
  * 
- * @author Joey
+ * @author DSAI/1 Group 5 
  * @version 1.0
  * @since 2020-11-19
  */
 public class Lesson implements Serializable{
 	/**
-	 *Start time of lesson object
+	 *Start time of lesson object.
 	 */
 	private Date starttime;
 	/**
-	 * End time of lesson object
+	 * End time of lesson object.
 	 */
 	private Date endtime;
 	/**
@@ -30,7 +31,7 @@ public class Lesson implements Serializable{
 	 */
 	private int day;
 	/**
-	 * Constructor to create new lesson object 
+	 * Constructor to create new lesson object
 	 * 
 	 * @param day The day the lesson is held.
 	 * @param start The start time of the lesson.
@@ -94,7 +95,7 @@ public class Lesson implements Serializable{
 		this.venue = venue;
 	}
 	/**
-	 * Gets the indexID the courseIndex the lesson belongs to.
+	 * Gets the indexID of the courseIndex the lesson belongs to.
 	 * 
 	 * @return The indexID of the courseIndex the lesson belongs to.
 	 */
