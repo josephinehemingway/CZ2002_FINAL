@@ -20,7 +20,7 @@ public class UserValidation {
 	private AdminListCtrl adminlist;
 	
 	/**
-	 * constructor to initilise studentlist, schoollist and adminlist.
+	 * constructor to initialise studentlist, schoollist and adminlist.
 	 */
 	public UserValidation() {
 		StudentListCtrl studentList = new StudentListCtrl();
