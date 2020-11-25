@@ -45,7 +45,7 @@ public Schedule ( int labday, int lectday, int tutday, Date _lab, Date _lect, Da
 	this.startlab= _lab;
 	this.startlect= _lect;
 	this.starttut= _tut;
-	
+
 	endlab= new Date( startlab.getTime() + 7200000);
 	endlect= new Date( startlect.getTime()+ 3600000);
 	endtut= new Date( starttut.getTime()+  3600000);
@@ -268,10 +268,11 @@ public String printInfo() {
 		break;
 	}
 	
-	return "ClassType	Day   	   Time	 	Venue   " + "\n====================================================" +
-		"\nLab		" + strlabday + "	" + df.format(startlab) + "-" + df.format(endlab) + "	" + venuelab + "\n" +
-			"\nLec		" + strlectday + "	" + df.format(startlect) + "-" + df.format(endlect) + "	"  + venuelec + "\n" +
-			"\nTut		" + strtutday + "	" + df.format(starttut) + "-" + df.format(endtut) + "	" + venuetut + "\n" ;
+	return "====================================================\n" + "  ClassType	Day   	   Time	 	Venue   " + "\n====================================================" +
+		"\n     Lab	" + strlabday + "	" + df.format(startlab) + "-" + df.format(endlab) + "	" + venuelab + "\n" +
+			"\n     Lec	" + strlectday + "	" + df.format(startlect) + "-" + df.format(endlect) + "	"  + venuelec + "\n" +
+			"\n     Tut	" + strtutday + "	" + df.format(starttut) + "-" + df.format(endtut) + "	" + venuetut + "\n" 
+			+ "====================================================";
 }
 
 

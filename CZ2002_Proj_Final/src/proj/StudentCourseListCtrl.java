@@ -123,25 +123,31 @@ public class StudentCourseListCtrl {
 			Student stud = studentListControl.getStudent(i);
 			
 			if (stud.getUsername().equals(username)) {
-				System.out.println("\nRegistered courses for "+ username + ": \n");
-				System.out.println("   CourseID	Index	  CourseName			   ");
-				System.out.println("===================================================================");
+				System.out.println("\nRegistered courses for "+ username + ":");
+				System.out.println("=======================================================================");
+				System.out.println("   CourseID	Index	  AU	CourseName			   ");
+				System.out.println("=======================================================================");
 				
 				ArrayList<CourseIndex> registeredArr = stud.getCourseIndexArr();
 				
 				if (!(registeredArr.isEmpty())) {
 					for (int j = 0; j < registeredArr.size(); j++) {
 						CourseIndex course = registeredArr.get(j);
-						System.out.println("    " + registeredArr.get(j).getCourseID()
-								+ "	" + course.getIndexID()
-								+ "	  " + course.getCourseName());
+						int maxCourseLength = 45;
+					
+						System.out.println("    " + registeredArr.get(j).getCourseID() + "	" + course.getIndexID() 
+						+ "	  " + CourseIndex.ACADEMIC_UNITS + "     " + course.getCourseName() );
+					
 					}
+					System.out.println("=======================================================================");
+					System.out.println("\nYour current AU for this Semester is: " + stud.getAcadunits());
 					return true;
 				} else {
 					System.out.println("No course registered for this Student");
 					return false;
 				}
 			}
+			
 		}return false;
 	}
 	/**
@@ -260,8 +266,8 @@ public class StudentCourseListCtrl {
 				sortLesson(friList);
 				
 				int index = 0;
-				System.out.println("===================================================================");
-				System.out.println("\nTimetable for this Semester");
+				System.out.println("=======================================================================");
+				System.out.println("\nTimetable for Semester 1 AY20/21");
 				System.out.println("--------------------------------------------------------");
 				
 				System.out.println("  Day		Time		Course		Venue");
@@ -383,7 +389,6 @@ public class StudentCourseListCtrl {
 					return;
 				} else {
 					System.out.println("\nNo Timetable available.");
-					System.out.println("Your current AU for this Semester is: " + stud.getAcadunits());
 					return;
 				}
 			}
@@ -465,6 +470,9 @@ public class StudentCourseListCtrl {
 							if (registeredCourseList.get(j).getCourseID().equals(courseChoice)) {
 								k = false;
 								break;
+							} else if (courseChoice.equals("0")) {
+								System.out.println("Operation cancelled. ");
+								return "exit";
 							} else if ((count) == registeredCourseList.size()) {
 								System.out.println("Please re-enter valid course choice");
 							} else {

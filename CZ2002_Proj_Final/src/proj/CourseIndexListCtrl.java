@@ -112,6 +112,9 @@ public class CourseIndexListCtrl {
 					if (arrayIndexUnderCourse(courseID).get(i) == indexChoice) {
 						k = false;
 						break;
+					} else if (indexChoice == 0) {
+						System.out.println("Operation cancelled. ");
+						return -1;
 					} else if ((count) == arrayIndexUnderCourse(courseID).size()) {
 						System.out.println("Please re-enter valid index choice:");
 
@@ -304,33 +307,8 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-	
 	/**
-	 * Prints all the course Indexes details in courseIndexList.
-	 */
-	public void printAllCourseGeneralInfo() {
-		if (courseIndexList == null) {
-			courseIndexList = new ArrayList<CourseIndex>();
-		} else if (courseIndexList.isEmpty() == true) {
-			System.out.println("There is no course index for " + courseID);
-			return;
-		}
-
-		else {
-			for (CourseIndex i : this.courseIndexList) {
-				System.out.println();
-				System.out.println(
-						"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-				System.out.println("CourseName: " + i.getCourseName());
-				System.out.println("CourseID: " + i.getCourseID());
-				System.out.println("Course Index: " + i.getIndexID());
-				System.out.println("Index Vacancies: " + i.getCurrentVacancyOverInitial());
-			}
-
-		}
-	}
-	/**
-	 * Prints all the courseIndexes in courseIndexList 
+	 * Prints all course Indexes in courseIndex list as well as their ID, name, index, Vacancy and number of AUs.
 	 */
 	public void printAllCourseInfo() {
 		if (courseIndexList == null) {
@@ -341,7 +319,7 @@ public class CourseIndexListCtrl {
 			return;
 		} else {
 			System.out.println("\nAll General Course Information ------------------");
-			System.out.println("\n   CourseID   CourseName  	 			      Index    Vacancy ");
+			System.out.println("\n   CourseID   CourseName  	 			      Index    Vacancy	AU");
 			System.out.println("===============================================================================");
 			//max coursename length = 45
 			int maxCourseLength = 45;
@@ -351,7 +329,8 @@ public class CourseIndexListCtrl {
 			    {
 			    	   System.out.print(" ");
 			    }
-			    System.out.print(i.getIndexID()+ "	" + i.getCurrentVacancyOverInitial() +"\n");
+			    System.out.print(i.getIndexID()+ "	" + i.getCurrentVacancyOverInitial()
+			    							   + "	" + CourseIndex.ACADEMIC_UNITS +"\n");
 			}
 		}
 	}

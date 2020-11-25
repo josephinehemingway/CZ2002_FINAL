@@ -45,7 +45,7 @@ public class StudentListCtrl {
 	}
 	/**
 	 * Gets a student from this control class's studentList indexed by the parameter i
-	 * @param i index of the movie in the studentList
+	 * @param i index of the student in the studentList
 	 * @return	a Student object
 	 */
 	public Student getStudent(int i) {
@@ -250,12 +250,12 @@ public class StudentListCtrl {
 	 * @param s The username of the student to be deleted
 	 */
 	public void deleteStudent(String s) {
-		System.out.println("Initial size of Student List:  " + studentList.size());
+		System.out.println("Initial total number of students:  " + studentList.size());
 		for(int i = 0; i < studentList.size(); i++) {
 			if(studentList.get(i).getUsername().equals(s)) {
 				studentList.remove(i);
 				System.out.println("Removed successfully! \n");
-				System.out.println("Updated size of Student List: " + studentList.size());
+				System.out.println("Updated total number of students: " + studentList.size());
 				return;
 			}
 		}
@@ -268,7 +268,7 @@ public class StudentListCtrl {
 	 */
 	public void printStudentListByUsername(String username) {
 		System.out.println(
-				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+				"--------------------------------------------------\n");
 		for (int i = 0; i < studentList.size() ; i++) {
 			Student stud = studentList.get(i);
 			
@@ -280,7 +280,7 @@ public class StudentListCtrl {
 				System.out.println("Gender: " + stud.getGender());
 				System.out.println("Nationality: "+ stud.getNationality());
 				System.out.println("School: "+ stud.getSchool());
-
+				System.out.println("--------------------------------------------------");
 				return;
 				
 			}
@@ -315,9 +315,10 @@ public class StudentListCtrl {
 	
 	/**
 	 * Prints details of all students in the studentList
+	 * Calls print student by index recursively
 	 */
 	public void printAllStudentDetails() {
-		System.out.println("\nAll student details ------------------ ");
+		System.out.println("\nAll student details");
 		System.out.println("\n=============================================================================================");
 		System.out.println(" Username	Student Name       Gender	Matric No	School		Nationality");
 		System.out.println("=============================================================================================");
@@ -368,6 +369,7 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		return null;
 	}
+	
 	/**
 	 * Gets the name of the student from the studentList ArrayList with username that is inputted
 	 * 
@@ -386,6 +388,7 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		return null;
 	}
+	
 	/**
 	 * When called, save the current edited studentList object to SerializeDB
 	 */
