@@ -286,11 +286,11 @@ public class StudentListCtrl {
 			if (stud.getUsername().equals(username)){
 				System.out.println("Username: " + username);
 				System.out.println("Student Name: "+ stud.getName());
-//				System.out.println("Matriculation ID: "+ stud.getMatricID());
-//				System.out.println("Email: "+ stud.getEmail());
+				System.out.println("Matriculation ID: "+ stud.getMatricID());
+				System.out.println("Email: "+ stud.getEmail());
 				System.out.println("Gender: " + stud.getGender());
 				System.out.println("Nationality: "+ stud.getNationality());
-//				System.out.println("School: "+ stud.getSchool());
+				System.out.println("School: "+ stud.getSchool());
 
 				return;
 				
