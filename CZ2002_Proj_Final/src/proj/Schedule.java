@@ -45,7 +45,7 @@ public Schedule ( int labday, int lectday, int tutday, Date _lab, Date _lect, Da
 	this.startlab= _lab;
 	this.startlect= _lect;
 	this.starttut= _tut;
-	
+
 	endlab= new Date( startlab.getTime() + 7200000);
 	endlect= new Date( startlect.getTime()+ 3600000);
 	endtut= new Date( starttut.getTime()+  3600000);
