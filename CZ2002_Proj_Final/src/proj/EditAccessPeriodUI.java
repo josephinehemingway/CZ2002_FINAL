@@ -34,8 +34,12 @@ public class EditAccessPeriodUI {
 		Date sd, ed;
 		while(true) {
 			try {
-				System.out.println("\nPlease Enter Start Date in the format dd/MM/yyyy: ");
+				System.out.println("\nPlease Enter Start Date in the format dd/MM/yyyy (enter '0' to exit): ");
 				String stringsd = scan.nextLine();
+				if (stringsd.equals("0")) {
+					System.out.println("Operation cancelled.\nExiting back to home..");
+					return;
+				}
 				sd = df.parse(stringsd);
 				break;
 			}
@@ -49,6 +53,10 @@ public class EditAccessPeriodUI {
 				while (true) {
 					System.out.println("Please Enter End Date in the format dd/MM/yyyy: ");
 					String stringed = scan.nextLine();
+					if (stringed.equals("0")) {
+						System.out.println("Operation cancelled.\nExiting back to home..");
+						return;
+					}
 					ed = df.parse(stringed);
 					
 					// check if end date is later than start date
