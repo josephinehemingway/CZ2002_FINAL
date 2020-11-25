@@ -157,7 +157,7 @@ public class SchoolListCtrl {
 	 *                  edited.
 	 * @param startDate The start Date of the new AccessPeriod.
 	 * @param endDate   The end Date of the new AccessPeriod.
-	 * @throws ParseException
+	 * @throws ParseException Signals that an error has been reached unexpectedly while parsing.
 	 */
 	public void editAccessPeriod(String schoolID, Date startDate, Date endDate) throws ParseException {
 

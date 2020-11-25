@@ -51,7 +51,7 @@ public class StudentCourseListCtrl {
 	 * @param username The username of the student whose CourseIndex ArrayList we are adding the courseIndex object to
 	 * @param courseId The courseID of the courseIndex object
 	 * @param courseIndex The courseIndex of of the courseIndex Object
-	 * @param courseIndexList control object that holds list of CourseIndexes and their details
+	 * @param courseIndexListControl control object that holds list of CourseIndexes and their details
 	 */
 	public void addStudentCourse(String username, String courseId, int courseIndex, 
 			CourseIndexListCtrl courseIndexListControl) {

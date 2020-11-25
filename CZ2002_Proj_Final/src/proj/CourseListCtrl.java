@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Represents the control class for courseList which holds an array list of Courses.
  * @author DSAI/1 Group 5
  * @version 1.0
- * @vsince 2020-11-19
+ * @since 2020-11-19
  *
  */
 public class CourseListCtrl {

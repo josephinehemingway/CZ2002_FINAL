@@ -33,6 +33,7 @@ public class PasswordHash {
 	/**
 	 * Static method that is called to generate an ordered list of the Student's
 	 * Usernames and their Corresponding hashed passwords in a text file
+	 * @throws Exception Signals that an error has been reached unexpectedly while parsing.
 	 */
 	public static void PasswordHashed() throws Exception {
 		// LOGIN
@@ -119,7 +120,7 @@ public class PasswordHash {
 	/**
 	 * Static method that derives and prints a Student's ID and their corresponding hashed password
 	 * @param StudentID The StudentID of the student which the user wishes to Hash their corresponding password
-	 * @param password The password of the student which the user wishes to Hash 
+	 * @param Password The password of the student which the user wishes to Hash 
 	 * @param salt The random salt string that is used to generate the hashed password
 	 * @return Finaloutput It is a string of a Student's ID and their corresponding hashed password
 	 */
@@ -145,7 +146,7 @@ public class PasswordHash {
 //---------------------------------------------------------------
 	/**
 	 * Static method that derives the Hashed version of the given password input
-	 * @param password The password of the student which the user wishes to Hash 
+	 * @param Password The password of the student which the user wishes to Hash 
 	 * @param salt The random salt string that is used to generate the hashed password
 	 * @return Finaloutput It is the Hashed version of a given password
 	 */

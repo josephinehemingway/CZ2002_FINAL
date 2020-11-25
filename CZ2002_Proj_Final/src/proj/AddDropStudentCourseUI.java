@@ -350,6 +350,7 @@ public class AddDropStudentCourseUI {
 	 * @param studentCourseListControl studentCourseList control object that holds the student's registered courses details 
 	 * and the list of students in each course 
 	 * @param studentListControl studentList control object that holds the student list and their details
+	 * @param userValidation uservalidation object that calls method to verify credentials
 	 */
 	public static void swapCourseIndex(String username, CourseListCtrl courseListControl,
 			CourseIndexListCtrl courseIndexListControl, StudentCourseListCtrl studentCourseListControl,

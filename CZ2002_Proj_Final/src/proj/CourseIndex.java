@@ -228,7 +228,6 @@ public class CourseIndex extends Course implements Serializable {
 	}
 	/**
 	 * Returns the string representation of course and its details
-	 * @Override
 	 */
 	public String toString() {
 		return "CourseID: " + courseID + "\nIndexID: " + indexID + "\nNumberofVacancies: " + numOfVacancies + "\n"

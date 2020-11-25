@@ -39,7 +39,7 @@ public class Admin implements Serializable {
 	
 	/**
 	 * Gets admin username of this admin.
-	 * @return
+	 * @return admin username of this admin.
 	 */
 	public String getAdminID() {
 		return adminID;
@@ -47,7 +47,7 @@ public class Admin implements Serializable {
 
 	/**
 	 * Gets admin password of this admin.
-	 * @return
+	 * @return Admin password of this admin.
 	 */
 	public String getAdminPW() {
 		return adminPW;
@@ -55,7 +55,7 @@ public class Admin implements Serializable {
 	
 	/**
 	 * Gets admin email of this admin.
-	 * @return
+	 * @return Email of this admin.
 	 */
 	public String getAdminEmail() {
 		return adminEmail;
