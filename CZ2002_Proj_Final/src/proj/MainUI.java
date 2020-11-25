@@ -83,9 +83,10 @@ public class MainUI {
 					} else {
 						System.out.println("Incorrect username or password!\n");
 						count2 += 1;
-						if (count2 == 3)
+						if (count2 == 3) {
 							System.out.println("You have entered incorrect username or password 3 times. Exiting...\n");
 							break;
+						}
 					}
 				}
 				break;
