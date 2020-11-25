@@ -4,22 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Represents the control for courseIndexList which holds an ArrayList of CourseIndexes
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 20-20-11-25
+ */
 public class CourseIndexListCtrl {
-// holds arrayList of course indexes
+	/**
+	 * ArrayList that stores list of Students
+	 */
 	private ArrayList<CourseIndex> courseIndexList;
-	// file name of index list to be read from fileIO
-
-	// course code of this courseIndexList
+	/**
+	 * CourseID of a CourseIndex
+	 */
 	private String courseID;
-
+	/**
+	 * Filename of courseIndex list to be read from SerializeDB
+	 */
 	private String filename = "CourseIndexList.txt";
-
-	// scanner object for reading user input
+	/**
+	 * Scanner to read user's input
+	 */
 	public static final Scanner sc = new Scanner(System.in);
-
-	// Reads in list of course indexes from fileIO.
-
+	/**
+	 * Reads in the list of courseIndexes from SerializeDB
+	 */
 	@SuppressWarnings("unchecked")
 	public CourseIndexListCtrl() {
 		try {
@@ -28,26 +38,31 @@ public class CourseIndexListCtrl {
 			System.out.println("Exception >>" + e.getMessage());
 		}
 	}
-	
-	
+	/**
+	 * Gets the courseIndex list stored in this CourseIndexListControl class
+	 * 
+	 * @return ArrayList of courseIndexes
+	 */
 	public ArrayList<CourseIndex> getCourseIndexList() {
 		if (courseIndexList == null) {
 			courseIndexList = new ArrayList<CourseIndex>();
 		}
 		return courseIndexList;
 	}
-	
-	public ArrayList<CourseIndex> getStaticCourseIndexList() {
-		if (courseIndexList == null) {
-			courseIndexList = new ArrayList<CourseIndex>();
-		}
-		return courseIndexList;
-	}
-	
+	/**
+	 * Gets the number of courseIndexes from this control class's list of courseIndexes
+	 * @return number of course indexes in the courseIndexList
+	 */
 	public int getCourseIndexSize() {
 		return courseIndexList.size();
 	}
-	
+	/**
+	 * Gets the coursename associated with the course Index by using its IndexID
+	 * 
+	 * @param index indexID of the courseIndex
+	 * 
+	 * @return The Course Name of the course Index
+	 */
 	public String getCourseNameFromIndex(int index) {
 		for(CourseIndex c : courseIndexList) {
 			if (c.getIndexID()==index) {
@@ -56,7 +71,13 @@ public class CourseIndexListCtrl {
 		}
 		return null;
 	}
-	
+	/**
+	 * Gets an arraylist of course Indexes registered under a certain Course
+	 * 
+	 * @param courseID CourseID of the course
+	 * 
+	 * @return Course Indexes available in the current course
+	 */
 	public ArrayList<Integer> arrayIndexUnderCourse(String courseID) {
 		int count = 0;
 		ArrayList<Integer> indexUnderCourse = new ArrayList<Integer>();
@@ -72,8 +93,13 @@ public class CourseIndexListCtrl {
 		}
 		return indexUnderCourse;
 	}
-
-	
+	/**
+	 * Allows users to choose a valid courseIndex to register/edit
+	 * 
+	 * @param courseID The CourseID of the course to which the indexes are being chosen.
+	 * 
+	 * @return A valid IndexId of CourseIndex.
+	 */
 	public int chooseCourseIndex(String courseID) {
 		int indexChoice = 0;
 		boolean k = true;
@@ -101,7 +127,11 @@ public class CourseIndexListCtrl {
 
 		return indexChoice;
 	}
-
+	/**
+	 * Checks if the courseIndex chosen is within the courseIndexList.
+	 * 
+	 * @return IndexID of a valid course Index.
+	 */
 	public int checkCourseIndex() {
 		int indexChoice1 = 0;
 		boolean k = true;
@@ -127,7 +157,16 @@ public class CourseIndexListCtrl {
 
 		return indexChoice1;
 	}
-	
+	/**
+	 * Allows admin user to add new courseIndex under a certain Course.
+	 * @param courseName CourseName of the course we are trying to add indexes to.
+	 * @param courseID CourseId ot the course.
+	 * @param indexID The new Index of the course we are trying to add.
+	 * @param schedule The schedule of the new Index.
+	 * @param numOfVacancies The number of vacancy of the new Index.
+	 * 
+	 * @return 1 if the new Index is successfully added, 0 if the index already exist.
+	 */
 	public int addNewCourseIndex(String courseName, String courseID, int indexID, Schedule schedule,
 			int numOfVacancies) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
@@ -140,7 +179,12 @@ public class CourseIndexListCtrl {
 		courseIndexList.add(c1);
 		return 1;
 	}
-
+	/**
+	 * Allows admin to edit the details of a courseIndex.
+	 * 
+	 * @param choice 1 = editing indexID 2= editing Vacancy
+	 * @param indexIdChoice The index which the admin wishes to edit.
+	 */
 	public void editCourseIndex(int choice, int indexIdChoice) {
 		switch (choice) {
 		case 1:
@@ -180,7 +224,11 @@ public class CourseIndexListCtrl {
 		}
 		System.out.println("Changes Made!");
 	}
-	
+	/**
+	 * Allows admin user to edit CourseName of course Indexes stored in the courseIndexList.
+	 * @param editedCourseName The new CourseName
+	 * @param initialCourseName The initial courseName we wish to change.
+	 */
 	public void editCourseName(String editedCourseName, String initialCourseName) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getCourseName().equals(initialCourseName)) {
@@ -188,7 +236,11 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-
+	/**
+	 *Allows admin user to edit CourseID of course Indexes stored in the courseIndexList.
+	 * @param editedCourseID The new courseID.
+	 * @param initialCourseID the initial courseID we wish to edit.
+	 */
 	public void editCourseID(String editedCourseID, String initialCourseID) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getCourseID().equals(initialCourseID)) {
@@ -196,7 +248,10 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-	
+	/**
+	 * Allows admin user to delete a courseIndex from the courseIndexList.
+	 * @param index The index of the courseIndex object we wish to remove.
+	 */
 	public void deleteCourseIndex(int index) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getIndexID() == index) {
@@ -207,7 +262,11 @@ public class CourseIndexListCtrl {
 		}
 		System.out.println("Course Index not found.");
 	}
-
+	/**
+	 * Method that subtracts vacancy of a course Index when called.
+	 * @param courseID The courseId of the course Index.
+	 * @param courseIndexID The courseIndexID of the course Index.
+	 */
 	public void subtractVacancy(String courseID, int courseIndexID) {
 		if (courseIndexList.isEmpty() == true) {
 			System.out.println("There is no index for " + courseID + ".");
@@ -224,7 +283,11 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-
+	/**
+	 * Method to add vacancies to a courseIndex object in courseIndexList.
+	 * @param courseID The courseId of the courseIndex.
+	 * @param courseIndexID The courseIndexID of the courseIndex.
+	 */
 	public void addToVacancy(String courseID, int courseIndexID) {
 		if (courseIndexList.isEmpty() == true) {
 			System.out.println("There is no index for " + courseID + ".");
@@ -242,7 +305,9 @@ public class CourseIndexListCtrl {
 		}
 	}
 	
-
+	/**
+	 * Prints all the course Indexes details in courseIndexList.
+	 */
 	public void printAllCourseGeneralInfo() {
 		if (courseIndexList == null) {
 			courseIndexList = new ArrayList<CourseIndex>();
@@ -264,6 +329,9 @@ public class CourseIndexListCtrl {
 
 		}
 	}
+	/**
+	 * Prints all the courseIndexes in courseIndexList 
+	 */
 	public void printAllCourseInfo() {
 		if (courseIndexList == null) {
 			courseIndexList = new ArrayList<CourseIndex>();
@@ -287,7 +355,12 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-	
+	/**
+	 * Prints the information of a CourseIndex object
+	 * 
+	 * @param courseID The courseID of the courseIndex.
+	 * @param courseIndexID THe indexID of the courseIndex.
+	 */
 	public void printCourseIndexInfo(String courseID, int courseIndexID) {
 		if (courseIndexList.isEmpty() == true) {
 			System.out.println("There is no course index for " + courseID + ".");
@@ -301,14 +374,17 @@ public class CourseIndexListCtrl {
 					System.out.println("CourseID: " + courseID);
 					System.out.println("Course Index: " + courseIndexID);
 					System.out.println("Index Schedule: \n" + c.getSchedule());
-					System.out.println("Index Vacancies: " + c.getCurrentVacancyOverInitial()); // was getNumOfVacancies
-//					System.out.println("Students Enrolled in Index: " + c.getStudent());
-//					System.out.println("Students on waitlist for Index: " + c.getWaitingList());
-				}
+					System.out.println("Index Vacancies: " + c.getCurrentVacancyOverInitial()); 
 			}
 		}
+			}
 	}
-
+	/**
+	 * Prints the vacancies available in a courseIndex object.
+	 * 
+	 * @param courseID The courseId of the courseIndex.
+	 * @param courseIndexID The indexID of the courseIndex.
+	 */
 	public void printVacanciesForCourseIndex(String courseID, int courseIndexID) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getIndexID() == courseIndexID) {
@@ -318,7 +394,11 @@ public class CourseIndexListCtrl {
 		}
 
 	}
-	
+	/**
+	 * Prints all the courseIndexes and their information under a certain course.
+	 * 
+	 * @param courseID The courseId of the course.
+	 */
 	public void printIndexesInfoUnderCourse(String courseID) {
 		int count = 0;
 		System.out.println("\n============================================");
@@ -337,7 +417,11 @@ public class CourseIndexListCtrl {
 			System.out.println("There are no indexes in this course");
 		}
 	}
-	
+	/**
+	 * Prints ArrayList of students registered under a courseIndex from its ArrayList of Students.
+	 * 
+	 * @param courseIndex The indexID the courseIndex.
+	 */
 	public void printStudentsUnderIndex(int courseIndex) {
 		System.out.println("\nStudents registered in Course Index: " + courseIndex + " ------------");
 		System.out.println("\n===============================================");
@@ -366,7 +450,11 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-
+	/**
+	 * Prints all students registered under a certain Course.
+	 * 
+	 * @param courseID The courseID of the Course.
+	 */
 	public void printStudentsUnderCourse(String courseID) {
 		System.out.println("\nStudents registered in Course: " + courseID + " ------------");
 		System.out.println("\n=============================================================");
@@ -395,8 +483,11 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-	
-
+	/**
+	 * Prints vacancy of a courseIndex in current vacancy/max capacity.
+	 * 
+	 * @param indexID The indexID of  courseIndex.
+	 */
 	public void printAvailableVacancyforIndex(int indexID) {
 		for (int i = 0; i < courseIndexList.size(); i++) {
 			if (courseIndexList.get(i).getIndexID() == indexID) {
@@ -405,7 +496,9 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-
+	/**
+	 * When called, save the current edited courseIndexList object to SerializeDB.
+	 */
 	public void save() {
 		try {
 			SerializeDB.writeSerializedObject(filename, courseIndexList);
