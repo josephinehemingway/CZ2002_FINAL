@@ -323,18 +323,6 @@ public class StudentListCtrl {
 	    System.out.print(s.getGender()+ "		" + s.getMatricID() + "	" + s.getSchool() + "		" + s.getNationality() +"\n");
 	    
 		}
-//		System.out.println(
-//				"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-//		Student stud = studentList.get(index);
-//		System.out.println("Student Username: "+ stud.getUsername());
-//		System.out.println("Student Name: "+ stud.getName());
-//		System.out.println("Matriculation ID: "+ stud.getMatricID());
-//		System.out.println("School: " + stud.getSchool());
-//
-//		if (index == studentList.size()-1) {
-//			System.out.println(
-//					"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-//		}
 	
 	/**
 	 * Prints details of all students in the studentList
@@ -354,6 +342,7 @@ public class StudentListCtrl {
 			}
 			
 		}
+		System.out.println("=============================================================================================\n");
 	}
 	
 /**
