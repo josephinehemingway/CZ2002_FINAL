@@ -50,6 +50,22 @@ public class EditCourseIndexUI{
 	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
 	 */
 	public static void addCourseIndex(CourseIndexListCtrl courseIndexListControl) {
+		System.out.println("Enter the course type(1-3): ");
+		System.out.println("1. Lecture, Tutorial, Lab ");
+		System.out.println("2. Lecture, Tutorial ");
+		System.out.println("3. Lecture ");
+		int courseType;
+		Scanner scan = new Scanner(System.in);
+		while (true) {
+			try {
+				courseType = scan.nextInt();
+				break;
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter an integer");
+				scan = new Scanner(System.in);
+			}
+		}
+		
 		System.out.println("Enter the number of Course Indices you wish to input: ");
 		Scanner sc = new Scanner(System.in);
 		int numOfIndexInput;
@@ -65,7 +81,7 @@ public class EditCourseIndexUI{
 		
 		int count = 0;
 		while (count < numOfIndexInput) {
-			System.out.println("Enter Index ID: ");
+			System.out.println("Enter Index ID of index " + (count+1) + ":");
 			int newCourseIndex;
 			while (true) {
 				try {
@@ -105,15 +121,32 @@ public class EditCourseIndexUI{
 
 			int minDay = 1;
 			int maxDay = 6;
-			Schedule schedule_1 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
-					r.nextInt(maxDay-minDay) + minDay,
-					r.nextInt(maxDay-minDay) + minDay,
-					DateTimeList.get(0), 
-					DateTimeList.get(1), 
-					DateTimeList.get(2),newCourseIndex);
-
-			count += courseIndexListControl.addNewCourseIndex(courseName, courseID, newCourseIndex, schedule_1,
-					newNumOfVacancies);
+			if (courseType == 1) {
+				Schedule schedule_1 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+						r.nextInt(maxDay-minDay) + minDay,
+						r.nextInt(maxDay-minDay) + minDay,
+						DateTimeList.get(0), 
+						DateTimeList.get(1), 
+						DateTimeList.get(2), newCourseIndex);	
+				count += courseIndexListControl.addNewCourseIndex(courseName, courseID, newCourseIndex, schedule_1,
+						newNumOfVacancies);
+				
+			}
+			else if (courseType == 2) {
+				Schedule schedule_2 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+						r.nextInt(maxDay-minDay) + minDay,
+						DateTimeList.get(0), 
+						DateTimeList.get(1), newCourseIndex);
+				count += courseIndexListControl.addNewCourseIndex(courseName, courseID, newCourseIndex, schedule_2,
+						newNumOfVacancies);
+			}
+			else if (courseType == 3) {
+				Schedule schedule_3 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+						DateTimeList.get(0),newCourseIndex);
+				count += courseIndexListControl.addNewCourseIndex(courseName, courseID, newCourseIndex, schedule_3,
+						newNumOfVacancies);
+			}
+			
 			courseIndexListControl.save();
 		}
 	}
