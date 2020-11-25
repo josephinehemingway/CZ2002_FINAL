@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Student main console for non-admin users
  * StudentUI contains one single method which allows user to perform student's STARS functions
- * @author Joey
+ * @author DSAI/1 Group 5
  * @since 2020-11-19 
  */
 public class StudentUI {
