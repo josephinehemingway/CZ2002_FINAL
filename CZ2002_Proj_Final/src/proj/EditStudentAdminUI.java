@@ -32,12 +32,18 @@ public class EditStudentAdminUI {
 	 * @param StudentListControl studentList control object that holds the student list and their details.
 	 */
 	public static void addStudent(StudentListCtrl studentListControl) {
+		
+		Scanner sc = new Scanner(System.in);
 		//Add Student Name
-		System.out.println("Enter Student Name:");
+		System.out.println("Enter Student Name (enter '0' to exit):");
 		String newStudent;
 		while (true) {
 			try {
 				newStudent = sc.nextLine();
+				if (newStudent.equals("0")) {
+					System.out.println("Operation cancelled.\nExiting back to Main..");
+					return;
+				}
 				break;
 			} catch (InputMismatchException e) {
 				System.out.print("Please re-enter a valid name: ");
@@ -145,12 +151,17 @@ public class EditStudentAdminUI {
 	 * @param userValidation Checks the validation of student 
 	 */
 	public static void editStudent(StudentListCtrl studentListControl, UserValidation userValidation) {
+		Scanner sc = new Scanner(System.in);
 		ArrayList<Student> studList = studentListControl.getStudentList();
 		int count = 0;
 		while (true) {
-			System.out.println("Enter student username to edit: ");
+			System.out.println("Enter student username to edit (enter '0' to exit): ");
 			studentUsername = sc.nextLine().toUpperCase();
 			
+			if (studentUsername.equals("0")) {
+				System.out.println("Operation cancelled.\nExiting back to Main..");
+				return;
+			}
 
 			if (userValidation.checkValidUsername(studentUsername, studList) == false) {
 
@@ -190,14 +201,21 @@ public class EditStudentAdminUI {
 		studentListControl.editStudent(studentUsername, choice);
 
 	}
+	
 	/**
 	 * Method that allows the admin to delete an existing student
 	 * 
 	 * @param studentListControl StudentList control object that holds the student list and their details.
 	 */
 	public static void deleteStudent(StudentListCtrl studentListControl) {
-		System.out.println("Enter username of student to be deleted: ");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter username of student to be deleted (enter '0' to exit): ");
 		String student = sc.nextLine().toUpperCase();
+		
+		if (student.equals("0")) {
+			System.out.println("Operation cancelled.\nExiting back to Main..");
+			return;
+		}
 		
 		studentListControl.deleteStudent(student);
 		studentListControl.printAllStudentDetails();

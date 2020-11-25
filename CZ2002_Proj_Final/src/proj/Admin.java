@@ -10,25 +10,26 @@ import java.io.Serializable;
 
 public class Admin implements Serializable {
 	/**
-	 * Account Username of the admin in the database
+	 * Account Username of the admin in the database.
 	 */
 	private String adminID;
 	
 	/**
-	 * Account Password for admin
+	 * Account Password for admin.
 	 */
 	private String adminPW;
 	
 	/** 
-	 * Email of admin
+	 * Email of admin.
 	 */
 	private String adminEmail;
 	
 	/**
-	 * Creates a new admin object with the following attributes
-	 * @param aUser This admin's username
-	 * @param aPW This admin's password
-	 * @param aEmail This admin's email
+	 * Creates a new admin object with the following attributes:
+	 * 
+	 * @param aUser This admin's username.
+	 * @param aPW This admin's password.
+	 * @param aEmail This admin's email.
 	 */
 	public Admin(String aUser, String aPW, String aEmail) {
 		this.adminID = aUser;
@@ -36,14 +37,26 @@ public class Admin implements Serializable {
 		this.adminEmail = aEmail;
 	}
 	
+	/**
+	 * Gets admin username of this admin.
+	 * @return
+	 */
 	public String getAdminID() {
 		return adminID;
 	}
 
+	/**
+	 * Gets admin password of this admin.
+	 * @return
+	 */
 	public String getAdminPW() {
 		return adminPW;
 	}
 	
+	/**
+	 * Gets admin email of this admin.
+	 * @return
+	 */
 	public String getAdminEmail() {
 		return adminEmail;
 	}

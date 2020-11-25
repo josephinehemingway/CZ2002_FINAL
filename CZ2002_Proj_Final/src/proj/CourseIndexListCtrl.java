@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Represents the control for courseIndexList which holds an ArrayList of CourseIndexes
  * @author DSAI/1 Group 5
  * @version 1.0
- * @since 20-20-11-25
+ * @since 2020-11-25
  */
 public class CourseIndexListCtrl {
 	/**

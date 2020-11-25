@@ -18,7 +18,7 @@ public class EditSchoolUI {
 	 * 
 	 * @param schoolListControl schoolListControl object that holds the school list and their details.
 	 * @param chosenSchoolID The schoolID of the school admin has chosen.
-	 * @param courseListControl courseListControl object that holds the course list and their deatils
+	 * @param courseListControl courseListControl object that holds the course list and their details
 	 * @param courseID The courseId of the course which we want to add into the school.
 	 */
 	public static void addCourseToSchool(SchoolListCtrl schoolListControl,String chosenSchoolID,CourseListCtrl courseListControl, String courseID) {
@@ -35,7 +35,7 @@ public class EditSchoolUI {
 	 * Allows admin to remove course object from school's ArrayList of Courses.
 	 * 
 	 * @param schoolListControl schoolListControl object that holds the school list and their details.
-	 * @param courseListControl courseListControl object that olds the course list and their details.
+	 * @param courseListControl courseListControl object that holds the course list and their details.
 	 * @param courseID The courseId of the course Object to which admin is trying to remove from te school.
 	 */
 	public static void removeCourseFromSchool(SchoolListCtrl schoolListControl,CourseListCtrl courseListControl, String courseID) {
