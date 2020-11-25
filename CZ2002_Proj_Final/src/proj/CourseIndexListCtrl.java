@@ -307,7 +307,9 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-	
+	/**
+	 * Prints all course Indexes in courseIndex list as well as their ID, name, index, Vacancy and number of AUs.
+	 */
 	public void printAllCourseInfo() {
 		if (courseIndexList == null) {
 			courseIndexList = new ArrayList<CourseIndex>();
