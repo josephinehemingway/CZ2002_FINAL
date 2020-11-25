@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /**
  * Schedule Entity Class
  * 
- * @author DSAI/1 Group 5 
+ * @author DSAI/1 Group 5
  * @version 1.0
  * @since 2020-11-19
  */
@@ -17,61 +18,55 @@ public class Schedule implements Serializable {
 	 * Venue for different type of lessons.
 	 */
 	private String venuelec, venuetut, venuelab;
-	
+
 	/**
 	 * Index ID of Schedule object.
 	 */
 	private String indexID;
-	
+
 	/**
 	 * Start timing of lab lesson.
 	 */
 	private Date startlab;
-	
+
 	/**
 	 * Start timing of lecture lesson.
 	 */
 	private Date startlect;
-	
+
 	/**
 	 * Start timing of tutorial lesson.
 	 */
 	private Date starttut;
-	
+
 	/**
 	 * End timing of lab lesson.
 	 */
 	private Date endlab;
-	
+
 	/**
 	 * End timing of lecture lesson.
 	 */
 	private Date endlect;
-	
+
 	/**
 	 * End timing of tutorial lesson.
 	 */
 	private Date endtut;
-	
+
 	/**
 	 * Different types of lessons for this schedule.
 	 */
 	private Lesson lab, tut, lect;
-	
+
 	/**
-	 * Course type of the course
-	 * 1: Courses with lab, lecture and tutorial.
-	 * 2: Courses with lecture and tutorial only.
-	 * 3: Courses with lecture only
+	 * Course type of the course 1: Courses with lab, lecture and tutorial. 2:
+	 * Courses with lecture and tutorial only. 3: Courses with lecture only
 	 */
 	private int coursetype;
 	/**
-	 * Days of the different lesson types.
-	 * 1: Monday
-	 * 2: Tuesday
-	 * 3: Wednesday
-	 * 4: Thursday
-	 * 5: Friday
+	 * Days of the different lesson types. 1: Monday 2: Tuesday 3: Wednesday 4:
+	 * Thursday 5: Friday
 	 */
 	private int labday, lectday, tutday;
 
@@ -79,19 +74,20 @@ public class Schedule implements Serializable {
 	 * Randomize the tutorial room numbers.
 	 */
 	private static int venuetutcounter = 10;
-	
+
 	/**
 	 * Randomize the lab room numbers.
 	 */
 	private static int venuelabcounter = 15;
-	
+
 	/**
 	 * Randomize the lecture theater numbers.
 	 */
 	private static int venuelectcounter = 20;
-	
+
 	/**
 	 * Get start timing of the lab.
+	 * 
 	 * @return start timing of lab.
 	 */
 	public Date getStartlab() {
@@ -100,6 +96,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Get start timing of the lecture.
+	 * 
 	 * @return start timing of lecture.
 	 */
 	public Date getStartlect() {
@@ -108,6 +105,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Get start timing of the tutorial.
+	 * 
 	 * @return start timing of tutorial.
 	 */
 	public Date getStarttut() {
@@ -116,18 +114,16 @@ public class Schedule implements Serializable {
 
 	// Constructor to add schedule to an index
 	/**
-	 * Schedule Constructor to create new schedule object to a course index
-	 * This constructor is for courses with all 3 types of courses:
-	 * - Lab
-	 * - Lecture
-	 * - Tutorial
+	 * Schedule Constructor to create new schedule object to a course index This
+	 * constructor is for courses with all 3 types of courses: - Lab - Lecture -
+	 * Tutorial
 	 * 
-	 * @param labday The day of lab lesson.
+	 * @param labday  The day of lab lesson.
 	 * @param lectday The day of lecture lesson.
-	 * @param tutday The day of tutorial lesson.
-	 * @param _lab Start timing of lab lesson.
-	 * @param _lect Start timing of lecture lesson.
-	 * @param _tut Start timing of tutorial lesson.
+	 * @param tutday  The day of tutorial lesson.
+	 * @param _lab    Start timing of lab lesson.
+	 * @param _lect   Start timing of lecture lesson.
+	 * @param _tut    Start timing of tutorial lesson.
 	 * @param indexID This schedule's CourseIndex ID.
 	 */
 	public Schedule(int labday, int lectday, int tutday, Date _lab, Date _lect, Date _tut, int indexID) {
@@ -138,13 +134,13 @@ public class Schedule implements Serializable {
 		this.startlect = _lect;
 		this.starttut = _tut;
 		this.coursetype = 1;
-		
+
 		// lab is 2h long, end timing of lab is 2h later
 		endlab = new Date(startlab.getTime() + 7200000);
-		
+
 		// lecture is 1h long, end timing of lecture is 1h later
 		endlect = new Date(startlect.getTime() + 3600000);
-		
+
 		// tutorial is 1h long, end timing of tutorial is 1h later
 		endtut = new Date(starttut.getTime() + 3600000);
 
@@ -158,15 +154,13 @@ public class Schedule implements Serializable {
 	}
 
 	/**
-	 * Schedule Constructor to create new schedule object to a course index
-	 * This constructor is for courses with only:
-	 * - Lecture
-	 * - Tutorial 
+	 * Schedule Constructor to create new schedule object to a course index This
+	 * constructor is for courses with only: - Lecture - Tutorial
 	 * 
 	 * @param lectday The day of lecture lesson.
-	 * @param tutday The day of tutorial lesson.
-	 * @param _lect Start timing of lecture lesson.
-	 * @param _tut Start timing of tutorial lesson.
+	 * @param tutday  The day of tutorial lesson.
+	 * @param _lect   Start timing of lecture lesson.
+	 * @param _tut    Start timing of tutorial lesson.
 	 * @param indexID This schedule's CourseIndex ID.
 	 */
 	public Schedule(int lectday, int tutday, Date _lect, Date _tut, int indexID) {
@@ -187,12 +181,11 @@ public class Schedule implements Serializable {
 	}
 
 	/**
-	 * Schedule Constructor to create new schedule object to a course index
-	 * This constructor is for courses with only:
-	 * - Lecture
+	 * Schedule Constructor to create new schedule object to a course index This
+	 * constructor is for courses with only: - Lecture
 	 *
 	 * @param lectday The day of lecture lesson.
-	 * @param _lect Start timing of lecture lesson.
+	 * @param _lect   Start timing of lecture lesson.
 	 * @param indexID This schedule's CourseIndex ID.
 	 */
 	public Schedule(int lectday, Date _lect, int indexID) {
@@ -204,9 +197,10 @@ public class Schedule implements Serializable {
 		venuelec = "LT" + venuelectcounter++ + "";
 		lect = new Lesson(lectday, startlect, endlect, venuelec, indexID);
 	}
-	
+
 	/**
 	 * Gets the lab lesson of this schedule.
+	 * 
 	 * @return The lab lesson that this schedule belongs to.
 	 */
 	public Lesson getLab() {
@@ -215,6 +209,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Sets the Lab lesson of this schedule.
+	 * 
 	 * @param lab The lab lesson that we want to set.
 	 */
 	public void setLab(Lesson lab) {
@@ -223,6 +218,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Gets the tutorial lesson of this schedule.
+	 * 
 	 * @return The tutorial lesson that this schedule belongs to.
 	 */
 	public Lesson getTut() {
@@ -231,6 +227,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Sets the tutorial lesson of this schedule.
+	 * 
 	 * @param tut The tutorial lesson that we want to set.
 	 */
 	public void setTut(Lesson tut) {
@@ -239,6 +236,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Gets the lecture lesson of this schedule.
+	 * 
 	 * @return The lecture lesson that this schedule belongs to.
 	 */
 	public Lesson getLect() {
@@ -247,6 +245,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Sets the lecture lesson of this schedule.
+	 * 
 	 * @param lect The lecture lesson that we want to set.
 	 */
 	public void setLect(Lesson lect) {
@@ -255,6 +254,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Gets the Index ID of this schedule.
+	 * 
 	 * @return The Index ID of the course that this schedule belongs to.
 	 */
 	public String getIndexID() {
@@ -263,6 +263,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Gets the venue of the tutorial in this schedule.
+	 * 
 	 * @return The venue of the tutorial of this schedule.
 	 */
 	public String getVenueTut() {
@@ -271,6 +272,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Gets the venue of the lecture in this schedule.
+	 * 
 	 * @return The venue of the lecture of this schedule.
 	 */
 	public String getVenueLect() {
@@ -279,14 +281,16 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Gets the venue of the lab in this schedule.
+	 * 
 	 * @return The venue of the lab of this schedule.
 	 */
 	public String getVenueLab() {
 		return this.venuelab;
 	}
-	
+
 	/**
 	 * Gets the course type of this schedule.
+	 * 
 	 * @return The course type of this schedule.
 	 */
 	public int getCoursetype() {
@@ -295,6 +299,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Sets the course type of this schedule.
+	 * 
 	 * @param coursetype The coursetype of this schedule that we want to set
 	 */
 	public void setCoursetype(int coursetype) {
@@ -302,14 +307,15 @@ public class Schedule implements Serializable {
 	}
 
 	/**
-	 * Method to check if timing of new lessons added clash with existing registered lessons
+	 * Method to check if timing of new lessons added clash with existing registered
+	 * lessons
 	 * 
 	 * @param checkDay The lesson day of the incoming course.
 	 * @param existDay The lesson day of existing registered courses.
-	 * @param start1 The start timing of the incoming lessons.
-	 * @param end1 The end timing of the incoming lessons.
-	 * @param start2 The start timing of the existing registered lessons.
-	 * @param end2 The end timing of the existing registered lessons.
+	 * @param start1   The start timing of the incoming lessons.
+	 * @param end1     The end timing of the incoming lessons.
+	 * @param start2   The start timing of the existing registered lessons.
+	 * @param end2     The end timing of the existing registered lessons.
 	 * @return a boolean: true if timing clash, false if there are no clashes
 	 */
 	public boolean timeClash(int checkDay, int existDay, Date start1, Date end1, Date start2, Date end2) {
@@ -326,19 +332,19 @@ public class Schedule implements Serializable {
 	}
 
 	/**
-	 * Uses timeClash method to check conflict of timing of the different types
-	 * of lessons of the new course that is to be added with the different types
-	 * of lessons of the existing registered courses.
+	 * Uses timeClash method to check conflict of timing of the different types of
+	 * lessons of the new course that is to be added with the different types of
+	 * lessons of the existing registered courses.
 	 * 
 	 * Informs user which lessons clash with which existing type of lesson.
 	 * 
 	 * @param otherSch Takes in the schedule of the incoming course.
-	 * @return true if it clashes, false if it does not clash. 
+	 * @return true if it clashes, false if it does not clash.
 	 * 
 	 */
 	public boolean checkClash(Schedule otherSch) {
 		// try to find a combination of clashes
-		
+
 		// check lab clash with lec of this schedule
 		if (timeClash(otherSch.labday, lectday, otherSch.startlab, otherSch.endlab, startlect, endlect) == true) {
 			System.out.println("Lab timeslot of this index clashes with lecture of existing schedule");
@@ -362,13 +368,13 @@ public class Schedule implements Serializable {
 				System.out.println("Lab timeslot of this index clashes with tutorial of existing schedule");
 				return true;
 			}
-			
+
 			// check lec clash with tut of this schedule
 			if (timeClash(otherSch.lectday, tutday, otherSch.startlect, otherSch.endlect, starttut, endtut) == true) {
 				System.out.println("Lecture timeslot of this index clashes with tutorial of existing schedule");
 				return true;
 			}
-			
+
 			// check tut clash with tut of this schedule
 			if (timeClash(otherSch.tutday, tutday, otherSch.starttut, otherSch.endtut, starttut, endtut) == true) {
 				System.out.println("Tutorial timeslot of this index clashes with tutorial of existing schedule");
@@ -381,7 +387,8 @@ public class Schedule implements Serializable {
 					return true;
 				}
 				// check lec clash with lab of this schedule
-				if (timeClash(otherSch.lectday, labday, otherSch.startlect, otherSch.endlect, startlab, endlab) == true) {
+				if (timeClash(otherSch.lectday, labday, otherSch.startlect, otherSch.endlect, startlab,
+						endlab) == true) {
 					System.out.println("Lecture timeslot of this index clashes with lab of existing schedule");
 					return true;
 				}
@@ -391,15 +398,15 @@ public class Schedule implements Serializable {
 					return true;
 				}
 			}
-			
+
 		}
 		return false;
 
 	}
 
-
 	/**
 	 * Print schedule information for course type that has all lecture, tutorial and lab.
+	 * 
 	 * @return The schedule information in a table format.
 	 */
 	public String printInfoLabTutLec() {
@@ -476,7 +483,8 @@ public class Schedule implements Serializable {
 	}
 
 	/**
-	 * Print schedule information for course type that has lectures and tutorial only.
+	 * Print schedule information for course type that has lectures and tutorials only.
+	 * 
 	 * @return The schedule information in a table format.
 	 */
 	public String printInfoTutLec() {
@@ -533,6 +541,7 @@ public class Schedule implements Serializable {
 
 	/**
 	 * Print schedule information for course type that has lectures only.
+	 * 
 	 * @return The schedule information in a table format.
 	 */
 	public String printInfoLec() {
@@ -564,27 +573,25 @@ public class Schedule implements Serializable {
 				+ df.format(startlect) + "-" + df.format(endlect) + "	" + venuelec + "\n"
 				+ "====================================================";
 	}
-	
+
 	@Override
 	/**
-	 * toString method that overrides the default toString() function
-	 * Prints the schedule information in desired format
+	 * toString method that overrides the default toString() function Prints the
+	 * schedule information in desired format
 	 * 
-	 * Since we have 3 different types of schedules, we will select
-	 * which respective printing methods to print for courses with:
-	 * - Lab, lecture and tutorial
-	 * - Lecture and tutorial only
+	 * Since we have 3 different types of schedules, we will select which respective
+	 * printing methods to print for courses with: 
+	 * - Lab, lecture and tutorial 
+	 * - Lecture and tutorial only 
 	 * - Lecture only
 	 * 
 	 */
 	public String toString() {
 		if (this.coursetype == 1) {
 			return printInfoLabTutLec();
-		}
-		else if(this.coursetype == 2) {
+		} else if (this.coursetype == 2) {
 			return printInfoTutLec();
-		}
-		else if(this.coursetype == 3) {
+		} else if (this.coursetype == 3) {
 			return printInfoLec();
 		}
 		return "Invalid Schedule";

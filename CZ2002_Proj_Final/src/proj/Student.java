@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+
 /**
  * Student entity class
  * 
@@ -12,7 +13,7 @@ import java.util.Date;
  * @since 2020-11-19
  *
  */
-public class Student implements Serializable{
+public class Student implements Serializable {
 	/**
 	 * Account username of a student in the school
 	 */
@@ -53,22 +54,22 @@ public class Student implements Serializable{
 	 * Total Academic Units Student has accumulated in this semester
 	 */
 	private int AcadUnits;
-	
+
 	/**
 	 * Creates a new student object with the below attributes
 	 * 
-	 * @param sUser This student's username
-	 * @param sPW	This student's password
-	 * @param sName	This student's Name
-	 * @param sGender This student's gender
+	 * @param sUser        This student's username
+	 * @param sPW          This student's password
+	 * @param sName        This student's Name
+	 * @param sGender      This student's gender
 	 * @param sNationality This student's Nationality
-	 * @param sMatricID This student's Matriculation ID
-	 * @param sEmail This student's email
-	 * @param sSchoolID This student's School's ID
+	 * @param sMatricID    This student's Matriculation ID
+	 * @param sEmail       This student's email
+	 * @param sSchoolID    This student's School's ID
 	 */
 
-	public Student(String sUser, String sPW, String sName, char sGender, String sNationality, 
-			String sMatricID, String sEmail, String sSchoolID) {
+	public Student(String sUser, String sPW, String sName, char sGender, String sNationality, String sMatricID,
+			String sEmail, String sSchoolID) {
 		this.username = sUser;
 		this.password = sPW;
 		this.name = sName;
@@ -78,30 +79,33 @@ public class Student implements Serializable{
 		this.email = sEmail;
 		this.schoolID = sSchoolID;
 		courseIndexArr = null;
-		this.AcadUnits=0;
+		this.AcadUnits = 0;
 
 	}
-	
+
 	/**
-	 * Gets the total accumulated AU of this student 
+	 * Gets the total accumulated AU of this student
 	 * 
 	 * @return the total accumulated AU of this student
 	 */
 	public int getAcadunits() {
 		return this.AcadUnits;
 	}
+
 	/**
-	 *Adds 3 AU to the student when he successfully registers for a course
+	 * Adds 3 AU to the student when he successfully registers for a course
 	 */
 	public void addAcadunits() {
-		this.AcadUnits +=3;
+		this.AcadUnits += 3;
 	}
+
 	/**
 	 * Subtract 3 AU from the student's accumulated when he drops a course
 	 */
 	public void dropAcadunits() {
-		this.AcadUnits -=3;
+		this.AcadUnits -= 3;
 	}
+
 	/**
 	 * Gets the ArrayList of CourseIndexes this student has registered for
 	 * 
@@ -113,6 +117,7 @@ public class Student implements Serializable{
 		}
 		return courseIndexArr;
 	}
+
 	/**
 	 * Sets this student's ArrayList of CourseIndexes
 	 * 
@@ -121,14 +126,16 @@ public class Student implements Serializable{
 	public void setCourseIndexArr(ArrayList<CourseIndex> courseIndexArr) {
 		this.courseIndexArr = courseIndexArr;
 	}
+
 	/**
-	 * Gets username of this Student 
+	 * Gets username of this Student
 	 * 
 	 * @return this Student's Username
 	 */
 	public String getUsername() {
 		return username;
 	}
+
 	/**
 	 * Gets password of this Student
 	 * 
@@ -138,6 +145,7 @@ public class Student implements Serializable{
 	public String getPassword() {
 		return password;
 	}
+
 	/**
 	 * Gets Name of this Student
 	 * 
@@ -147,6 +155,7 @@ public class Student implements Serializable{
 	public String getName() {
 		return name;
 	}
+
 	/**
 	 * Gets gender of this Student
 	 * 
@@ -155,6 +164,7 @@ public class Student implements Serializable{
 	public char getGender() {
 		return gender;
 	}
+
 	/**
 	 * Gets nationality of this Student
 	 * 
@@ -163,6 +173,7 @@ public class Student implements Serializable{
 	public String getNationality() {
 		return nationality;
 	}
+
 	/**
 	 * Gets Matriculation ID of this Student
 	 * 
@@ -172,6 +183,7 @@ public class Student implements Serializable{
 	public String getMatricID() {
 		return matricID;
 	}
+
 	/**
 	 * Gets Email of this Student
 	 * 
@@ -180,6 +192,7 @@ public class Student implements Serializable{
 	public String getEmail() {
 		return email;
 	}
+
 	/**
 	 * Gets School ID of this Student's School
 	 * 
@@ -188,14 +201,16 @@ public class Student implements Serializable{
 	public String getSchool() {
 		return schoolID;
 	}
+
 	/**
-	 * Sets this Student's Username 
+	 * Sets this Student's Username
 	 * 
 	 * @param username This Student's new username
 	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	/**
 	 * Sets this Student's Password
 	 * 
@@ -204,6 +219,7 @@ public class Student implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	/**
 	 * Sets this Student's name
 	 * 
@@ -212,6 +228,7 @@ public class Student implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * Sets this Student's gender
 	 * 
@@ -220,6 +237,7 @@ public class Student implements Serializable{
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
+
 	/**
 	 * Sets this Student's nationality
 	 * 
@@ -228,6 +246,7 @@ public class Student implements Serializable{
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
+
 	/**
 	 * Sets this Student's matriculation ID
 	 * 
@@ -236,6 +255,7 @@ public class Student implements Serializable{
 	public void setMatricID(String matricID) {
 		this.matricID = matricID;
 	}
+
 	/**
 	 * Sets this Student's email
 	 * 
@@ -244,6 +264,7 @@ public class Student implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	/**
 	 * Sets this Student's school
 	 * 
@@ -252,15 +273,16 @@ public class Student implements Serializable{
 	public void setSchool(String school) {
 		this.schoolID = school;
 	}
+
 	/**
 	 * Returns the string representation of student and his details
-	 * @Override 
+	 * 
+	 * @Override
 	 */
 	public String toString() {
-		return "Student Username: " + username + "\nStudent Name: " + name 
-				+ "\nMatriculation ID: " + matricID + "\nEmail: " + email 
-				+ "\nGender: " + gender + "\nNationality: " + nationality
-				+ "\nSchool: " + schoolID +"\n";
+		return "Student Username: " + username + "\nStudent Name: " + name + "\nMatriculation ID: " + matricID
+				+ "\nEmail: " + email + "\nGender: " + gender + "\nNationality: " + nationality + "\nSchool: "
+				+ schoolID + "\n";
 	}
 
 }

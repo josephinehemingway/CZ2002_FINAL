@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 /**
  * School Entity Class
  * 
@@ -38,13 +39,14 @@ public class School implements Serializable {
 	 * Current date
 	 */
 	private Date now;
+
 	/**
 	 * 
-	 * @param schoolID This school's School ID
-	 * @param name This school's Name
-	 * @param course This school's courses
+	 * @param schoolID  This school's School ID
+	 * @param name      This school's Name
+	 * @param course    This school's courses
 	 * @param startDate This school's start date for access period
-	 * @param endDate This school's end date for access period
+	 * @param endDate   This school's end date for access period
 	 */
 	public School(String schoolID, String name, ArrayList<Course> course, Date startDate, Date endDate) {
 		this.schoolID = schoolID;
@@ -54,6 +56,7 @@ public class School implements Serializable {
 		this.endDate = endDate;
 		this.course = new ArrayList<Course>();
 	}
+
 	/**
 	 * Add course to this school
 	 * 
@@ -67,6 +70,7 @@ public class School implements Serializable {
 			this.course.add(cs);
 		}
 	}
+
 	/**
 	 * Check if the course exists in this school
 	 * 
@@ -81,10 +85,11 @@ public class School implements Serializable {
 		}
 		return 0;
 	}
+
 	/**
 	 * Gets the ArrayList of Courses in this school
 	 * 
-	 * @return This school's ArrayList of Courses 
+	 * @return This school's ArrayList of Courses
 	 */
 	public ArrayList<Course> getCourse() {
 		if (course == null) {
@@ -92,6 +97,7 @@ public class School implements Serializable {
 		}
 		return course;
 	}
+
 	/**
 	 * Sets this school's ArrayList of Courses
 	 * 
@@ -100,6 +106,7 @@ public class School implements Serializable {
 	public void setCourse(ArrayList<Course> course) {
 		this.course = course;
 	}
+
 	/**
 	 * Gets the School ID of this school
 	 * 
@@ -108,6 +115,7 @@ public class School implements Serializable {
 	public String getSchoolID() {
 		return this.schoolID;
 	}
+
 	/**
 	 * Sets this School's school ID
 	 * 
@@ -116,6 +124,7 @@ public class School implements Serializable {
 	public void setSchoolID(String schoolID) {
 		this.schoolID = schoolID;
 	}
+
 	/**
 	 * Gets Name of this school
 	 * 
@@ -124,6 +133,7 @@ public class School implements Serializable {
 	public String getName() {
 		return this.name;
 	}
+
 	/**
 	 * Sets this School's name
 	 * 
@@ -132,6 +142,7 @@ public class School implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * Gets Start Date of this school's access period
 	 * 
@@ -140,6 +151,7 @@ public class School implements Serializable {
 	public Date getStartDate() {
 		return this.startDate;
 	}
+
 	/**
 	 * Sets this School's start date of access period
 	 * 
@@ -148,14 +160,16 @@ public class School implements Serializable {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+
 	/**
-	 * Gets End Date of this school's access period 
+	 * Gets End Date of this school's access period
 	 * 
 	 * @return this School's End Date of access period
 	 */
 	public Date getEndDate() {
 		return this.endDate;
 	}
+
 	/**
 	 * Sets this School's end date of access period
 	 * 
@@ -164,25 +178,30 @@ public class School implements Serializable {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+
 	/**
 	 * Checks if the current date is within the access period
 	 * 
-	 * @return true if the current date is within the access period, false if it is not in the access period
+	 * @return true if the current date is within the access period, false if it is
+	 *         not in the access period
 	 */
 	public boolean canAccess() {
 		now = new Date();
 		return !(now.before(startDate) || now.after(endDate));
 	}
+
 	/**
 	 * Gets current date of this school's access period
 	 * 
-	 * @return this School's current date 
+	 * @return this School's current date
 	 */
 	public Date getNow() {
 		return now;
 	}
+
 	/**
 	 * Returns the string representation of school and its details.
+	 * 
 	 * @Override
 	 */
 	public String toString() { // overriding the toString() method

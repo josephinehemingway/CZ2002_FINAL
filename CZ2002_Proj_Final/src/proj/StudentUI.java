@@ -7,11 +7,13 @@ import java.util.Scanner;
  * @author DSAI/1 Group 5
  * @since 2020-11-19 
  */
+
 public class StudentUI {
 	/**
 	 * Scanner to read student user input
 	 */
 	public static Scanner sc = new Scanner(System.in);
+	
 	/**
 	 * Calls the console method for the user to perform student Stars functions
 	 * @param username Username of student who logged into the console via mainConsole

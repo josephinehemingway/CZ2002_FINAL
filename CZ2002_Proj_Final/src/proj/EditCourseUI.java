@@ -134,33 +134,34 @@ public class EditCourseUI extends EditCourseIndexUI{
 			System.out.println("Invalid Choice!");
 		}
 	}
-/**
- * Method that allows the admin to delete an existing course
- * 
- * @param courseListControl CourseList control object that holds the course list and their details.
- */
-public static void deleteCourse(CourseListCtrl courseListControl) {
-	System.out.println("Enter the course # you wish to delete: ");
-	Scanner sc = new Scanner(System.in);
-	while (true) {
-		try {
-			while (true) {
-				choice = sc.nextInt();
-				if( choice <1 || choice > courseListControl.getCourseSize()) {
-					System.out.println("Please re-enter a valid choice");
-				}
-				else {
-					break;
-				}
-			}
-			break;
-		} catch (InputMismatchException e) {
-			System.out.println("Please re-enter a valid choice");
-			sc = new Scanner(System.in);
-		}
-	}
-	System.out.println("Course deleted successfully!");
-	courseListControl.deleteCourse(choice-1);
 	
-}
+	/**
+	 * Method that allows the admin to delete an existing course
+	 * 
+	 * @param courseListControl CourseList control object that holds the course list and their details.
+	 */
+	public static void deleteCourse(CourseListCtrl courseListControl) {
+		System.out.println("Enter the course # you wish to delete: ");
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			try {
+				while (true) {
+					choice = sc.nextInt();
+					if( choice <1 || choice > courseListControl.getCourseSize()) {
+						System.out.println("Please re-enter a valid choice");
+					}
+					else {
+						break;
+					}
+				}
+				break;
+			} catch (InputMismatchException e) {
+				System.out.println("Please re-enter a valid choice");
+				sc = new Scanner(System.in);
+			}
+		}
+		System.out.println("Course deleted successfully!");
+		courseListControl.deleteCourse(choice-1);
+		
+	}
 }

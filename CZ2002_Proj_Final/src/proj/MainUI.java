@@ -1,7 +1,5 @@
 package proj;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Scanner;
 /**
  * Main console for student and admin users to log into STARS application
@@ -10,6 +8,7 @@ import java.util.Scanner;
  * @since 2020-11-19
  *
  */
+
 public class MainUI {
 	/**
 	 * Main entry for student and admin users to log into STARS application

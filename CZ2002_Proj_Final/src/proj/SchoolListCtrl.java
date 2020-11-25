@@ -5,25 +5,31 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
  * Represents the control for schoolList which holds an array list of Schools.
+ * 
  * @author DSAI/1 Group 5
  * @version 1.0
  * @since 2020-11-19
  */
+
 public class SchoolListCtrl {
+
 	/**
 	 * ArrayList that stores list of Students.
 	 */
 	private ArrayList<School> schoolList;
+
 	/**
 	 * Scanner to read admin user input
 	 */
 	public static final Scanner sc = new Scanner(System.in);
+
 	/**
 	 * Filename of the school list to be read from SerializeDB
 	 */
-	private String filename = "SchoolList.txt"; 
+	private String filename = "SchoolList.txt";
 
 	/**
 	 * Reads in the list of schools from serializeDB.
@@ -37,6 +43,7 @@ public class SchoolListCtrl {
 			System.out.println("Exception >> " + e.getMessage());
 		}
 	}
+
 	/**
 	 * Gets the school list stored in this schoolListControl Class.
 	 * 
@@ -50,15 +57,20 @@ public class SchoolListCtrl {
 	}
 
 	/**
-	 * Gets a school from this control class's studentList indexed by the parameter i.
+	 * Gets a school from this control class's studentList indexed by the parameter
+	 * i.
+	 * 
 	 * @param i index of the school in the schoolList
 	 * @return a School object
 	 */
 	public School getSchool(int i) {
 		return (School) schoolList.get(i);
 	}
+
 	/**
-	 * Checks if the schoolID the admin has inputted is valid by checking the schoolList ArrayList. 
+	 * Checks if the schoolID the admin has inputted is valid by checking the
+	 * schoolList ArrayList.
+	 * 
 	 * @param schoolID The schoolID of the school.
 	 * @return true if the school exists, false if it does not exist.
 	 */
@@ -72,6 +84,7 @@ public class SchoolListCtrl {
 		}
 		return false;
 	}
+
 	/**
 	 * Gets the number of schools stored in the schoolList ArrayList.
 	 * 
@@ -80,6 +93,7 @@ public class SchoolListCtrl {
 	public int getSchoolSize() {
 		return schoolList.size();
 	}
+
 	/**
 	 * Allows admin to choose a valid school to set or change.
 	 * 
@@ -111,8 +125,9 @@ public class SchoolListCtrl {
 
 		return schoolChoice;
 	}
+
 	/**
-	 *Gets the AccessPeriod of a school.
+	 * Gets the AccessPeriod of a school.
 	 *
 	 * @param schoolID The schoolID of the school we are getting AccessPeriod from.
 	 */
@@ -133,13 +148,16 @@ public class SchoolListCtrl {
 		System.out.println("School not found.");
 		return;
 	}
+
 	/**
-	 * Allows the admin to edit the AccessPeriod of a school by inputting the schoolID of the school and the respect start and end dates.
+	 * Allows the admin to edit the AccessPeriod of a school by inputting the
+	 * schoolID of the school and the respect start and end dates.
 	 * 
-	 * @param schoolID The schoolID of the school whose AccessPeriod is to be edited.
+	 * @param schoolID  The schoolID of the school whose AccessPeriod is to be
+	 *                  edited.
 	 * @param startDate The start Date of the new AccessPeriod.
-	 * @param endDate The end Date of the new AccessPeriod.
-	 * @throws ParseException 
+	 * @param endDate   The end Date of the new AccessPeriod.
+	 * @throws ParseException
 	 */
 	public void editAccessPeriod(String schoolID, Date startDate, Date endDate) throws ParseException {
 
@@ -159,10 +177,12 @@ public class SchoolListCtrl {
 		}
 		System.out.println("School not found.");
 	}
+
 	/**
 	 * Allows admin to add a course to a selected School.
 	 * 
-	 * @param schoolID The schoolID of the school the admin wants to put the course in.
+	 * @param schoolID       The schoolID of the school the admin wants to put the
+	 *                       course in.
 	 * @param selectedCourse The course object the admin is assigning the school to.
 	 */
 	public void addCourseToSchool(String schoolID, Course selectedCourse) {
@@ -175,17 +195,19 @@ public class SchoolListCtrl {
 					break;
 				} else {
 					schoolList.get(j).addCourse(selectedCourse);
-					System.out.println("Course is now in " + schoolList.get(j).getName() + " (" + schoolList.get(j).getSchoolID() + ")");
+					System.out.println("Course is now in " + schoolList.get(j).getName() + " ("
+							+ schoolList.get(j).getSchoolID() + ")");
 				}
 			}
 
 		}
 
 	}
+
 	/**
 	 * Allows admin to remove the selected Course from its school.
 	 * 
-	 * @param schoolID The schoolID of the school
+	 * @param schoolID       The schoolID of the school
 	 * @param selectedCourse The course object that we wish to remove from school.
 	 */
 	public void removeCourseFromSchool(String schoolID, Course selectedCourse) {
@@ -196,25 +218,25 @@ public class SchoolListCtrl {
 					System.out.println("Course is removed from " + schoolList.get(j).getSchoolID());
 					break;
 				}
-
 			}
-
 		}
-
 	}
+
 	/**
 	 * Gets the school that the course belongs to.
+	 * 
 	 * @param courseID The courseID of the course.
 	 * @return The schoolID the course belongs to.
 	 */
 	public String getSchoolFromCourse(String courseID) {
-		for (int i=0; i<schoolList.size();i++) {
-			if ( schoolList.get(i).checkCourseUnderSch(courseID)==1) {
+		for (int i = 0; i < schoolList.size(); i++) {
+			if (schoolList.get(i).checkCourseUnderSch(courseID) == 1) {
 				return schoolList.get(i).getSchoolID();
 			}
 		}
 		return null;
 	}
+
 	/**
 	 * Prints the list of schools under schoolList ArrayList.
 	 */
@@ -228,6 +250,7 @@ public class SchoolListCtrl {
 		}
 		System.out.println("=============================================================");
 	}
+
 	/**
 	 * When called, save the current edited schoolList object to SerializeDB.
 	 */

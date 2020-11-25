@@ -3,12 +3,15 @@ package proj;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
- * Admin sub console that contains methods to edit student  
+ * Admin sub console that contains methods to edit student
+ * 
  * @author DSAI/1 Group 5
  * @version 1.0
  * @since 2020-11-19
  */
+
 public class EditStudentAdminUI {
 	/**
 	 * Contains the student name
@@ -26,15 +29,17 @@ public class EditStudentAdminUI {
 	 * Scanner to read admin user input
 	 */
 	public static final Scanner sc = new Scanner(System.in);
+
 	/**
 	 * Method that allows the admin to add a new student
 	 * 
-	 * @param StudentListControl studentList control object that holds the student list and their details.
+	 * @param StudentListControl studentList control object that holds the student
+	 *                           list and their details.
 	 */
 	public static void addStudent(StudentListCtrl studentListControl) {
-		
+
 		Scanner sc = new Scanner(System.in);
-		//Add Student Name
+		// Add Student Name
 		System.out.println("Enter Student Name (enter '0' to exit):");
 		String newStudent;
 		while (true) {
@@ -50,7 +55,7 @@ public class EditStudentAdminUI {
 				sc.nextLine();
 			}
 		}
-		
+
 		// Add Student Username
 		String username;
 		while (true) {
@@ -69,7 +74,7 @@ public class EditStudentAdminUI {
 			}
 		}
 
-		// Add Student Password	
+		// Add Student Password
 		System.out.println("Enter Student Password:");
 		String password;
 		while (true) {
@@ -99,26 +104,26 @@ public class EditStudentAdminUI {
 				break;
 			}
 		}
-		
+
 		// Add Student Email
-				String email = username + "@e.ntu.edu.sg";
+		String email = username + "@e.ntu.edu.sg";
 
 		// Add Student Gender
 		char gender;
-		while(true) {
+		while (true) {
 			System.out.println("Enter Student Gender (F/M):");
 			gender = sc.nextLine().toUpperCase().charAt(0);
-			if(gender == 'F' || gender == 'M') {
+			if (gender == 'F' || gender == 'M') {
 				break;
 			}
 			System.out.println("Please input a valid character!");
 			System.out.println("");
 		}
-		
-		//Add Student Nationality
+
+		// Add Student Nationality
 		System.out.println("Enter Student Nationality");
 		String nationality = sc.nextLine();
-		
+
 		// Add Student School
 		String schoolID = null;
 		SchoolListCtrl schoolListControl = new SchoolListCtrl();
@@ -139,16 +144,18 @@ public class EditStudentAdminUI {
 				break;
 			}
 		}
-		
+
 		studentListControl.addStudent(newStudent, username, password, gender, nationality, matricID, email, schoolID);
 		studentListControl.printAllStudentDetails();
-		
+
 	}
+
 	/**
 	 * Method that allows admin to edit an existing student
-	 *  
-	 * @param studentListControl StudentList control object that holds the student list and their details.
-	 * @param userValidation Checks the validation of student 
+	 * 
+	 * @param studentListControl StudentList control object that holds the student
+	 *                           list and their details.
+	 * @param userValidation     Checks the validation of student
 	 */
 	public static void editStudent(StudentListCtrl studentListControl, UserValidation userValidation) {
 		Scanner sc = new Scanner(System.in);
@@ -157,7 +164,7 @@ public class EditStudentAdminUI {
 		while (true) {
 			System.out.println("Enter student username to edit (enter '0' to exit): ");
 			studentUsername = sc.nextLine().toUpperCase();
-			
+
 			if (studentUsername.equals("0")) {
 				System.out.println("Operation cancelled.\nExiting back to Main..");
 				return;
@@ -171,8 +178,7 @@ public class EditStudentAdminUI {
 					System.out.println("You have entered incorrect username 3 times. Exiting...");
 					return;
 				}
-			}
-			else {
+			} else {
 				System.out.println("Current particulars: ");
 				studentListControl.printStudentListByUsername(studentUsername);
 				break;
@@ -187,7 +193,7 @@ public class EditStudentAdminUI {
 		System.out.println("5. Edit Email");
 		System.out.println("6. Edit Gender");
 		System.out.println("7. Edit Nationality");
-		
+
 		System.out.println("8. Exit");
 
 		while (true) {
@@ -201,22 +207,23 @@ public class EditStudentAdminUI {
 		studentListControl.editStudent(studentUsername, choice);
 
 	}
-	
+
 	/**
 	 * Method that allows the admin to delete an existing student
 	 * 
-	 * @param studentListControl StudentList control object that holds the student list and their details.
+	 * @param studentListControl StudentList control object that holds the student
+	 *                           list and their details.
 	 */
 	public static void deleteStudent(StudentListCtrl studentListControl) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter username of student to be deleted (enter '0' to exit): ");
 		String student = sc.nextLine().toUpperCase();
-		
+
 		if (student.equals("0")) {
 			System.out.println("Operation cancelled.\nExiting back to Main..");
 			return;
 		}
-		
+
 		studentListControl.deleteStudent(student);
 		studentListControl.printAllStudentDetails();
 	}

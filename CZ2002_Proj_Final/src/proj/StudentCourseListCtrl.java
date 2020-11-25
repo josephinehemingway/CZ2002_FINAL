@@ -1,26 +1,30 @@
 package proj;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
  * Represents the control for studentList and courseList combined which holds an ArrayList of Students where each student holds an ArrayList of CourseIndexes.
  * @author DSAI/1 Group 5
  * @version 1.0
  * @since 2020-11-20
  */
+
 public class StudentCourseListCtrl {
+	
 	/**
 	 * ArrayList that stores list of Students
 	 */
 	private StudentListCtrl studentListControl;
+	
 	/**
 	 * ArrayLst that stores list of courseIndexes
 	 */
 	private CourseIndexListCtrl courseIndexListControl;
+	
 	/**
 	 * Reads in the list of students from studentListControl and courseIndexes from courseIndexListControl
 	 * @param studentListControl studentList control object that holds the student list and their details
@@ -31,6 +35,7 @@ public class StudentCourseListCtrl {
 		this.studentListControl = studentListControl;
 		this.courseIndexListControl = courseIndexListControl;
 	}
+	
 	/**
 	 * Gets the studentList control object that holds the list of students and their details
 	 * 
@@ -39,6 +44,7 @@ public class StudentCourseListCtrl {
 	public StudentListCtrl getStudentListCtrl() {
 		return this.studentListControl;
 	}
+	
 	/**
 	 * Method that adds courseIndex object into CourseIndex Arraylist of a student when they register
 	 * 
@@ -65,6 +71,7 @@ public class StudentCourseListCtrl {
 			}
 		}
 	}
+	
 	/**
 	 * Method that drops a courseIndex from the CourseIndex ArrayList of a student that he/she has registered for, identifying the student by his username, and courseIndex by its courseId
 	 * 
@@ -113,6 +120,7 @@ public class StudentCourseListCtrl {
 			}
 		}
 	}
+	
 	/**
 	 * Prints a list of details of all the courseIndexes registered by the student
 	 * @param username The username of the student of which we want to print his/her registered Courses
@@ -150,6 +158,7 @@ public class StudentCourseListCtrl {
 			
 		}return false;
 	}
+	
 	/**
 	 * Prints the timetable of the student whose username is input and the Student's accumulated AU of the semester
 	 * 
@@ -491,6 +500,7 @@ public class StudentCourseListCtrl {
 		}
 		return courseChoice;
 	}
+	
 	/**
 	 * Checks if the courseIndex the student wants to register for does not clash with the other registered courseIndexs timeslots 
 	 * The registered CourseIndexes of the student is stored in the CourseIndex ArrayList of the student
@@ -519,6 +529,7 @@ public class StudentCourseListCtrl {
 		} return false;
 				
 	}
+	
 	/**
 	 * Checks if the courseIndex the student wants to change to does not clash with the other registered Courses timeslot
 	 * The registered CourseIndexs of the courses registered is stored in the CourseIndex ArrayList of the student
@@ -578,6 +589,7 @@ public class StudentCourseListCtrl {
 		}
 		return false;
 	}
+	
 	/**
 	 * Gets indexID of the courseIndex that the student has registered for, which is stored in the CourseIndex ArrayList of the student
 	 * 
