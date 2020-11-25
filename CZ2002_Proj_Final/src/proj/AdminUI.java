@@ -18,7 +18,7 @@ public class AdminUI {
 
 	/**
 	 * Calls the console method for the admin to edit STARS functions
-	 * @throws ParseException
+	 * @throws ParseException Signals that an error has been reached unexpectedly while parsing.
 	 */
 	public static void console() throws ParseException {
 		int choice = 0;

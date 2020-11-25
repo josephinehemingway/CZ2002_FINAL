@@ -275,9 +275,7 @@ public class Student implements Serializable {
 	}
 
 	/**
-	 * Returns the string representation of student and his details
-	 * 
-	 * @Override
+	 * Returns the string representation of student and his details.
 	 */
 	public String toString() {
 		return "Student Username: " + username + "\nStudent Name: " + name + "\nMatriculation ID: " + matricID

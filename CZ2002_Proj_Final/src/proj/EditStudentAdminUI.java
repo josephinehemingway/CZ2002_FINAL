@@ -33,7 +33,7 @@ public class EditStudentAdminUI {
 	/**
 	 * Method that allows the admin to add a new student
 	 * 
-	 * @param StudentListControl studentList control object that holds the student
+	 * @param studentListControl studentList control object that holds the student
 	 *                           list and their details.
 	 */
 	public static void addStudent(StudentListCtrl studentListControl) {

@@ -70,7 +70,6 @@ public class Course implements Serializable{
 	
 	/**
 	 * Returns the string representation of course and its details.
-	 * @Override
 	 */
 	public String toString() {
 		return courseName + " " + courseID;

@@ -73,7 +73,7 @@ public class School implements Serializable {
 
 	/**
 	 * Check if the course exists in this school
-	 * 
+	 * @param courseID The courseID of the course we want to check.
 	 * @return 1 if the course exist, 0 if course does not exist.
 	 */
 
@@ -201,8 +201,6 @@ public class School implements Serializable {
 
 	/**
 	 * Returns the string representation of school and its details.
-	 * 
-	 * @Override
 	 */
 	public String toString() { // overriding the toString() method
 		return schoolID + " " + name + "\nCourses: " + course + "\nAccess Period: " + startDate + " to " + endDate

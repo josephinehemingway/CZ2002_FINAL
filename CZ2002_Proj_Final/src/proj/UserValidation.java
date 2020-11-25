@@ -87,6 +87,7 @@ public class UserValidation {
 	 * If user logged in as admin, if login is successful, admin console will be launched.
 	 * 
 	 * @param username Username of admin who logged in.
+	 * @param password password of admin who logged in.
 	 * @return true if user is indeed an admin, else returns false.
 	 */
 	public boolean loginAdmin(String username, String password) {
