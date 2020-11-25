@@ -309,7 +309,9 @@ public class AdminUI {
 				System.out.println("1. Print student list by Course Index");
 				System.out.println("2. Print student list by Course");;
 				System.out.println("3. Print student details by username");
-				System.out.println("4. Exit");
+				System.out.println("4. Print all student details");
+			
+				System.out.println("5. Exit");
 
 				int choice3;
 				while (true) {
@@ -362,6 +364,9 @@ public class AdminUI {
 					studentListControl.printStudentListByUsername(user);
 					break;
 				case 4:
+					System.out.println("\nPrinting all student details ------------");
+					studentListControl.printAllStudentDetails();
+				case 5:
 				}
 
 				break;

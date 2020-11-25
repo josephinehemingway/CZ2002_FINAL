@@ -3,17 +3,48 @@ package proj;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Admin sub console that contains methods to edit student  
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-19
+ */
 public class EditStudentAdminUI {
+	/**
+	 * Contains the student name
+	 */
 	private static String studentName;
+	/**
+	 * Contains the student username
+	 */
 	private static String studentUsername;
+	/**
+	 * Choice of admin
+	 */
 	private static int choice;
+	/**
+	 * Scanner to read admin user input
+	 */
 	public static final Scanner sc = new Scanner(System.in);
-	
+	/**
+	 * Method that allows the admin to add a new student
+	 * 
+	 * @param StudentListControl studentList control object that holds the student list and their details.
+	 */
 	public static void addStudent(StudentListCtrl studentListControl) {
 		//Add Student Name
 		System.out.println("Enter Student Name:");
-		String newStudent = sc.nextLine();
+		String newStudent;
+		while (true) {
+			try {
+				newStudent = sc.nextLine();
+				break;
+			} catch (InputMismatchException e) {
+				System.out.print("Please re-enter a valid name: ");
+				sc.nextLine();
+			}
+		}
+		
 		// Add Student Username
 		String username;
 		while (true) {
@@ -34,10 +65,16 @@ public class EditStudentAdminUI {
 
 		// Add Student Password	
 		System.out.println("Enter Student Password:");
-		String password = sc.nextLine();
-		
-		// Add Student Email
-		String email = username + "@e.ntu.edu.sg";
+		String password;
+		while (true) {
+			try {
+				password = sc.nextLine();
+				break;
+			} catch (InputMismatchException e) {
+				System.out.print("Please re-enter a valid password: ");
+				sc.nextLine();
+			}
+		}
 
 		// Add Student MatricID
 		String matricID;
@@ -56,6 +93,9 @@ public class EditStudentAdminUI {
 				break;
 			}
 		}
+		
+		// Add Student Email
+				String email = username + "@e.ntu.edu.sg";
 
 		// Add Student Gender
 		char gender;
@@ -71,7 +111,7 @@ public class EditStudentAdminUI {
 		
 		//Add Student Nationality
 		System.out.println("Enter Student Nationality");
-		String nationality = sc.nextLine().toUpperCase();
+		String nationality = sc.nextLine();
 		
 		// Add Student School
 		String schoolID = null;
@@ -93,13 +133,17 @@ public class EditStudentAdminUI {
 				break;
 			}
 		}
-
-		// Add Student into StudentList
 		
 		studentListControl.addStudent(newStudent, username, password, gender, nationality, matricID, email, schoolID);
 		studentListControl.printAllStudentDetails();
 		
 	}
+	/**
+	 * Method that allows admin to edit an existing student
+	 *  
+	 * @param studentListControl StudentList control object that holds the student list and their details.
+	 * @param userValidation Checks the validation of student 
+	 */
 	public static void editStudent(StudentListCtrl studentListControl, UserValidation userValidation) {
 		ArrayList<Student> studList = studentListControl.getStudentList();
 		int count = 0;
@@ -132,9 +176,8 @@ public class EditStudentAdminUI {
 		System.out.println("5. Edit Email");
 		System.out.println("6. Edit Gender");
 		System.out.println("7. Edit Nationality");
-		System.out.println("8. Edit School");
 		
-		System.out.println("9. Exit");
+		System.out.println("8. Exit");
 
 		while (true) {
 			try {
@@ -147,7 +190,11 @@ public class EditStudentAdminUI {
 		studentListControl.editStudent(studentUsername, choice);
 
 	}
-	//s
+	/**
+	 * Method that allows the admin to delete an existing student
+	 * 
+	 * @param studentListControl StudentList control object that holds the student list and their details.
+	 */
 	public static void deleteStudent(StudentListCtrl studentListControl) {
 		System.out.println("Enter username of student to be deleted: ");
 		String student = sc.nextLine().toUpperCase();
