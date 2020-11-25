@@ -1,18 +1,25 @@
 package proj;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+/**
+ * Admin main console for non-student users
+ * AdminUI contains one single method which allows admin to edit STARS functions
+ * @author DSAI/1 Group 5
+ * @since 2020-11-19 
+ */
 
 public class AdminUI {
-
-	private ArrayList<Admin> adminList; // user list containing all the user acc created in this app
-	private String filename = "AdminList.txt"; // file storing all the user acc created
-
+	/**
+	 * Scanner to read student user input
+	 */
 	public static Scanner sc = new Scanner(System.in);
-	
 
+	/**
+	 * Calls the console method for the admin to edit STARS functions
+	 * @throws ParseException
+	 */
 	public static void console() throws ParseException {
 		int choice = 0;
 

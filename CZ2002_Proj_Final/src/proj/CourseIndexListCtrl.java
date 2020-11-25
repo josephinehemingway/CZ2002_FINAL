@@ -354,7 +354,7 @@ public class CourseIndexListCtrl {
 					System.out.println("Index Vacancies: " + c.getCurrentVacancyOverInitial()); 
 			}
 		}
-			}
+		}
 	}
 	/**
 	 * Prints the vacancies available in a courseIndex object.

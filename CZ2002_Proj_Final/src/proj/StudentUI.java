@@ -1,6 +1,5 @@
 package proj;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * Student main console for non-admin users
