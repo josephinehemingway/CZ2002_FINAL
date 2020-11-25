@@ -181,33 +181,7 @@ public class StudentCourseListCtrl {
 					for (int j = 0; j < registeredArr.size(); j++) {
 						course = registeredArr.get(j);
 						sch = course.getSchedule();
-						
-						
-						switch(sch.getLab().getDay()) {
-						case 1:
-							monList.add(sch.getLab());
-							break;
-						
-						case 2:
-							tueList.add(sch.getLab());
-							break;
-						
-						case 3:
-							wedList.add(sch.getLab());
-							break;
-						
-						case 4:
-							thuList.add(sch.getLab());
-							break;
-							
-						case 5:
-							friList.add(sch.getLab());
-							break;
-							
-						default:
-							System.out.println("Invalid day");
-						}
-						
+
 						switch(sch.getLect().getDay()) {
 						case 1:
 							monList.add(sch.getLect());
@@ -232,30 +206,59 @@ public class StudentCourseListCtrl {
 						default:
 							System.out.println("Invalid day");
 						}
-						
-						switch(sch.getTut().getDay()) {
-						case 1:
-							monList.add(sch.getTut());
-							break;
-						
-						case 2:
-							tueList.add(sch.getTut());
-							break;
-						
-						case 3:
-							wedList.add(sch.getTut());
-							break;
-						
-						case 4:
-							thuList.add(sch.getTut());
-							break;
-							
-						case 5:
-							friList.add(sch.getTut());
-							break;
-							
-						default:
-							System.out.println("Invalid day");
+						// if course type have tutorial
+						if (sch.getCoursetype() == 2) {
+							switch (sch.getTut().getDay()) {
+							case 1:
+								monList.add(sch.getTut());
+								break;
+
+							case 2:
+								tueList.add(sch.getTut());
+								break;
+
+							case 3:
+								wedList.add(sch.getTut());
+								break;
+
+							case 4:
+								thuList.add(sch.getTut());
+								break;
+
+							case 5:
+								friList.add(sch.getTut());
+								break;
+
+							default:
+								System.out.println("Invalid day");
+							}
+							//if course type have lab
+							if (sch.getCoursetype() == 1) {
+								switch (sch.getLab().getDay()) {
+								case 1:
+									monList.add(sch.getLab());
+									break;
+
+								case 2:
+									tueList.add(sch.getLab());
+									break;
+
+								case 3:
+									wedList.add(sch.getLab());
+									break;
+
+								case 4:
+									thuList.add(sch.getLab());
+									break;
+
+								case 5:
+									friList.add(sch.getLab());
+									break;
+
+								default:
+									System.out.println("Invalid day");
+								}
+							}
 						}
 					}
 					
