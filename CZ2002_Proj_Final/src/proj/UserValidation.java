@@ -41,7 +41,7 @@ public class UserValidation {
 	 * @return true if login credentials matched with studentList, else value of false will be returned.
 	 * 
 	 */
-	public Boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
+	public boolean loginStudent(String username, String password, byte[][] SaltArray, String[] HashedPasswords) {
 		for (int i = 0; i < this.studentlist.getStudentListSize(); i++) {
 			if (this.studentlist.getStudent(i).getUsername().equals(username)
 					&& HashedPasswords[i].equals(PasswordHash.ReturnHashedPassword(password, SaltArray[i]))) {

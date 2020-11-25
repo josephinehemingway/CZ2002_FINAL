@@ -101,7 +101,7 @@ public class StudentListCtrl {
 							editedName = sc.nextLine();
 							break;
 						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
+							System.out.print("Please re-enter a valid name: ");
 							sc.nextLine();
 						}
 					}
@@ -113,15 +113,20 @@ public class StudentListCtrl {
 					
 				case 2://username
 					System.out.println("\nEditing Student Username ------------------");
-					System.out.println("Enter Edited Student Username: ");
 					String editedUsername;
 					while (true) {
-						try {
-							editedUsername = sc.nextLine().toUpperCase();
+						System.out.println("Enter Edited Student Username: ");
+						editedUsername = sc.nextLine().toUpperCase();
+						for (int j = 0; j < studentList.size(); j++) {
+							if (studentList.get(j).getUsername().equals(editedUsername)) {
+								System.out.println("Username already exist! Please re-enter valid Username");
+								editedUsername = null;
+								System.out.println("");
+								break;
+							}
+						}
+						if (editedUsername != null) {
 							break;
-						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
-							sc.nextLine();
 						}
 					}
 					stud.setUsername(editedUsername);
@@ -139,7 +144,7 @@ public class StudentListCtrl {
 							editedPW = sc.nextLine();
 							break;
 						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
+							System.out.print("Please re-enter a valid password: ");
 							sc.nextLine();
 						}
 					}
@@ -151,15 +156,20 @@ public class StudentListCtrl {
 					
 				case 4://matricid
 					System.out.println("\nEditing Student Matriculation ID ------------------");
-					System.out.println("Enter Edited Student Matriculation ID: ");
 					String editedMatric;
 					while (true) {
-						try {
-							editedMatric = sc.nextLine();
+						System.out.println("Enter Edited Student Matriculation ID: ");
+						editedMatric = sc.nextLine().toUpperCase();
+						for (int z = 0; z < studentList.size(); z++) {
+							if (studentList.get(z).getMatricID().equals(editedMatric)) {
+								System.out.println("Username already exist! Please re-enter valid Username");
+								editedMatric = null;
+								System.out.println("");
+								break;
+							}
+						}
+						if (editedMatric != null) {
 							break;
-						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
-							sc.nextLine();
 						}
 					}
 					stud.setMatricID(editedMatric);
@@ -177,7 +187,7 @@ public class StudentListCtrl {
 							editedEmail = sc.nextLine();
 							break;
 						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
+							System.out.print("Please re-enter a valid email: ");
 							sc.nextLine();
 						}
 					}
@@ -189,16 +199,15 @@ public class StudentListCtrl {
 					
 				case 6://gender
 					System.out.println("\nEditing Student Gender ------------------");
-					System.out.println("Enter Edited Student Gender: ");
 					char editedGender;
-					while (true) {
-						try {
-							editedGender = sc.next().charAt(0);
+					while(true) {
+						System.out.println("Enter Edited Student Gender (F/M):");
+						editedGender = sc.nextLine().toUpperCase().charAt(0);
+						if(editedGender == 'F' || editedGender == 'M') {
 							break;
-						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
-							sc.nextLine();
 						}
+						System.out.println("Please input a valid character!");
+						System.out.println("");
 					}
 					stud.setGender(editedGender);
 					System.out.println("Edited successfully! \n");
@@ -215,7 +224,7 @@ public class StudentListCtrl {
 							editedNationality = sc.nextLine();
 							break;
 						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
+							System.out.print("Please re-enter a valid nationality: ");
 							sc.nextLine();
 						}
 					}
@@ -225,31 +234,11 @@ public class StudentListCtrl {
 					System.out.println();
 					return;
 					
-				case 8://school
-					System.out.println("\nEditing Student School ------------------");
-					System.out.println("Enter Edited Student School: ");
-					String editedSchool;
-					while (true) {
-						try {
-							editedSchool = sc.nextLine();
-							break;
-						} catch (InputMismatchException e) {
-							System.out.print("Please re-enter a valid value: ");
-							sc.nextLine();
-						}
-					}
-					stud.setSchool(editedSchool);
-					System.out.println("Edited successfully! \n");
-					System.out.println("Edited student particulars ------------------ \n" + stud.toString());
-					System.out.println();
-					return;
-					
-				case 9:
+				case 8:
 					System.out.println("Exiting.. ");
 					break;
 				default:
-					break;
-					
+					break;	
 					
 				}
 			}
