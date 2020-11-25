@@ -11,7 +11,7 @@ public class EditSchoolUI {
 		System.out.println("\nAdding Course to school ------------------");
 		for(int i=0; i< courseListControl.getCourseSize();i++) {
 			if (courseListControl.getCourse(i).getCourseID().equals(courseID)) {
-				Course selectedCourse= courseListControl.getCourse(i);
+				Course selectedCourse = courseListControl.getCourse(i);
 				schoolListControl.addCourseToSchool(chosenSchoolID, selectedCourse);
 			}
 		}	
@@ -21,9 +21,9 @@ public class EditSchoolUI {
 		System.out.println("\nRemoving Course from school ------------------");
 		for(int i=0; i< courseListControl.getCourseSize();i++) {
 			if (courseListControl.getCourse(i).getCourseID().equals(courseID)) {
-				Course selectedCourse= courseListControl.getCourse(i);
-				String chosenSchoolID= schoolListControl.getSchoolFromCourse(courseID);
-				System.out.println("Current School:" + chosenSchoolID);
+				Course selectedCourse = courseListControl.getCourse(i);
+				String chosenSchoolID = schoolListControl.getSchoolFromCourse(courseID);
+				System.out.println("\nCurrent School: " + chosenSchoolID);
 				schoolListControl.removeCourseFromSchool(chosenSchoolID, selectedCourse);
 			}
 		}

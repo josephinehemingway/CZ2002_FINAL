@@ -268,10 +268,11 @@ public String printInfo() {
 		break;
 	}
 	
-	return "ClassType	Day   	   Time	 	Venue   " + "\n====================================================" +
-		"\nLab		" + strlabday + "	" + df.format(startlab) + "-" + df.format(endlab) + "	" + venuelab + "\n" +
-			"\nLec		" + strlectday + "	" + df.format(startlect) + "-" + df.format(endlect) + "	"  + venuelec + "\n" +
-			"\nTut		" + strtutday + "	" + df.format(starttut) + "-" + df.format(endtut) + "	" + venuetut + "\n" ;
+	return "====================================================\n" + "  ClassType	Day   	   Time	 	Venue   " + "\n====================================================" +
+		"\n     Lab	" + strlabday + "	" + df.format(startlab) + "-" + df.format(endlab) + "	" + venuelab + "\n" +
+			"\n     Lec	" + strlectday + "	" + df.format(startlect) + "-" + df.format(endlect) + "	"  + venuelec + "\n" +
+			"\n     Tut	" + strtutday + "	" + df.format(starttut) + "-" + df.format(endtut) + "	" + venuetut + "\n" 
+			+ "====================================================";
 }
 
 

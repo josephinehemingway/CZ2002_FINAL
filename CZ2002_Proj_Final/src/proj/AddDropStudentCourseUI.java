@@ -29,13 +29,18 @@ public class AddDropStudentCourseUI {
 		courseListControl.printAllCourseDetails();
 
 		// enter course id
-		System.out.println("\nEnter choice of course (eg CZ2004): ");
+		System.out.println("\nEnter Course ID to add (eg CZ2004, press # to quit): ");
 		String course = courseListControl.chooseCourse();
+		
+//		if (course.startsWith("#")) {
+//			System.out.println("Cancelled course addition. Going back to home.. ");
+//			return;
+//		}
+		
 
 		if (studentCourseListControl.checkIfRegistered(username, course) == false) {
 			// print index in course
 			System.out.println("\nCourse Indexes for Course " + course + " ------------------");
-			System.out.println("");
 			courseIndexListControl.printIndexesInfoUnderCourse(course);
 
 			// enter course index
@@ -206,11 +211,10 @@ public class AddDropStudentCourseUI {
 									if (studentCourseListControl.getStudentListCtrl().getStudentList().get(m)
 											.getUsername().equals(nextStud.getUsername())) {
 										Student s3 = studentCourseListControl.getStudentListCtrl().getStudent(m);
-										System.out.println(s3.getAcadunits());
+//										System.out.println(s3.getAcadunits());
 										s3.addAcadunits();
-										SendMailSSLCtrl.SendRegisteredNoti(c.getCourseName(), c.getCourseID(), courseIndex,
-												s3.getEmail());
-										System.out.println(s3.getAcadunits());
+										SendMailSSLCtrl.SendRegisteredNoti(c.getCourseName(), c.getCourseID(), courseIndex,s3.getEmail());
+//										System.out.println(s3.getAcadunits());
 										studentCourseListControl.getStudentListCtrl().save();
 									}
 								}

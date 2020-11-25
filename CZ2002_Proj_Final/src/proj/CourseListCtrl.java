@@ -119,8 +119,9 @@ public class CourseListCtrl {
 		}
 		else {
 				Course c = courseList.get(i);
-				System.out.println("   " + (i + 1)+ "	" + c.getCourseID()
-				+ "       " + c.getCourseName());
+				System.out.println("   " + (i + 1)+ "	 " + c.getCourseID() 
+				+ "      " + CourseIndex.ACADEMIC_UNITS 
+				+ "    " + c.getCourseName());
 			}
 	}
 	
@@ -133,9 +134,11 @@ public class CourseListCtrl {
 			return;
 		}
 		else {
-			System.out.println("\nList of Courses ------------------");
-			System.out.println("\n   #	Course ID    Course Name ");
-			System.out.println("===============================================================");
+			
+			System.out.println("\nList of Courses");
+			System.out.println("====================================================================");
+			System.out.println("   #	Course ID    AU	  Course Name ");
+			System.out.println("====================================================================");
 			for (int i=0; i<courseList.size(); i++) {
 				printCourseDetails(i);
 			}

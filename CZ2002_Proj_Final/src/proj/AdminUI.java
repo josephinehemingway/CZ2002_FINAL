@@ -152,7 +152,7 @@ public class AdminUI {
 				case 2:
 					System.out.println("\nEditing Course ------------------");
 					courseListControl.printAllCourseDetails();
-					System.out.println("Enter Course # to edit: ");
+					System.out.println("\nEnter Course # to edit: ");
 					int courseChoice;
 					while (true) {
 						try {
@@ -240,10 +240,9 @@ public class AdminUI {
 						case 2:
 							System.out.println("\nEditing Course Index ------------------");
 //							courseIndexListControl.printAllCourseInfo();
-							
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							
-							System.out.println("Enter Index Number to edit: ");
+							System.out.println("\nEnter Index Number to edit: ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
 							EditCourseIndexUI.editCourseIndex(courseIndexListControl, indexChoice);
 							courseIndexListControl.save();
@@ -254,7 +253,7 @@ public class AdminUI {
 							int indexChoice1 = 0;
 							System.out.println("\nDeleting Course Index ------------------");
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
-							System.out.println("Enter Index Number to delete: ");
+							System.out.println("\nEnter Index Number to delete: ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
 							indexChoice1 = indexChoice;
 							EditCourseIndexUI.deleteCourseIndex(courseIndexListControl, indexChoice1);
@@ -270,7 +269,7 @@ public class AdminUI {
 					case 3:
 						EditSchoolUI.removeCourseFromSchool(schoolListControl, courseListControl, chosenCourseID);
 						schoolListControl.printSchoolList();
-						System.out.println("Enter new School: ");
+						System.out.println("\nEnter new School ID: ");
 						String chosenSchoolID = schoolListControl.chooseSchool();
 						EditSchoolUI.addCourseToSchool(schoolListControl, chosenSchoolID, courseListControl,
 								chosenCourseID);

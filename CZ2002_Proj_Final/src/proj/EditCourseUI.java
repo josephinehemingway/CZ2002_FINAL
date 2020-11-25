@@ -54,7 +54,8 @@ public class EditCourseUI extends EditCourseIndexUI{
 	 */
 	public static void editCourse(CourseIndexListCtrl courseIndexListControl, CourseListCtrl courseListControl, int currentCourse) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("  #	Course ID  Course Name");
+		System.out.println("===============================================");
+		System.out.println("  #	Course ID    AU	   Course Name");
 		System.out.println("===============================================");
 		CourseListCtrl.printCourseDetails(currentCourse-1);
 
@@ -79,13 +80,14 @@ public class EditCourseUI extends EditCourseIndexUI{
 		}
 		switch (choice) {
 		case 1:
+			Scanner scan2 = new Scanner(System.in);
 			System.out.println("\nEditing Course Name ------------------");
 			System.out.println("Enter new Course Name: ");
 			boolean k = true;
 			String editedName = null;
 			while (k) {
 					int count = 1;
-					editedName = sc.nextLine().toUpperCase();
+					editedName = scan2.nextLine().toUpperCase();
 					for (int i = 0; i < courseListControl.getCourseList().size(); i++) {
 						if(courseListControl.getCourseList().get(i).getCourseName().equals(editedName)) {
 							System.out.println("Course Name already exist! Please enter another Course Name.");
@@ -109,7 +111,7 @@ public class EditCourseUI extends EditCourseIndexUI{
 			String editedID = null;
 			while (j) {
 				int count = 1;
-				editedID = sc.next().toUpperCase();
+				editedID = scan.next().toUpperCase();
 				for (int i = 0; i < courseListControl.getCourseList().size(); i++) {
 					if(courseListControl.getCourseList().get(i).getCourseID().equals(editedID)) {
 						System.out.println("Course ID already exist! Please enter another Course ID.");

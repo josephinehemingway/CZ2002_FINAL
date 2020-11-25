@@ -175,7 +175,7 @@ public class SchoolListCtrl {
 					break;
 				} else {
 					schoolList.get(j).addCourse(selectedCourse);
-					System.out.println("Course is now in " + schoolList.get(j).getName());
+					System.out.println("Course is now in " + schoolList.get(j).getName() + " (" + schoolList.get(j).getSchoolID() + ")");
 				}
 			}
 
@@ -219,10 +219,14 @@ public class SchoolListCtrl {
 	 * Prints the list of schools under schoolList ArrayList.
 	 */
 	public void printSchoolList() {
-		System.out.println("List of Schools:");
+		System.out.println("List of Schools");
+		System.out.println("=============================================================");
+		System.out.println(" School ID	School Name");
+		System.out.println("=============================================================");
 		for (int i = 0; i < schoolList.size(); i++) {
-			System.out.println(schoolList.get(i).getSchoolID());
+			System.out.println("   " + schoolList.get(i).getSchoolID() + "		" + schoolList.get(i).getName());
 		}
+		System.out.println("=============================================================");
 	}
 	/**
 	 * When called, save the current edited schoolList object to SerializeDB.
