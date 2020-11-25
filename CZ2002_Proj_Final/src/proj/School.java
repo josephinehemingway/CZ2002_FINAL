@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 /**
+ * School Entity Class
  * 
  * @author DSAI/1 Group 5
  * @version 1.0

@@ -112,6 +112,9 @@ public class CourseIndexListCtrl {
 					if (arrayIndexUnderCourse(courseID).get(i) == indexChoice) {
 						k = false;
 						break;
+					} else if (indexChoice == 0) {
+						System.out.println("Operation cancelled. ");
+						return -1;
 					} else if ((count) == arrayIndexUnderCourse(courseID).size()) {
 						System.out.println("Please re-enter valid index choice:");
 
@@ -304,7 +307,9 @@ public class CourseIndexListCtrl {
 			}
 		}
 	}
-	
+	/**
+	 * Prints all course Indexes in courseIndex list as well as their ID, name, index, Vacancy and number of AUs.
+	 */
 	public void printAllCourseInfo() {
 		if (courseIndexList == null) {
 			courseIndexList = new ArrayList<CourseIndex>();
@@ -351,7 +356,7 @@ public class CourseIndexListCtrl {
 					System.out.println("Index Vacancies: " + c.getCurrentVacancyOverInitial()); 
 			}
 		}
-			}
+		}
 	}
 	/**
 	 * Prints the vacancies available in a courseIndex object.

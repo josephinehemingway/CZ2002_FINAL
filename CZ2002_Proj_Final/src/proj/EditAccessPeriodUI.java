@@ -13,12 +13,16 @@ public class EditAccessPeriodUI {
 	public static DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public static void editAccessPeriod(SchoolListCtrl schoolListControl) throws ParseException {
-		System.out.println("Please Enter School ID: ");
+		System.out.println("Please Enter School ID (enter '0' to exit): ");
 		String schoolID = scan.nextLine().toUpperCase();
 		
 		// checks if school exists, if not it will exit
 		if (schoolListControl.checkSchool(schoolID) == false) {
-			System.out.println("School not found");
+			if (schoolID.equals("0")) {
+				System.out.println("Operation cancelled.\nExiting back to home..");
+				return;
+			}
+			System.out.println("School does not exist.");
 			return;
 		}
 		
@@ -30,8 +34,12 @@ public class EditAccessPeriodUI {
 		Date sd, ed;
 		while(true) {
 			try {
-				System.out.println("\nPlease Enter Start Date in the format dd/MM/yyyy: ");
+				System.out.println("\nPlease Enter Start Date in the format dd/MM/yyyy (enter '0' to exit): ");
 				String stringsd = scan.nextLine();
+				if (stringsd.equals("0")) {
+					System.out.println("Operation cancelled.\nExiting back to home..");
+					return;
+				}
 				sd = df.parse(stringsd);
 				break;
 			}
@@ -45,6 +53,10 @@ public class EditAccessPeriodUI {
 				while (true) {
 					System.out.println("Please Enter End Date in the format dd/MM/yyyy: ");
 					String stringed = scan.nextLine();
+					if (stringed.equals("0")) {
+						System.out.println("Operation cancelled.\nExiting back to home..");
+						return;
+					}
 					ed = df.parse(stringed);
 					
 					// check if end date is later than start date

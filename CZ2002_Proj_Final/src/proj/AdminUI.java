@@ -1,18 +1,25 @@
 package proj;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+/**
+ * Admin main console for non-student users
+ * AdminUI contains one single method which allows admin to edit STARS functions
+ * @author DSAI/1 Group 5
+ * @since 2020-11-19 
+ */
 
 public class AdminUI {
-
-	private ArrayList<Admin> adminList; // user list containing all the user acc created in this app
-	private String filename = "AdminList.txt"; // file storing all the user acc created
-
+	/**
+	 * Scanner to read student user input
+	 */
 	public static Scanner sc = new Scanner(System.in);
-	
 
+	/**
+	 * Calls the console method for the admin to edit STARS functions
+	 * @throws ParseException
+	 */
 	public static void console() throws ParseException {
 		int choice = 0;
 
@@ -242,8 +249,12 @@ public class AdminUI {
 //							courseIndexListControl.printAllCourseInfo();
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
 							
-							System.out.println("\nEnter Index Number to edit: ");
+							System.out.println("\nEnter Index Number to edit (enter '0' to exit): ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
+							if (indexChoice == -1) {
+								System.out.println("Exiting back to home..\n");
+								break;
+							}
 							EditCourseIndexUI.editCourseIndex(courseIndexListControl, indexChoice);
 							courseIndexListControl.save();
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
@@ -253,8 +264,12 @@ public class AdminUI {
 							int indexChoice1 = 0;
 							System.out.println("\nDeleting Course Index ------------------");
 							courseIndexListControl.printIndexesInfoUnderCourse(chosenCourseID);
-							System.out.println("\nEnter Index Number to delete: ");
+							System.out.println("\nEnter Index Number to delete (enter '0' to exit): ");
 							indexChoice = courseIndexListControl.chooseCourseIndex(chosenCourseID);
+							if (indexChoice == -1) {
+								System.out.println("Exiting back to home..\n");
+								break;
+							}
 							indexChoice1 = indexChoice;
 							EditCourseIndexUI.deleteCourseIndex(courseIndexListControl, indexChoice1);
 							courseIndexListControl.save();

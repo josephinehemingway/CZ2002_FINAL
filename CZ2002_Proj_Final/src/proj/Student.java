@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 /**
+ * Student entity class
  * 
  * @author DSAI/1 GROUP 5
  * @version 1.0

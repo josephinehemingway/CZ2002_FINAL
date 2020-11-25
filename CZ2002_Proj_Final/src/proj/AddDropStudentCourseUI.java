@@ -29,14 +29,13 @@ public class AddDropStudentCourseUI {
 		courseListControl.printAllCourseDetails();
 
 		// enter course id
-		System.out.println("\nEnter Course ID to add (eg CZ2004, press # to quit): ");
+		System.out.println("\nEnter Course ID to add (eg CZ2004, enter 0 to exit): ");
 		String course = courseListControl.chooseCourse();
 		
-//		if (course.startsWith("#")) {
-//			System.out.println("Cancelled course addition. Going back to home.. ");
-//			return;
-//		}
-		
+		if (course.equals("exit")) {
+			System.out.println("Exiting back to home..");
+			return;
+		}
 
 		if (studentCourseListControl.checkIfRegistered(username, course) == false) {
 			// print index in course
@@ -44,8 +43,12 @@ public class AddDropStudentCourseUI {
 			courseIndexListControl.printIndexesInfoUnderCourse(course);
 
 			// enter course index
-			System.out.println("\nEnter Course Index:");
+			System.out.println("\nEnter Course Index (enter 0 to exit):");
 			int courseIndex = courseIndexListControl.chooseCourseIndex(course);
+			if (courseIndex == -1) {
+				System.out.println("Exiting back to home..");
+				return;
+			}
 
 			// print course index details (schedule)
 			courseIndexListControl.printCourseIndexInfo(course, courseIndex);
@@ -79,7 +82,7 @@ public class AddDropStudentCourseUI {
 
 						if (studentCourseListControl.checkNewCourseClash(c, username) == false) {
 							if (c.getCurrentVacancy() == 0) {
-								System.out.println("\nCourse is currently fully registered----");
+								System.out.println("\nCourse is currently fully registered!");
 
 								for (int j = 0; j < studentListControl.getStudentListSize(); j++) {
 									if (studentListControl.getStudentList().get(j).getUsername().equals(username)) {
@@ -96,14 +99,14 @@ public class AddDropStudentCourseUI {
 
 							else {
 
-								System.out.println("\nRegistering course " + course + "------------------");
+								System.out.println("\nRegistering Course " + course + "------------------");
 								for (int k = 0; k < studentListControl.getStudentListSize(); k++) {
 									if (studentListControl.getStudentList().get(k).getUsername().equals(username)) {
 										Student s1 = studentListControl.getStudentList().get(k);
 										if (s1.getAcadunits() > 20) {
 											System.out.println("You have exceeded 21AUs");
 											System.out.println(
-													"Your current AU for this semester is : " + s1.getAcadunits());
+													"Your current AU for this semester is: " + s1.getAcadunits());
 										} else {
 											c.getStudent().add(s1);
 											SendMailSSLCtrl.SendRegisteredNoti(c.getCourseName(), c.getCourseID(),
@@ -153,8 +156,13 @@ public class AddDropStudentCourseUI {
 
 		// enter choice of course from list of registered courses
 		System.out.println("--------------------------------------------------------");
-		System.out.println("Enter choice of course: ");
+		System.out.println("Enter Course ID to drop (enter '0' to exit): ");
 		String course = studentCourseListControl.chooseCourse(username);
+		if (course.equals("exit")) {
+			System.out.println("Exiting back to home..");
+			return;
+		}
+		
 		int courseIndex = studentCourseListControl.getIndexOfCourse(username, course);
 
 		System.out.println("\nConfirm to drop course? Enter your choice: ");
@@ -252,16 +260,24 @@ public class AddDropStudentCourseUI {
 
 		// enter choice of course from list of registered courses
 		System.out.println("--------------------------------------------------------");
-		System.out.println("Enter choice of course: ");
+		System.out.println("Enter choice of course (enter '0' to exit): ");
 		String course = studentCourseListControl.chooseCourse(username);
+		if (course.equals("exit")) {
+			System.out.println("Exiting back to home..");
+			return;
+		}
 		int initialIndex = studentCourseListControl.getIndexOfCourse(username, course);
 
 		System.out.println("\nYour current Course Index: " + initialIndex);
 		System.out.println("Course Indexes for Course " + course + ": ");
 		courseIndexListControl.printIndexesInfoUnderCourse(course);
 
-		System.out.println("Enter new Index No. of course: ");
+		System.out.println("Enter new Index No. of course (enter '0' to exit): ");
 		int courseIndex = courseIndexListControl.chooseCourseIndex(course);
+		if (courseIndex == -1) {
+			System.out.println("Exiting back to home..");
+			return;
+		}
 
 		if (courseIndex != initialIndex) {
 
@@ -345,7 +361,13 @@ public class AddDropStudentCourseUI {
 		System.out.println("--------------------------------------------------------");
 
 		System.out.println("Enter choice of course: ");
+		
 		String course = studentCourseListControl.chooseCourse(username);
+		if (course.equals("exit")) {
+			System.out.println("Exiting back to home..");
+			return;
+		}
+		
 		int initialIndex = studentCourseListControl.getIndexOfCourse(username, course);
 
 		System.out.println("Your Course Index No. for Course " + course + ": " + initialIndex);

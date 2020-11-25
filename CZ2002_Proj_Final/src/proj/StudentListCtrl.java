@@ -45,7 +45,7 @@ public class StudentListCtrl {
 	}
 	/**
 	 * Gets a student from this control class's studentList indexed by the parameter i
-	 * @param i index of the movie in the studentList
+	 * @param i index of the student in the studentList
 	 * @return	a Student object
 	 */
 	public Student getStudent(int i) {
@@ -369,6 +369,7 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		return null;
 	}
+	
 	/**
 	 * Gets the name of the student from the studentList ArrayList with username that is inputted
 	 * 
@@ -387,6 +388,7 @@ public class StudentListCtrl {
 		System.out.println("Student not found.");
 		return null;
 	}
+	
 	/**
 	 * When called, save the current edited studentList object to SerializeDB
 	 */
