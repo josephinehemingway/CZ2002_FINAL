@@ -62,6 +62,11 @@ public class SerializeDB{
 		}
 	}
 
+	/**
+	 * Pre populated database of the students, admins, schools and courses.
+	 *  
+	 * @param args An array of command line arguments for the pre populated database.
+	 */
 	public static void main(String[] args) {
 		List list;
 		try	{	
@@ -158,7 +163,7 @@ public class SerializeDB{
 				//Create 3 Schools
 				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-				School sch1 = new School("SCSE", "School of Computer Science and Engineering", arrayCourseList, df.parse("23/11/2020"), df.parse("30/11/2020"));
+				School sch1 = new School("SCSE", "School of Computer Science and Engineering", arrayCourseList, df.parse("23/11/2020"), df.parse("24/11/2020"));
 				School sch2 = new School("SPMS", "School of Physical and Mathematical Sciences", arrayCourseList, df.parse("19/11/2020"), df.parse("24/11/2020"));
 				School sch3 = new School("NBS", "Nanyang Business School", arrayCourseList, df.parse("26/11/2020"), df.parse("28/11/2020"));
 
@@ -189,9 +194,7 @@ public class SerializeDB{
 
 				//Create 5 Course Index for each course
 				List<CourseIndex>arrayCourseIndexList= new ArrayList<CourseIndex>();
-
 				Random r = new Random();
-
 				DateFormat df2 = new SimpleDateFormat("HH:mm");
 				ArrayList<Date> DateTimeList = new ArrayList<Date>();
 				Calendar cal = (Calendar)Calendar.getInstance();
@@ -202,39 +205,72 @@ public class SerializeDB{
 					cal.set(Calendar.SECOND, 0);
 					cal.set(Calendar.MILLISECOND, 0);
 					DateTimeList.add(cal.getTime());
-					System.out.println(DateTimeList.get(i));
 				}
 				
-	
-
 				//day id spans from 1-5
-				// r.nextInt excludes 5, so we add 1
 				int minDay = 1;
 				int maxDay = 6;
-				// To obtain variables for random number of vacancies
-
-				int minVac = 1; 
-				int maxVac = 30;
-
-				for (int j = 0; j < 15; j++) {
-					String courseID = arrayCourseList.get(j).getCourseID();
-					String courseName = arrayCourseList.get(j).getCourseName();
+				String courseID;
+				String courseName;
+				
+				// create 5 index with lectures, tutorials and labs for course in SCSE, some indexes with 1 vacancy for test case
+				for (int j = 0; j < 5; j++) {
+					courseID = arrayCourseList.get(j).getCourseID();
+					courseName = arrayCourseList.get(j).getCourseName();
+					int vacancy[] = {10,1,25,14,16}; 
 					int k = 2000 + (j * 20);
 					for (int i = 0; i < 5; i++) {
 						Collections.shuffle(DateTimeList);
-						Schedule schedule_1 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+						Schedule schedule_lectutlab = new Schedule (r.nextInt(maxDay-minDay) + minDay,
 									r.nextInt(maxDay-minDay) + minDay,
 									r.nextInt(maxDay-minDay) + minDay,
 									DateTimeList.get(0), 
 									DateTimeList.get(1), 
-									DateTimeList.get(2),2011+k+i);
-							CourseIndex courseid = new CourseIndex (courseName, courseID, 2011+k+i, schedule_1, r.nextInt(maxVac-minVac) + minVac);
+									DateTimeList.get(2),2011 + k + i);
+							CourseIndex courseid = new CourseIndex (courseName, courseID, 2011 + k + i, schedule_lectutlab, vacancy[i]);
+							arrayCourseIndexList.add(courseid);
+					}
+				}
+				// r.nextInt excludes 5, so we add 1
+				// To obtain variables for random number of vacancies
+				int minVac = 1; 
+				int maxVac = 30;
+				
+				//create 5 indexes with lectures for courses in NBS, randomise the number of vacancies in each index
+				for (int j = 5; j < 10; j++) {
+					courseID = arrayCourseList.get(j).getCourseID();
+					courseName = arrayCourseList.get(j).getCourseName();
+					int k = 2000 + (j * 20);
+					for (int i = 0; i < 5; i++) {
+						Collections.shuffle(DateTimeList);
+						Schedule schedule_lectut = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+								r.nextInt(maxDay-minDay) + minDay,
+								DateTimeList.get(0), 
+								DateTimeList.get(1), 2011 + k + i);
+						CourseIndex courseid = new CourseIndex (courseName, courseID, 2011 + k + i, schedule_lectut, r.nextInt(maxVac-minVac) + minVac);
+						arrayCourseIndexList.add(courseid);
+					}
+				}
+			
+				// create 5 indexes with lectures and tutorials for courses in SPMS, randomise the number of vacancies in each index
+				for (int j = 10; j < 15; j++) {
+					courseID = arrayCourseList.get(j).getCourseID();
+					courseName = arrayCourseList.get(j).getCourseName();
+					int k = 2000 + (j * 20);
+					for (int i = 10; i < 15; i++) {
+						Collections.shuffle(DateTimeList);
+						Schedule schedule_lec = new Schedule (r.nextInt(maxDay-minDay) + minDay,
+								DateTimeList.get(0), 2011 + k + i);
+						CourseIndex courseid = new CourseIndex (courseName, courseID, 2011 + k + i, schedule_lec, r.nextInt(maxVac-minVac) + minVac);
 							arrayCourseIndexList.add(courseid);
 					}
 				}
 
-				
 				SerializeDB.writeSerializedObject("CourseIndexList.txt", arrayCourseIndexList);
+				
+				System.out.println(arrayCourseIndexList);
+				
+				System.out.println("Database has been pre populated!");
 				
 		}  catch ( Exception e ) {
 					System.out.println( "Exception >> " + e.getMessage() );
