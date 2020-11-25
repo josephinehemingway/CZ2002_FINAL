@@ -35,6 +35,7 @@ public class EditCourseUI extends EditCourseIndexUI{
 	 * @return -1 if course already exist, 0 if course was added successfully 
 	 */
 	public static int addCourse(CourseListCtrl courseListControl) {
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Course Name: ");
 		String newCourseName= sc.nextLine().toUpperCase();
 		EditCourseIndexUI.courseName= newCourseName;

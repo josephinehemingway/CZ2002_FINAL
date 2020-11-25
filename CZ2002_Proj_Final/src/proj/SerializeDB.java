@@ -268,8 +268,6 @@ public class SerializeDB{
 
 				SerializeDB.writeSerializedObject("CourseIndexList.txt", arrayCourseIndexList);
 				
-				System.out.println(arrayCourseIndexList);
-				
 				System.out.println("Database has been pre populated!");
 				
 		}  catch ( Exception e ) {
