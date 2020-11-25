@@ -9,12 +9,31 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
+/**
+ * Admin sub console that contains methods to edit course index of a course
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-19
+ */
 public class EditCourseIndexUI{
+	/**
+	 * Contains the course name
+	 */
 	protected static String courseName;
+	/**
+	 * Contains the course ID
+	 */
 	protected static String courseID;
+	/**
+	 * Scanner to read admin user input
+	 */
 	public static final Scanner sc = new Scanner(System.in);
-
+	/**
+	 * Method to set course name and course ID
+	 * 
+	 * @param courseID The courseID of the courseIndex object
+	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
+	 */
 	public static void setAttributes(String courseID, CourseIndexListCtrl courseIndexListControl) {
 		for (int i = 0; i < courseIndexListControl.getCourseIndexSize(); i++) {
 			if (courseIndexListControl.getCourseIndexList().get(i).getCourseID().equals(courseID)) {
@@ -25,6 +44,11 @@ public class EditCourseIndexUI{
 			}
 		}
 	}
+	/**
+	 * Method that allows admin to add a new course index to a course.
+	 * 
+	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
+	 */
 	public static void addCourseIndex(CourseIndexListCtrl courseIndexListControl) {
 		System.out.println("Enter the number of Course Indices you wish to input: ");
 		Scanner sc = new Scanner(System.in);
@@ -66,7 +90,6 @@ public class EditCourseIndexUI{
 				}
 			}
 
-			// Course index for 1 course
 			Random r = new Random();
 			DateFormat df2 = new SimpleDateFormat("HH:mm");
 			ArrayList<Date> DateTimeList = new ArrayList<Date>();
@@ -79,23 +102,9 @@ public class EditCourseIndexUI{
 				cal.set(Calendar.MILLISECOND, 0);
 				DateTimeList.add(cal.getTime());
 			}
-//			Date date1 = new Date(93600000L);
-//			Date date2 = new Date(100800000L);
-//			Date date3 = new Date(108000000L);
-//			Date date4 = new Date(115200000L);
-//			Date date5 = new Date(122400000L);
 
-			
 			int minDay = 1;
 			int maxDay = 6;
-
-			//Date date_arr[] = { date1, date2, date3, date4, date5 };
-
-
-			// generating random schedules for course
-//			Schedule schedule_1 = new Schedule(r.nextInt(maxDay - minDay) + minDay, r.nextInt(maxDay - minDay) + minDay,
-//					r.nextInt(maxDay - minDay) + minDay, date_arr[r.nextInt(date_arr.length - 1)],
-//					date_arr[r.nextInt(date_arr.length - 1)], date_arr[r.nextInt(date_arr.length - 1)], 2011 + 0);
 			Schedule schedule_1 = new Schedule (r.nextInt(maxDay-minDay) + minDay,
 					r.nextInt(maxDay-minDay) + minDay,
 					r.nextInt(maxDay-minDay) + minDay,
@@ -108,9 +117,13 @@ public class EditCourseIndexUI{
 			courseIndexListControl.save();
 		}
 	}
-
+	/**
+	 * Method that allows admin to edit an existing course index of a course.
+	 * 
+	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
+	 * @param indexChoice The index ID that the admin wishes to edit in a course
+	 */
 	public static void editCourseIndex(CourseIndexListCtrl courseIndexListControl, int indexChoice) {
-		// Choose index component to edit
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("\nEnter your choice: ");
@@ -136,7 +149,12 @@ public class EditCourseIndexUI{
 		
 		courseIndexListControl.editCourseIndex(choice, indexChoice);
 	}
-
+	/**
+	 * Method that allows the admin to delete a course index of a course.
+	 * 
+	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
+	 * @param indexChoice1 The index ID that the admin wishes to delete from a course.
+	 */
 	public static void deleteCourseIndex(CourseIndexListCtrl courseIndexListControl, int indexChoice1) {
 		courseIndexListControl.deleteCourseIndex(indexChoice1);
 		

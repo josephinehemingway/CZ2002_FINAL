@@ -3,9 +3,21 @@ package proj;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
-
+/**
+ * Main console for student and admin users to log into STARS application
+ * @author DSAI/1 Group 5
+ * @version 1.0
+ * @since 2020-11-19
+ *
+ */
 public class MainUI {
-	// LOGIN
+	/**
+	 * Main entry for student and admin users to log into STARS application
+	 * 
+	 * @param args An array of command line arguments for the STARS application
+	 * 
+	 * @throws Exception Checks exception in password hash 
+	 */
 	public static void main(String[] args) throws Exception {
 		int choice = 0;
 		String username;
