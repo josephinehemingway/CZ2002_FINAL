@@ -38,10 +38,12 @@ public class EditCourseUI extends EditCourseIndexUI{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Course Name: ");
 		String newCourseName= sc.nextLine().toUpperCase();
-		EditCourseIndexUI.courseName= newCourseName;
+		EditCourseIndexUI.courseName = newCourseName;
+		
 		System.out.println("Enter Course ID: ");
 		String newCourseID= sc.next().toUpperCase();
-		EditCourseIndexUI.courseID= newCourseID;
+		EditCourseIndexUI.courseID = newCourseID;
+		
 		return courseListControl.addNewCourse(newCourseName, newCourseID);
 		
 	}

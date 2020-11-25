@@ -50,24 +50,23 @@ public class EditCourseIndexUI{
 	 * @param courseIndexListControl CourseIndexList control object that holds the courseIndex list and their details.
 	 */
 	public static void addCourseIndex(CourseIndexListCtrl courseIndexListControl) {
-		System.out.println("Enter the course type(1-3): ");
+		System.out.println("\nEnter the course type (1-3): ");
 		System.out.println("1. Lecture, Tutorial, Lab ");
 		System.out.println("2. Lecture, Tutorial ");
 		System.out.println("3. Lecture ");
 		int courseType;
-		Scanner scan = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		while (true) {
 			try {
-				courseType = scan.nextInt();
+				courseType = sc.nextInt();
 				break;
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter an integer");
-				scan = new Scanner(System.in);
+				sc = new Scanner(System.in);
 			}
 		}
 		
-		System.out.println("Enter the number of Course Indices you wish to input: ");
-		Scanner sc = new Scanner(System.in);
+		System.out.println("\nEnter the number of Course Indices you wish to input: ");
 		int numOfIndexInput;
 		while (true) {
 			try {
@@ -81,7 +80,7 @@ public class EditCourseIndexUI{
 		
 		int count = 0;
 		while (count < numOfIndexInput) {
-			System.out.println("Enter Index ID of index " + (count+1) + ":");
+			System.out.println("\nEnter Index ID of index " + (count+1) + ":");
 			int newCourseIndex;
 			while (true) {
 				try {
@@ -93,7 +92,7 @@ public class EditCourseIndexUI{
 				}
 			}
 			
-			System.out.println("Enter number of vacancies: ");
+			System.out.println("\nEnter number of vacancies: ");
 			int newNumOfVacancies;
 			
 			while (true) {
